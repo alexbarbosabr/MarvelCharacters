@@ -9,15 +9,26 @@
 import Foundation
 
 protocol ServiceProtocol {
-    func request<T: Codable>(url: URL, httpMethod: HTTPMethod, completion: @escaping (Swift.Result<T, Error>) -> Void)
+    func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Swift.Result<T, Error>) -> Void)
     func request(url: URL, httpMethod: HTTPMethod, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
 }
 
 final class Service: ServiceProtocol {
-    func request<T: Codable>(url: URL, httpMethod: HTTPMethod,
-                             completion: @escaping (Swift.Result<T, Error>) -> Void) {
+    func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Swift.Result<T, Error>) -> Void) {
 
-        request(url: url, httpMethod: .get) { (data, response, error) in
+        var components = URLComponents()
+        components.scheme = endpoint.scheme
+        components.host = endpoint.host
+        components.path = endpoint.apiPath
+        components.port = endpoint.port
+        components.queryItems = getQueryItens(endpoint: endpoint)
+
+        guard let url = components.url else {
+            completion(.failure(ServiceError.unexpected))
+            return
+        }
+
+        request(url: url, httpMethod: endpoint.method) { (data, response, error) in
 
             if let error = error {
                 let nserror: NSError = error as NSError
@@ -68,5 +79,14 @@ final class Service: ServiceProtocol {
         }
 
         task.resume()
+    }
+
+    private func getQueryItens(endpoint: Endpoint) -> [URLQueryItem] {
+        var parameters = endpoint.parameters
+        parameters["ts"] = "1"
+        parameters["apikey"] = "a9e65ff2d46c8fa20e09199a07d5d6c6"
+        parameters["hash"] = "1380e7daf0062f1634a180983f0dba67"
+
+        return parameters.queryItems
     }
 }

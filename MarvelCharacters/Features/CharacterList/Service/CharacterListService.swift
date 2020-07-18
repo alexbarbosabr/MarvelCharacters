@@ -21,16 +21,9 @@ struct CharacterListService: CharacterListServiceProtocol {
     }
 
     func request(completion: @escaping (CharactersDataResult) -> Void) {
-        let host = "https://gateway.marvel.com:443/"
-        let api = "v1/public/characters"
-        let paramOne = "ts=1"
-        let paramTwo = "apikey=a9e65ff2d46c8fa20e09199a07d5d6c6"
-        let paramThree = "hash=1380e7daf0062f1634a180983f0dba67"
-        let urlString = "\(host)\(api)?\(paramOne)&\(paramTwo)&\(paramThree)"
+        let endpoint = CharactersEndpoint()
 
-        guard let url = URL(string: urlString) else { return }
-
-        service.request(url: url, httpMethod: .get) { (result: CharactersDataResult) in
+        service.request(endpoint: endpoint) { (result: CharactersDataResult) in
             completion(result)
         }
     }
