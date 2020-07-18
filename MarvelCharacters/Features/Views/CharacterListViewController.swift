@@ -14,6 +14,8 @@ final class CharacterListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
 
+        title = L10n.CharacterList.title
+
         //TODO: Remove this code soon
         let button = UIBarButtonItem(title: "test request",
                                      style: .plain,

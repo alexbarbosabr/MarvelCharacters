@@ -14,6 +14,8 @@
 		EA0FD5B624C2B44E007EAE5D /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD5B524C2B44E007EAE5D /* CharacterListViewController.swift */; };
 		EA0FD5B924C2B879007EAE5D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD5B824C2B879007EAE5D /* Service.swift */; };
 		EA0FD5BB24C2BA06007EAE5D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD5BA24C2BA06007EAE5D /* HTTPMethod.swift */; };
+		EA38943C24C350F7009EFCA2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA38943E24C350F7009EFCA2 /* Localizable.strings */; };
+		EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38944124C351F4009EFCA2 /* Strings+Generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		EA0FD5B524C2B44E007EAE5D /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		EA0FD5B824C2B879007EAE5D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		EA0FD5BA24C2BA06007EAE5D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		EA38943D24C350F7009EFCA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EA38944124C351F4009EFCA2 /* Strings+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 				EA0FD5A124C2B22D007EAE5D /* SceneDelegate.swift */,
 				EA0FD5B324C2B3FC007EAE5D /* Features */,
 				EA0FD5B724C2B857007EAE5D /* Network */,
+				EA38943924C350A3009EFCA2 /* Resources */,
 				EA0FD5A824C2B230007EAE5D /* Assets.xcassets */,
 				EA0FD5AA24C2B230007EAE5D /* LaunchScreen.storyboard */,
 				EA0FD5AD24C2B230007EAE5D /* Info.plist */,
@@ -94,6 +99,31 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		EA38943924C350A3009EFCA2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA38944024C351A8009EFCA2 /* Generated */,
+				EA38943F24C3514A009EFCA2 /* Strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EA38943F24C3514A009EFCA2 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				EA38943E24C350F7009EFCA2 /* Localizable.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		EA38944024C351A8009EFCA2 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				EA38944124C351F4009EFCA2 /* Strings+Generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,6 +132,7 @@
 			buildConfigurationList = EA0FD5B024C2B230007EAE5D /* Build configuration list for PBXNativeTarget "MarvelCharacters" */;
 			buildPhases = (
 				EA0FD5BC24C3421D007EAE5D /* SwiftLint */,
+				EA38943824C35001009EFCA2 /* SwiftGen */,
 				EA0FD59824C2B22D007EAE5D /* Sources */,
 				EA0FD59924C2B22D007EAE5D /* Frameworks */,
 				EA0FD59A24C2B22D007EAE5D /* Resources */,
@@ -154,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0FD5AC24C2B230007EAE5D /* LaunchScreen.storyboard in Resources */,
+				EA38943C24C350F7009EFCA2 /* Localizable.strings in Resources */,
 				EA0FD5A924C2B230007EAE5D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +211,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		EA38943824C35001009EFCA2 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n    swiftgen\nelse\n    echo \"warning: SwiftGen not installed, download from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -188,6 +238,7 @@
 			files = (
 				EA0FD5B624C2B44E007EAE5D /* CharacterListViewController.swift in Sources */,
 				EA0FD5B924C2B879007EAE5D /* Service.swift in Sources */,
+				EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */,
 				EA0FD5A024C2B22D007EAE5D /* AppDelegate.swift in Sources */,
 				EA0FD5BB24C2BA06007EAE5D /* HTTPMethod.swift in Sources */,
 				EA0FD5A224C2B22D007EAE5D /* SceneDelegate.swift in Sources */,
@@ -203,6 +254,14 @@
 				EA0FD5AB24C2B230007EAE5D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EA38943E24C350F7009EFCA2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA38943D24C350F7009EFCA2 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
