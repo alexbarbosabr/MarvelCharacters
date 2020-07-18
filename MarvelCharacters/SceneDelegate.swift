@@ -16,7 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let controller = CharacterListViewController()
+        let presenter = CharacterListPresenter()
+        let controller = CharacterListViewController(presenter: presenter)
+        presenter.view = controller
+
         let navigationController = UINavigationController(rootViewController: controller)
 
         window = UIWindow(windowScene: windowScene)

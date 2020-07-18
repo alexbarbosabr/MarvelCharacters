@@ -8,7 +8,25 @@
 
 import UIKit
 
+protocol CharacterListViewControllerProtocol: AnyObject {
+    func showCharacters(_ characters: [Character])
+    func error()
+    func loading()
+}
+
 final class CharacterListViewController: UIViewController {
+
+    private let presenter: CharacterListPresenterProtocol
+
+    init(presenter: CharacterListPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,21 +45,27 @@ final class CharacterListViewController: UIViewController {
 
     @objc
     private func testRequest() {
-        let service = CharacterListService()
+        presenter.fetchCharacters()
+    }
+}
 
-        service.request { (result) in
-            switch result {
-            case .success(let charactersData):
-                for character in charactersData.data.results {
-                    print(character.name)
-                    print(character.description)
-                    print(character.thumbnail.getImageUrl() ?? String())
-                    print("---")
-                }
-            case .failure(let error):
-                let error: NSError = error as NSError
-                print("Error code \(error.code)")
-            }
+extension CharacterListViewController: CharacterListViewControllerProtocol {
+    func showCharacters(_ characters: [Character]) {
+        print("show characters")
+
+        for character in characters {
+            print(character.name)
+            print(character.description)
+            print(character.thumbnail.getImageUrl() ?? String())
+            print("---")
         }
+    }
+
+    func error() {
+        print("show error")
+    }
+
+    func loading() {
+        print("show loading")
     }
 }

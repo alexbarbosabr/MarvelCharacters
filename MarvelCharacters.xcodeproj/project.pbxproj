@@ -20,6 +20,7 @@
 		EA34254C24C383FB009C043E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA34254B24C383FB009C043E /* EndPoint.swift */; };
 		EA34254F24C3847D009C043E /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA34254E24C3847D009C043E /* Dictionary+Extension.swift */; };
 		EA34255124C384EF009C043E /* CharactersEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA34255024C384EF009C043E /* CharactersEndpoint.swift */; };
+		EA34255424C38DF8009C043E /* CharacterListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA34255324C38DF8009C043E /* CharacterListPresenter.swift */; };
 		EA38943C24C350F7009EFCA2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA38943E24C350F7009EFCA2 /* Localizable.strings */; };
 		EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38944124C351F4009EFCA2 /* Strings+Generated.swift */; };
 		EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38944524C3555D009EFCA2 /* CharacterListService.swift */; };
@@ -41,6 +42,7 @@
 		EA34254B24C383FB009C043E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		EA34254E24C3847D009C043E /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		EA34255024C384EF009C043E /* CharactersEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersEndpoint.swift; sourceTree = "<group>"; };
+		EA34255324C38DF8009C043E /* CharacterListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenter.swift; sourceTree = "<group>"; };
 		EA38943D24C350F7009EFCA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA38944124C351F4009EFCA2 /* Strings+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		EA38944524C3555D009EFCA2 /* CharacterListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListService.swift; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		EA34255224C38DD9009C043E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				EA34255324C38DF8009C043E /* CharacterListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		EA38943924C350A3009EFCA2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +172,7 @@
 		EA38944324C354F5009EFCA2 /* CharacterList */ = {
 			isa = PBXGroup;
 			children = (
+				EA34255224C38DD9009C043E /* Presenter */,
 				EA38944424C3551F009EFCA2 /* Service */,
 				EA0FD5B424C2B415007EAE5D /* Views */,
 			);
@@ -289,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA34255424C38DF8009C043E /* CharacterListPresenter.swift in Sources */,
 				EA34254A24C380EF009C043E /* ServiceError.swift in Sources */,
 				EA34255124C384EF009C043E /* CharactersEndpoint.swift in Sources */,
 				EA34254824C36206009C043E /* Character.swift in Sources */,
