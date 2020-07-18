@@ -53,12 +53,12 @@ extension CharacterListViewController: CharacterListViewControllerProtocol {
     func showCharacters(_ characters: [Character]) {
         print("show characters")
 
-        for character in characters {
-            print(character.name)
-            print(character.description)
-            print(character.thumbnail.getImageUrl() ?? String())
-            print("---")
-        }
+//        for character in characters {
+//            print(character.name)
+//            print(character.description)
+//            print(character.thumbnail.getImageUrl() ?? String())
+//            print("---")
+//        }
     }
 
     func error() {
@@ -66,6 +66,8 @@ extension CharacterListViewController: CharacterListViewControllerProtocol {
     }
 
     func loading() {
+        let loading = LoadingView()
+        view = loading
         print("show loading")
     }
 }
