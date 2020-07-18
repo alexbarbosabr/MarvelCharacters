@@ -7,13 +7,13 @@
 //
 
 struct CharactersData: Codable {
-    let data: [CharacterData]
+    let data: CharacterData
 
     public struct CharacterData: Codable {
         let offset: Int
         let limit: Int
         let total: Int
         let count: Int
-        let results: Character
+        let results: [Character]
     }
 }

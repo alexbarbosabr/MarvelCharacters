@@ -28,8 +28,20 @@ final class CharacterListViewController: UIViewController {
     @objc
     private func testRequest() {
         let service = CharacterListService()
-        service.request {
-            print("has called service")
+
+        service.request { (result) in
+            switch result {
+            case .success(let charactersData):
+                for character in charactersData.data.results {
+                    print(character.name)
+                    print(character.description)
+                    print(character.thumbnail.getImageUrl() ?? String())
+                    print("---")
+                }
+            case .failure(let error):
+                let error: NSError = error as NSError
+                print("Error code \(error.code)")
+            }
         }
     }
 }
