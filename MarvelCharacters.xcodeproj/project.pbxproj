@@ -16,6 +16,7 @@
 		EA0FD5BB24C2BA06007EAE5D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD5BA24C2BA06007EAE5D /* HTTPMethod.swift */; };
 		EA38943C24C350F7009EFCA2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA38943E24C350F7009EFCA2 /* Localizable.strings */; };
 		EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38944124C351F4009EFCA2 /* Strings+Generated.swift */; };
+		EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38944524C3555D009EFCA2 /* CharacterListService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		EA0FD5BA24C2BA06007EAE5D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		EA38943D24C350F7009EFCA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA38944124C351F4009EFCA2 /* Strings+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		EA38944524C3555D009EFCA2 /* CharacterListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +79,7 @@
 		EA0FD5B324C2B3FC007EAE5D /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				EA0FD5B424C2B415007EAE5D /* Views */,
+				EA38944324C354F5009EFCA2 /* CharacterList */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -122,6 +124,23 @@
 				EA38944124C351F4009EFCA2 /* Strings+Generated.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		EA38944324C354F5009EFCA2 /* CharacterList */ = {
+			isa = PBXGroup;
+			children = (
+				EA38944424C3551F009EFCA2 /* Service */,
+				EA0FD5B424C2B415007EAE5D /* Views */,
+			);
+			path = CharacterList;
+			sourceTree = "<group>";
+		};
+		EA38944424C3551F009EFCA2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EA38944524C3555D009EFCA2 /* CharacterListService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +258,7 @@
 				EA0FD5B624C2B44E007EAE5D /* CharacterListViewController.swift in Sources */,
 				EA0FD5B924C2B879007EAE5D /* Service.swift in Sources */,
 				EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */,
+				EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */,
 				EA0FD5A024C2B22D007EAE5D /* AppDelegate.swift in Sources */,
 				EA0FD5BB24C2BA06007EAE5D /* HTTPMethod.swift in Sources */,
 				EA0FD5A224C2B22D007EAE5D /* SceneDelegate.swift in Sources */,

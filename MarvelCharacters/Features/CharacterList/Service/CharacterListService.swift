@@ -1,32 +1,21 @@
 //
-//  CharacterListViewController.swift
+//  CharacterListService.swift
 //  MarvelCharacters
 //
 //  Created by Alex Barbosa on 18/07/20.
 //  Copyright © 2020 Alex Barbosa. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-final class CharacterListViewController: UIViewController {
+struct CharacterListService {
+    private let service: Service
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .secondarySystemBackground
-
-        title = L10n.CharacterList.title
-
-        //TODO: Remove this code soon
-        let button = UIBarButtonItem(title: "test request",
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(testRequest))
-
-        navigationItem.rightBarButtonItem = button
+    init(service: Service = Service()) {
+        self.service = service
     }
 
-    @objc
-    private func testRequest() {
+    func request(completion: @escaping () -> Void) {
         let host = "https://gateway.marvel.com:443/"
         let api = "v1/public/characters"
         let paramOne = "ts=1"
@@ -36,13 +25,13 @@ final class CharacterListViewController: UIViewController {
 
         guard let url = URL(string: urlString) else { return }
 
-        let service = Service()
         service.request(url: url, httpMethod: .get) { (data, response, error) in
 
             if let error = error {
                 let nserror: NSError = error as NSError
                 print(nserror.code)
                 print(nserror.description)
+                completion()
                 return
             }
 
@@ -50,6 +39,7 @@ final class CharacterListViewController: UIViewController {
                 (200...299).contains(httpResponse.statusCode) else {
                     guard let httpResponse = response as? HTTPURLResponse else { return }
                     print(httpResponse.statusCode)
+                    completion()
                     return
             }
 
@@ -60,6 +50,8 @@ final class CharacterListViewController: UIViewController {
                 } catch {
 
                 }
+                completion()
+                return
             }
         }
     }
