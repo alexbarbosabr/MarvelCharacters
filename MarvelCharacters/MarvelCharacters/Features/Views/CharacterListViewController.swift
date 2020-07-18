@@ -14,7 +14,6 @@ final class CharacterListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
 
-
         //TODO: Remove this code soon
         let button = UIBarButtonItem(title: "test request",
                                      style: .plain,
@@ -47,7 +46,7 @@ final class CharacterListViewController: UIViewController {
 
             guard let httpResponse = response as? HTTPURLResponse,
                 (200...299).contains(httpResponse.statusCode) else {
-                    let httpResponse = response as! HTTPURLResponse
+                    guard let httpResponse = response as? HTTPURLResponse else { return }
                     print(httpResponse.statusCode)
                     return
             }
