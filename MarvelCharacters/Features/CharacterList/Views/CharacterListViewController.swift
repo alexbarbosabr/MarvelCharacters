@@ -15,8 +15,9 @@ protocol CharacterListViewControllerProtocol: AnyObject {
 }
 
 final class CharacterListViewController: UIViewController {
-
     private let presenter: CharacterListPresenterProtocol
+    private let characterListView = CharacterListView()
+    private let dataSource = CharacterListDataSource()
 
     init(presenter: CharacterListPresenterProtocol) {
         self.presenter = presenter
@@ -51,14 +52,12 @@ final class CharacterListViewController: UIViewController {
 
 extension CharacterListViewController: CharacterListViewControllerProtocol {
     func showCharacters(_ characters: [Character]) {
-        print("show characters")
+        dataSource.characters = characters
 
-//        for character in characters {
-//            print(character.name)
-//            print(character.description)
-//            print(character.thumbnail.getImageUrl() ?? String())
-//            print("---")
-//        }
+        characterListView.tableView.dataSource = dataSource
+        characterListView.tableView.reloadData()
+
+        view = characterListView
     }
 
     func error() {
@@ -68,6 +67,5 @@ extension CharacterListViewController: CharacterListViewControllerProtocol {
     func loading() {
         let loading = LoadingView()
         view = loading
-        print("show loading")
     }
 }

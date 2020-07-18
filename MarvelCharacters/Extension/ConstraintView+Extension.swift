@@ -16,4 +16,14 @@ extension UIView {
             centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
         }
     }
+
+    func fillSuperView() {
+        if let view = superview {
+            translatesAutoresizingMaskIntoConstraints = false
+            topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        }
+    }
 }

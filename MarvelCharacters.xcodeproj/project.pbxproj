@@ -27,6 +27,8 @@
 		EA38943C24C350F7009EFCA2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA38943E24C350F7009EFCA2 /* Localizable.strings */; };
 		EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38944124C351F4009EFCA2 /* Strings+Generated.swift */; };
 		EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38944524C3555D009EFCA2 /* CharacterListService.swift */; };
+		EADD1EC124C39BBB00B506E6 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */; };
+		EADD1EC424C3A32400B506E6 /* CharacterListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC324C3A32400B506E6 /* CharacterListDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		EA38943D24C350F7009EFCA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA38944124C351F4009EFCA2 /* Strings+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		EA38944524C3555D009EFCA2 /* CharacterListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListService.swift; sourceTree = "<group>"; };
+		EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
+		EADD1EC324C3A32400B506E6 /* CharacterListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				EA0FD5B524C2B44E007EAE5D /* CharacterListViewController.swift */,
+				EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			children = (
 				EA34255224C38DD9009C043E /* Presenter */,
 				EA38944424C3551F009EFCA2 /* Service */,
+				EADD1EC224C3A2F700B506E6 /* DataSource */,
 				EA0FD5B424C2B415007EAE5D /* Views */,
 			);
 			path = CharacterList;
@@ -211,6 +217,14 @@
 				EA34255024C384EF009C043E /* CharactersEndpoint.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		EADD1EC224C3A2F700B506E6 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				EADD1EC324C3A32400B506E6 /* CharacterListDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +351,8 @@
 				EA0FD5B924C2B879007EAE5D /* Service.swift in Sources */,
 				EA34255D24C39789009C043E /* ConstraintView+Extension.swift in Sources */,
 				EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */,
+				EADD1EC424C3A32400B506E6 /* CharacterListDataSource.swift in Sources */,
+				EADD1EC124C39BBB00B506E6 /* CharacterListView.swift in Sources */,
 				EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */,
 				EA0FD5A024C2B22D007EAE5D /* AppDelegate.swift in Sources */,
 				EA0FD5BB24C2BA06007EAE5D /* HTTPMethod.swift in Sources */,
