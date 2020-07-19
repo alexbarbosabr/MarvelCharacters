@@ -9,7 +9,15 @@
 import UIKit
 
 final class CharacterListView: UIView {
-    let tableView = UITableView()
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.identifier)
+        tableView.contentInset = .init(top: 0, left: 0, bottom: 8, right: 0)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.backgroundView?.backgroundColor = .clear
+        return tableView
+    }()
 
     init() {
         super.init(frame: .zero)
@@ -29,5 +37,9 @@ extension CharacterListView: CodeView {
 
     func makeContraints() {
         tableView.fillSuperView()
+    }
+
+    func makeAddicionalConfiguration() {
+        backgroundColor = .primaryBackground
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,9 @@
 		EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38944524C3555D009EFCA2 /* CharacterListService.swift */; };
 		EADD1EC124C39BBB00B506E6 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */; };
 		EADD1EC424C3A32400B506E6 /* CharacterListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC324C3A32400B506E6 /* CharacterListDataSource.swift */; };
+		EADD1EC624C3A7DF00B506E6 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC524C3A7DF00B506E6 /* CharacterCell.swift */; };
+		EADD1ECA24C41DF200B506E6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC924C41DF200B506E6 /* UIColor+Extension.swift */; };
+		EADD1ED024C4B78D00B506E6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EADD1ECF24C4B78D00B506E6 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,8 @@
 		EA38944524C3555D009EFCA2 /* CharacterListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListService.swift; sourceTree = "<group>"; };
 		EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
 		EADD1EC324C3A32400B506E6 /* CharacterListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListDataSource.swift; sourceTree = "<group>"; };
+		EADD1EC524C3A7DF00B506E6 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
+		EADD1EC924C41DF200B506E6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EADD1ED024C4B78D00B506E6 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +123,7 @@
 			children = (
 				EA0FD5B524C2B44E007EAE5D /* CharacterListViewController.swift */,
 				EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */,
+				EADD1EC524C3A7DF00B506E6 /* CharacterCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +153,7 @@
 			children = (
 				EA34255C24C39789009C043E /* ConstraintView+Extension.swift */,
 				EA34254E24C3847D009C043E /* Dictionary+Extension.swift */,
+				EADD1EC924C41DF200B506E6 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -245,6 +253,9 @@
 			dependencies = (
 			);
 			name = MarvelCharacters;
+			packageProductDependencies = (
+				EADD1ECF24C4B78D00B506E6 /* Kingfisher */,
+			);
 			productName = MarvelCharacters;
 			productReference = EA0FD59C24C2B22D007EAE5D /* MarvelCharacters.app */;
 			productType = "com.apple.product-type.application";
@@ -273,6 +284,9 @@
 				Base,
 			);
 			mainGroup = EA0FD59324C2B22D007EAE5D;
+			packageReferences = (
+				EADD1ECE24C4B78D00B506E6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = EA0FD59D24C2B22D007EAE5D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -342,6 +356,7 @@
 				EA34255424C38DF8009C043E /* CharacterListPresenter.swift in Sources */,
 				EA34254A24C380EF009C043E /* ServiceError.swift in Sources */,
 				EA34255124C384EF009C043E /* CharactersEndpoint.swift in Sources */,
+				EADD1ECA24C41DF200B506E6 /* UIColor+Extension.swift in Sources */,
 				EA34255724C39576009C043E /* CodeView.swift in Sources */,
 				EA34254824C36206009C043E /* Character.swift in Sources */,
 				EA34255B24C39642009C043E /* LoadingView.swift in Sources */,
@@ -354,6 +369,7 @@
 				EADD1EC424C3A32400B506E6 /* CharacterListDataSource.swift in Sources */,
 				EADD1EC124C39BBB00B506E6 /* CharacterListView.swift in Sources */,
 				EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */,
+				EADD1EC624C3A7DF00B506E6 /* CharacterCell.swift in Sources */,
 				EA0FD5A024C2B22D007EAE5D /* AppDelegate.swift in Sources */,
 				EA0FD5BB24C2BA06007EAE5D /* HTTPMethod.swift in Sources */,
 				EA0FD5A224C2B22D007EAE5D /* SceneDelegate.swift in Sources */,
@@ -504,11 +520,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SG7LJKUAM;
 				INFOPLIST_FILE = MarvelCharacters/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.challenge.MarvelCharacters;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abarbosa.MarvelCharacters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -522,11 +539,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4SG7LJKUAM;
 				INFOPLIST_FILE = MarvelCharacters/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.challenge.MarvelCharacters;
+				PRODUCT_BUNDLE_IDENTIFIER = com.abarbosa.MarvelCharacters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -555,6 +573,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EADD1ECE24C4B78D00B506E6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.14.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EADD1ECF24C4B78D00B506E6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EADD1ECE24C4B78D00B506E6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EA0FD59424C2B22D007EAE5D /* Project object */;
 }

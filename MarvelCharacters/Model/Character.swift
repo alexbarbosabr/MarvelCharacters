@@ -12,14 +12,21 @@ struct Character: Codable {
     let name: String
     let description: String
     let thumbnail: Thumbnail
+    var favorite: Bool? = false
 
     public struct Thumbnail: Codable {
         let path: String
         let `extension`: String
 
         func getImageUrl() -> URL? {
-            let urlString = "\(path).\(self.extension)"
+            let securityPath = path.replacingOccurrences(of: "http", with: "https")
+
+            let urlString = "\(securityPath).\(self.extension)"
             return URL(string: urlString)
         }
+    }
+
+    mutating func setFavorite(_ favorite: Bool) {
+        self.favorite = favorite
     }
 }

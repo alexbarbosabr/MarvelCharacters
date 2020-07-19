@@ -31,17 +31,19 @@ final class CharacterListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .secondarySystemBackground
+        view.backgroundColor = .primaryBackground
 
         title = L10n.CharacterList.title
 
         //TODO: Remove this code soon
-        let button = UIBarButtonItem(title: "test request",
+        let button = UIBarButtonItem(title: "request",
                                      style: .plain,
                                      target: self,
                                      action: #selector(testRequest))
 
         navigationItem.rightBarButtonItem = button
+
+        presenter.fetchCharacters()
     }
 
     @objc
@@ -53,8 +55,10 @@ final class CharacterListViewController: UIViewController {
 extension CharacterListViewController: CharacterListViewControllerProtocol {
     func showCharacters(_ characters: [Character]) {
         dataSource.characters = characters
+        dataSource.delegate = self
 
         characterListView.tableView.dataSource = dataSource
+        characterListView.tableView.delegate = self
         characterListView.tableView.reloadData()
 
         view = characterListView
@@ -67,5 +71,24 @@ extension CharacterListViewController: CharacterListViewControllerProtocol {
     func loading() {
         let loading = LoadingView()
         view = loading
+    }
+}
+
+extension CharacterListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let character = dataSource.characters[indexPath.row]
+        print("go to \(character.name) detail")
+    }
+}
+
+extension CharacterListViewController: CharacterCellDelegate {
+    func setFavorite(index: IndexPath?, isFavorite: Bool) {
+        if let index = index?.row {
+            dataSource.characters[index].setFavorite(isFavorite)
+        }
     }
 }

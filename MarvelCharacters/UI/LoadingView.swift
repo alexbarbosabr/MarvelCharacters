@@ -33,6 +33,6 @@ extension LoadingView: CodeView {
     }
 
     func makeAddicionalConfiguration() {
-        backgroundColor = .secondarySystemBackground
+        backgroundColor = .primaryBackground
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 
 final class CharacterListDataSource: NSObject, UITableViewDataSource {
     var characters = [Character]()
+    weak var delegate: CharacterCellDelegate?
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
@@ -18,10 +19,12 @@ final class CharacterListDataSource: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let character = characters[indexPath.row]
+        let identifier = CharacterCell.identifier
 
-        let cell = UITableViewCell(frame: .zero)
-        cell.textLabel?.text = character.name
-
+        // swiftlint:disable:next force_cast
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CharacterCell
+        cell.setup(character: character, indexPath: indexPath)
+        cell.delegate = delegate
         return cell
     }
 }
