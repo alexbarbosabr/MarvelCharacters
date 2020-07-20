@@ -16,8 +16,7 @@ final class CharacterListView: UIView {
         tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.identifier)
         tableView.contentInset = .init(top: 0, left: 0, bottom: 8, right: 0)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .clear
-        tableView.backgroundView?.backgroundColor = .clear
+        tableView.backgroundColor = .primaryBackground
         return tableView
     }()
 
@@ -38,10 +37,13 @@ extension CharacterListView: CodeView {
     }
 
     func makeContraints() {
-        tableView.fillSuperView()
+        tableView.anchor(top: safeAreaLayoutGuide.topAnchor,
+                         leading: leadingAnchor,
+                         bottom: bottomAnchor,
+                         trailing: trailingAnchor)
     }
 
     func makeAddicionalConfiguration() {
-        backgroundColor = .primaryBackground
+        backgroundColor = .systemRed
     }
 }

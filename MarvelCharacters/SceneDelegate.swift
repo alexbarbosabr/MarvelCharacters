@@ -21,6 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         presenter.view = controller
 
         let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.navigationBar.barStyle = .black
+        navigationController.navigationBar.barTintColor = .systemRed
+        navigationController.navigationBar.isTranslucent = false
 
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigationController

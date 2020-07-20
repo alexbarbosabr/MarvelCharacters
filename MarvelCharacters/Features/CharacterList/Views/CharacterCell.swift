@@ -34,15 +34,15 @@ final class CharacterCell: UITableViewCell {
 
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 2
         return label
     }()
 
     let descLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 10)
-        label.numberOfLines = 2
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.numberOfLines = 3
         label.textColor = .secondaryLabel
         return label
     }()
@@ -117,7 +117,7 @@ extension CharacterCell: CodeView {
     func makeContraints() {
         characterImageView.translatesAutoresizingMaskIntoConstraints = false
         characterImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        characterImageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        characterImageView.widthAnchor.constraint(equalToConstant: 104).isActive = true
         characterImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         characterImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 
@@ -135,7 +135,7 @@ extension CharacterCell: CodeView {
 
     func makeAddicionalConfiguration() {
         contentView.backgroundColor = .customSecondaryBackground
-        contentView.layer.cornerRadius = 4
+        contentView.layer.cornerRadius = 3
         contentView.layer.borderWidth = 0
         contentView.clipsToBounds = true
 

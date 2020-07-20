@@ -41,9 +41,17 @@ final class CharacterListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = L10n.CharacterList.title
+
+        let font = UIFont.boldSystemFont(ofSize: 20)
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
+        navigationController?.navigationBar.titleTextAttributes = attributes
 
         presenter.fetchCharacters(showLoading: true)
     }
@@ -67,6 +75,15 @@ final class CharacterListViewController: UIViewController {
             characterListView.tableView.endUpdates()
         }
         presenter.fetchCharacters(showLoading: false)
+    }
+
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+       if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
+          navigationController?.setNavigationBarHidden(true, animated: true)
+
+       } else {
+          navigationController?.setNavigationBarHidden(false, animated: true)
+       }
     }
 }
 
@@ -97,7 +114,7 @@ extension CharacterListViewController: CharacterListViewControllerProtocol {
 
 extension CharacterListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 114
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

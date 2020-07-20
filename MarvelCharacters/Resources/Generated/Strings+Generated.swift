@@ -12,7 +12,7 @@ import Foundation
 internal enum L10n {
 
   internal enum CharacterList {
-    /// Characters
+    /// MARVEL
     internal static let title = L10n.tr("Localizable", "characterList.title")
     internal enum Error {
       /// Something went wrong!\nTouch to try again.
