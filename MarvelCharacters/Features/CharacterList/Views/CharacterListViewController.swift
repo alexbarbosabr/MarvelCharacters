@@ -9,15 +9,27 @@
 import UIKit
 
 protocol CharacterListViewControllerProtocol: AnyObject {
-    func showCharacters(_ characters: [Character])
-    func error()
+    func showCharacters(_ data: CharactersDataViewModel)
+    func error(didShowLoading: Bool)
     func loading()
 }
 
 final class CharacterListViewController: UIViewController {
     private let presenter: CharacterListPresenterProtocol
-    private let characterListView = CharacterListView()
-    private let dataSource = CharacterListDataSource()
+
+    private lazy var characterListView: CharacterListView = {
+        let view = CharacterListView()
+        view.tableView.dataSource = dataSource
+        view.tableView.delegate = self
+        view.tableView.prefetchDataSource = self
+        return view
+    }()
+
+    private lazy var dataSource: CharacterListDataSource = {
+        let dataSource = CharacterListDataSource()
+        dataSource.delegate = self
+        return dataSource
+    }()
 
     init(presenter: CharacterListPresenterProtocol) {
         self.presenter = presenter
@@ -31,41 +43,50 @@ final class CharacterListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .primaryBackground
-
         title = L10n.CharacterList.title
 
-        //TODO: Remove this code soon
-        let button = UIBarButtonItem(title: "request",
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(testRequest))
-
-        navigationItem.rightBarButtonItem = button
-
-        presenter.fetchCharacters()
+        presenter.fetchCharacters(showLoading: true)
     }
 
-    @objc
-    private func testRequest() {
-        presenter.fetchCharacters()
+    static func isLoadingCell(for indexPath: IndexPath, currentCount: Int) -> Bool {
+        return indexPath.row >= currentCount
+    }
+
+    private func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+        let indexPathsForVisibleRows = characterListView.tableView.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        return Array(indexPathsIntersection)
+    }
+
+    private func fetchCharacters(indexPath: IndexPath? = nil) {
+        dataSource.showError = false
+
+        if let indexPath = indexPath {
+            characterListView.tableView.beginUpdates()
+            characterListView.tableView.reloadRows(at: [indexPath], with: .none)
+            characterListView.tableView.endUpdates()
+        }
+        presenter.fetchCharacters(showLoading: false)
     }
 }
 
 extension CharacterListViewController: CharacterListViewControllerProtocol {
-    func showCharacters(_ characters: [Character]) {
-        dataSource.characters = characters
-        dataSource.delegate = self
-
-        characterListView.tableView.dataSource = dataSource
-        characterListView.tableView.delegate = self
+    func showCharacters(_ data: CharactersDataViewModel) {
+        dataSource.data = data
         characterListView.tableView.reloadData()
 
         view = characterListView
     }
 
-    func error() {
+    func error(didShowLoading: Bool) {
         print("show error")
+
+        if didShowLoading {
+
+        } else {
+            dataSource.showError = true
+            characterListView.tableView.reloadData()
+        }
     }
 
     func loading() {
@@ -80,15 +101,32 @@ extension CharacterListViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let character = dataSource.characters[indexPath.row]
+        if indexPath.row == dataSource.data.characters.count && dataSource.showError {
+            fetchCharacters(indexPath: indexPath)
+            return
+        }
+
+        let character = dataSource.data.characters[indexPath.row]
         print("go to \(character.name) detail")
+    }
+}
+
+extension CharacterListViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        let currentCount = dataSource.data.characters.count
+
+        if indexPaths.contains(where: { index -> Bool in
+            CharacterListViewController.isLoadingCell(for: index, currentCount: currentCount)
+        }) {
+            fetchCharacters()
+        }
     }
 }
 
 extension CharacterListViewController: CharacterCellDelegate {
     func setFavorite(index: IndexPath?, isFavorite: Bool) {
         if let index = index?.row {
-            dataSource.characters[index].setFavorite(isFavorite)
+            dataSource.data.characters[index].setFavorite(isFavorite)
         }
     }
 }

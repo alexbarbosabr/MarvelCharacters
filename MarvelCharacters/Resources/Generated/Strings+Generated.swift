@@ -14,6 +14,10 @@ internal enum L10n {
   internal enum CharacterList {
     /// Characters
     internal static let title = L10n.tr("Localizable", "characterList.title")
+    internal enum Error {
+      /// Something went wrong!\nTouch to try again.
+      internal static let tryAgain = L10n.tr("Localizable", "characterList.error.tryAgain")
+    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

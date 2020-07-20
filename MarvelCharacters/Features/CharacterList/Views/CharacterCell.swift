@@ -98,6 +98,7 @@ final class CharacterCell: UITableViewCell {
     }
 
     private func addDescription(character: Character) {
+        descLabel.removeFromSuperview()
         if character.description != String() {
             descLabel.text = character.description
             stackView.addArrangedSubview(descLabel)

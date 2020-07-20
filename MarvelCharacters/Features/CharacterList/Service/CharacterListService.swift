@@ -10,7 +10,7 @@ import Foundation
 typealias CharactersDataResult = Result<CharactersData, Error>
 
 protocol CharacterListServiceProtocol {
-    func request(completion: @escaping (CharactersDataResult) -> Void)
+    func request(offset: Int, completion: @escaping (CharactersDataResult) -> Void)
 }
 
 struct CharacterListService: CharacterListServiceProtocol {
@@ -20,8 +20,8 @@ struct CharacterListService: CharacterListServiceProtocol {
         self.service = service
     }
 
-    func request(completion: @escaping (CharactersDataResult) -> Void) {
-        let endpoint = CharactersEndpoint()
+    func request(offset: Int, completion: @escaping (CharactersDataResult) -> Void) {
+        let endpoint = CharactersEndpoint(offset: offset)
 
         service.request(endpoint: endpoint) { (result: CharactersDataResult) in
             completion(result)

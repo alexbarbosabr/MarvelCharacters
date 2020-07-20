@@ -8,3 +8,4 @@
 
 // Character List
 "characterList.title" = "Characters";
+"characterList.error.tryAgain" = "Something went wrong!\nTouch to try again.";

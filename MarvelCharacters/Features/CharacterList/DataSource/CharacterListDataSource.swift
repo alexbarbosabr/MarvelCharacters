@@ -10,19 +10,42 @@ import Foundation
 import UIKit
 
 final class CharacterListDataSource: NSObject, UITableViewDataSource {
-    var characters = [Character]()
+    var data = CharactersDataViewModel(offset: 0, total: 0, count: 0, characters: [Character]())
     weak var delegate: CharacterCellDelegate?
+    var showError: Bool = false
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+        // total to show only one loading or error cell
+        var total = data.characters.count + 1
+
+        if data.characters.count == data.total {
+            total = data.characters.count
+        }
+
+        return total
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let character = characters[indexPath.row]
+        if CharacterListViewController.isLoadingCell(for: indexPath, currentCount: data.characters.count) {
+            if showError {
+                let identifier = ErrorCell.identifier
+                // swiftlint:disable:next force_cast
+                let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ErrorCell
+                return cell
+            }
+
+            let identifier = LoadingCell.identifier
+            // swiftlint:disable:next force_cast
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! LoadingCell
+            cell.startLoading()
+            return cell
+        }
+
         let identifier = CharacterCell.identifier
 
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CharacterCell
+        let character = data.characters[indexPath.row]
         cell.setup(character: character, indexPath: indexPath)
         cell.delegate = delegate
         return cell

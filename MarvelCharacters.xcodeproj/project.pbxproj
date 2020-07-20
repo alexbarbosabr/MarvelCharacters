@@ -32,6 +32,8 @@
 		EADD1EC624C3A7DF00B506E6 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC524C3A7DF00B506E6 /* CharacterCell.swift */; };
 		EADD1ECA24C41DF200B506E6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC924C41DF200B506E6 /* UIColor+Extension.swift */; };
 		EADD1ED024C4B78D00B506E6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EADD1ECF24C4B78D00B506E6 /* Kingfisher */; };
+		EADD1ED224C50F3E00B506E6 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1ED124C50F3E00B506E6 /* LoadingCell.swift */; };
+		EADD1ED424C5278400B506E6 /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1ED324C5278400B506E6 /* ErrorCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		EADD1EC324C3A32400B506E6 /* CharacterListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListDataSource.swift; sourceTree = "<group>"; };
 		EADD1EC524C3A7DF00B506E6 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		EADD1EC924C41DF200B506E6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		EADD1ED124C50F3E00B506E6 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		EADD1ED324C5278400B506E6 /* ErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 				EA0FD5B524C2B44E007EAE5D /* CharacterListViewController.swift */,
 				EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */,
 				EADD1EC524C3A7DF00B506E6 /* CharacterCell.swift */,
+				EADD1ED124C50F3E00B506E6 /* LoadingCell.swift */,
+				EADD1ED324C5278400B506E6 /* ErrorCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -362,11 +368,13 @@
 				EA34255B24C39642009C043E /* LoadingView.swift in Sources */,
 				EA0FD5B624C2B44E007EAE5D /* CharacterListViewController.swift in Sources */,
 				EA34254624C35F2F009C043E /* CharactersData.swift in Sources */,
+				EADD1ED424C5278400B506E6 /* ErrorCell.swift in Sources */,
 				EA34254C24C383FB009C043E /* EndPoint.swift in Sources */,
 				EA0FD5B924C2B879007EAE5D /* Service.swift in Sources */,
 				EA34255D24C39789009C043E /* ConstraintView+Extension.swift in Sources */,
 				EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */,
 				EADD1EC424C3A32400B506E6 /* CharacterListDataSource.swift in Sources */,
+				EADD1ED224C50F3E00B506E6 /* LoadingCell.swift in Sources */,
 				EADD1EC124C39BBB00B506E6 /* CharacterListView.swift in Sources */,
 				EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */,
 				EADD1EC624C3A7DF00B506E6 /* CharacterCell.swift in Sources */,
@@ -525,7 +533,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.abarbosa.MarvelCharacters;
+				PRODUCT_BUNDLE_IDENTIFIER = com.challenge.MarvelCharacters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -544,7 +552,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.abarbosa.MarvelCharacters;
+				PRODUCT_BUNDLE_IDENTIFIER = com.challenge.MarvelCharacters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

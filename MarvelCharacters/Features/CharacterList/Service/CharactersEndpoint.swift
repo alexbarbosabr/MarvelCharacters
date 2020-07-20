@@ -9,12 +9,13 @@
 import Foundation
 
 struct CharactersEndpoint: Endpoint {
+    static let limit = 30
     var apiPath: String = "/v1/public/characters"
 
     var parameters: [String: Any] = [:]
 
-    init(offset: Int? = 0) {
-        parameters["limit"] = "100"
+    init(offset: Int?) {
+        parameters["limit"] = String(CharactersEndpoint.limit)
         parameters["offset"] = String(offset ?? 0)
     }
 }
