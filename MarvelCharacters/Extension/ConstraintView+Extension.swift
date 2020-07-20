@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIView {
+    // MARK: - Center
     func centerFromSuperView() {
         if let view = superview {
             translatesAutoresizingMaskIntoConstraints = false
@@ -17,6 +18,14 @@ extension UIView {
         }
     }
 
+    func centerYAnchorFromSuperView() {
+        if let view = superview {
+            translatesAutoresizingMaskIntoConstraints = false
+            centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        }
+    }
+
+    // MARK: - Margins
     func fillSuperView() {
         if let view = superview {
             translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +57,19 @@ extension UIView {
 
         if let trailing = trailing {
             trailingAnchor.constraint(equalTo: trailing, constant: -padding.right).isActive = true
+        }
+    }
+
+    // MARK: - Height and Width
+    func anchor(height: CGFloat? = nil, width: CGFloat? = nil) {
+        translatesAutoresizingMaskIntoConstraints = false
+
+        if let height = height {
+            heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+
+        if let width = width {
+            widthAnchor.constraint(equalToConstant: width).isActive = true
         }
     }
 }

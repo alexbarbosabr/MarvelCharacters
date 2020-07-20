@@ -115,22 +115,19 @@ extension CharacterCell: CodeView {
     }
 
     func makeContraints() {
-        characterImageView.translatesAutoresizingMaskIntoConstraints = false
-        characterImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        characterImageView.widthAnchor.constraint(equalToConstant: 104).isActive = true
-        characterImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        characterImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        characterImageView.anchor(width: 104)
+        characterImageView.anchor(top: contentView.topAnchor,
+                                  leading: contentView.leadingAnchor,
+                                  bottom: contentView.bottomAnchor)
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: characterImageView.trailingAnchor, constant: 16).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -2).isActive = true
+        stackView.centerYAnchorFromSuperView()
+        stackView.anchor(leading: characterImageView.trailingAnchor,
+                         trailing: favoriteButton.leadingAnchor,
+                         padding: .init(top: 0, left: 16, bottom: 0, right: -2))
 
-        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
-        favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        favoriteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        favoriteButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        favoriteButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        favoriteButton.anchor(trailing: contentView.trailingAnchor)
+        favoriteButton.centerYAnchorFromSuperView()
+        favoriteButton.anchor(height: 44, width: 44)
     }
 
     func makeAddicionalConfiguration() {
