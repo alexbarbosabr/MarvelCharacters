@@ -14,6 +14,7 @@ protocol SearchCharacterViewControllerProtocol: AnyObject {
 
 final class SearchCharacterViewController: UIViewController, UISearchResultsUpdating {
     private let presenter: SearchCharacterPresenterProtocol
+    private var searchBar: UISearchBar?
 
     private lazy var characterListView: CharacterListView = {
         let view = CharacterListView()
@@ -44,20 +45,18 @@ final class SearchCharacterViewController: UIViewController, UISearchResultsUpda
     }
 
     func updateSearchResults(for searchController: UISearchController) {
+        dataSource.data = .empty
+        characterListView.tableView.reloadData()
+
         guard let text = searchController.searchBar.text else { return }
 
-        NSObject.cancelPreviousPerformRequests(withTarget: self,
-                                               selector: #selector(fetch(name:)),
-                                               object: searchController.searchBar)
-        perform(#selector(self.fetch(name:)), with: text, afterDelay: 1.0)
+        searchBar = searchController.searchBar
+        presenter.fetchCharacter(name: text)
     }
 
-    @objc
-    private func fetch(name: String) {
-        dataSource.data = .empty
-        presenter.fetchCharacter(name: name)
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar?.endEditing(true)
     }
-
 }
 
 extension SearchCharacterViewController: SearchCharacterViewControllerProtocol {

@@ -11,6 +11,7 @@ typealias CharactersDataResult = Result<CharactersData, Error>
 
 protocol CharacterListServiceProtocol {
     func request(offset: Int, limit: Int?, startName: String?, completion: @escaping (CharactersDataResult) -> Void)
+    func cancelRequest()
 }
 
 struct CharacterListService: CharacterListServiceProtocol {
@@ -26,5 +27,9 @@ struct CharacterListService: CharacterListServiceProtocol {
         service.request(endpoint: endpoint) { (result: CharactersDataResult) in
             completion(result)
         }
+    }
+
+    func cancelRequest() {
+        service.cancelRequest()
     }
 }

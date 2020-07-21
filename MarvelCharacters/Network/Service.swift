@@ -11,9 +11,12 @@ import Foundation
 protocol ServiceProtocol {
     func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Swift.Result<T, Error>) -> Void)
     func request(url: URL, httpMethod: HTTPMethod, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
+    func cancelRequest()
 }
 
 final class Service: ServiceProtocol {
+    private var dataTask: URLSessionDataTask?
+
     func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Swift.Result<T, Error>) -> Void) {
 
         var components = URLComponents()
@@ -71,14 +74,18 @@ final class Service: ServiceProtocol {
 
         let session = URLSession(configuration: URLSessionConfiguration.default)
 
-        let task = session.dataTask(with: request) { (data, response, error) in
+        dataTask = session.dataTask(with: request) { (data, response, error) in
 
             DispatchQueue.main.async {
                 completion(data, response, error)
             }
         }
 
-        task.resume()
+        dataTask?.resume()
+    }
+
+    func cancelRequest() {
+        dataTask?.cancel()
     }
 
     private func getQueryItens(endpoint: Endpoint) -> [URLQueryItem] {

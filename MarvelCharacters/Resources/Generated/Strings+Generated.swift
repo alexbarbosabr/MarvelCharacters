@@ -18,6 +18,10 @@ internal enum L10n {
       /// Something went wrong!\nTouch to try again.
       internal static let tryAgain = L10n.tr("Localizable", "characterList.error.tryAgain")
     }
+    internal enum SearchBar {
+      /// search for characters
+      internal static let placeholder = L10n.tr("Localizable", "characterList.searchBar.placeholder")
+    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

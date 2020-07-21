@@ -23,6 +23,7 @@ final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
     }
 
     func fetchCharacter(name: String) {
+        service.cancelRequest()
         service.request(offset: 0, limit: 100, startName: name) { [weak self] (result) in
             guard let self = self else { return }
 

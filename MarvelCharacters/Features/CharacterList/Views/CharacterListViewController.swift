@@ -52,7 +52,8 @@ final class CharacterListViewController: UIViewController {
         title = L10n.CharacterList.title
 
         let font = UIFont.boldSystemFont(ofSize: 20)
-        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
+        let attributes: [NSAttributedString.Key: Any] = [.font: font,
+                                                         .foregroundColor: UIColor.systemRed]
         navigationController?.navigationBar.titleTextAttributes = attributes
 
         setupSearchBar()
@@ -63,9 +64,9 @@ final class CharacterListViewController: UIViewController {
     private func setupSearchBar() {
         let search = UISearchController(searchResultsController: searchViewController)
         search.searchResultsUpdater = searchViewController
-        search.searchBar.tintColor = .label
+        search.searchBar.tintColor = .systemRed
+        search.searchBar.placeholder = L10n.CharacterList.SearchBar.placeholder
         search.obscuresBackgroundDuringPresentation = false
-        search.searchBar.placeholder = "search for characters"
         navigationItem.searchController = search
     }
 
