@@ -49,8 +49,8 @@ final class Service: ServiceProtocol {
 
             if let data = data {
                 do {
-//                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-//                    print(json)
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
 
                     let jsonDecoder = JSONDecoder()
                     let object = try jsonDecoder.decode(T.self, from: data)

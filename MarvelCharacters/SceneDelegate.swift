@@ -17,13 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let presenter = CharacterListPresenter()
-        let controller = CharacterListViewController(presenter: presenter)
+        let searchPresenter = SearchCharacterPresenter()
+
+        let searchcontroller = SearchCharacterViewController(presenter: searchPresenter)
+        searchPresenter.view = searchcontroller
+
+        let controller = CharacterListViewController(presenter: presenter, searchViewController: searchcontroller)
         presenter.view = controller
 
         let navigationController = UINavigationController(rootViewController: controller)
-        navigationController.navigationBar.barStyle = .black
-        navigationController.navigationBar.barTintColor = .systemRed
-        navigationController.navigationBar.isTranslucent = false
 
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigationController

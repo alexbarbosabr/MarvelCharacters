@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 final class CharacterListDataSource: NSObject, UITableViewDataSource {
-    var data = CharactersDataViewModel(offset: 0, total: 0, count: 0, characters: [Character]())
+    var data: CharactersDataViewModel = .empty
     weak var delegate: CharacterCellDelegate?
     var showError: Bool = false
 

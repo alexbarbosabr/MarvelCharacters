@@ -14,8 +14,18 @@ struct CharactersEndpoint: Endpoint {
 
     var parameters: [String: Any] = [:]
 
-    init(offset: Int?) {
-        parameters["limit"] = String(CharactersEndpoint.limit)
+    init(offset: Int? = nil, limit: Int? = nil, startName: String? = nil) {
+        var finalLimit = String(CharactersEndpoint.limit)
+
+        if let limit = limit {
+            finalLimit = String(limit)
+        }
+
+        parameters["limit"] = finalLimit
         parameters["offset"] = String(offset ?? 0)
+
+        if let name = startName {
+            parameters["nameStartsWith"] = name
+        }
     }
 }

@@ -34,6 +34,10 @@
 		EADD1ED024C4B78D00B506E6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EADD1ECF24C4B78D00B506E6 /* Kingfisher */; };
 		EADD1ED224C50F3E00B506E6 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1ED124C50F3E00B506E6 /* LoadingCell.swift */; };
 		EADD1ED424C5278400B506E6 /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1ED324C5278400B506E6 /* ErrorCell.swift */; };
+		EADD1ED624C6776900B506E6 /* SearchCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1ED524C6776900B506E6 /* SearchCharacterViewController.swift */; };
+		EADD1ED824C6916B00B506E6 /* SearchCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1ED724C6916B00B506E6 /* SearchCharacterDataSource.swift */; };
+		EADD1EDB24C69BD300B506E6 /* CharactersDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EDA24C69BD300B506E6 /* CharactersDataViewModel.swift */; };
+		EADD1EDF24C6A16600B506E6 /* SearchCharacterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EDE24C6A16600B506E6 /* SearchCharacterPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +69,10 @@
 		EADD1EC924C41DF200B506E6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		EADD1ED124C50F3E00B506E6 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		EADD1ED324C5278400B506E6 /* ErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
+		EADD1ED524C6776900B506E6 /* SearchCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterViewController.swift; sourceTree = "<group>"; };
+		EADD1ED724C6916B00B506E6 /* SearchCharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterDataSource.swift; sourceTree = "<group>"; };
+		EADD1EDA24C69BD300B506E6 /* CharactersDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDataViewModel.swift; sourceTree = "<group>"; };
+		EADD1EDE24C6A16600B506E6 /* SearchCharacterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +138,7 @@
 				EADD1EC524C3A7DF00B506E6 /* CharacterCell.swift */,
 				EADD1ED124C50F3E00B506E6 /* LoadingCell.swift */,
 				EADD1ED324C5278400B506E6 /* ErrorCell.swift */,
+				EADD1ED524C6776900B506E6 /* SearchCharacterViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				EA34255324C38DF8009C043E /* CharacterListPresenter.swift */,
+				EADD1EDE24C6A16600B506E6 /* SearchCharacterPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -219,6 +229,7 @@
 				EA34255224C38DD9009C043E /* Presenter */,
 				EA38944424C3551F009EFCA2 /* Service */,
 				EADD1EC224C3A2F700B506E6 /* DataSource */,
+				EADD1ED924C69BBB00B506E6 /* ViewModel */,
 				EA0FD5B424C2B415007EAE5D /* Views */,
 			);
 			path = CharacterList;
@@ -237,8 +248,17 @@
 			isa = PBXGroup;
 			children = (
 				EADD1EC324C3A32400B506E6 /* CharacterListDataSource.swift */,
+				EADD1ED724C6916B00B506E6 /* SearchCharacterDataSource.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		EADD1ED924C69BBB00B506E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EADD1EDA24C69BD300B506E6 /* CharactersDataViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +381,7 @@
 			files = (
 				EA34255424C38DF8009C043E /* CharacterListPresenter.swift in Sources */,
 				EA34254A24C380EF009C043E /* ServiceError.swift in Sources */,
+				EADD1EDF24C6A16600B506E6 /* SearchCharacterPresenter.swift in Sources */,
 				EA34255124C384EF009C043E /* CharactersEndpoint.swift in Sources */,
 				EADD1ECA24C41DF200B506E6 /* UIColor+Extension.swift in Sources */,
 				EA34255724C39576009C043E /* CodeView.swift in Sources */,
@@ -369,12 +390,15 @@
 				EA0FD5B624C2B44E007EAE5D /* CharacterListViewController.swift in Sources */,
 				EA34254624C35F2F009C043E /* CharactersData.swift in Sources */,
 				EADD1ED424C5278400B506E6 /* ErrorCell.swift in Sources */,
+				EADD1EDB24C69BD300B506E6 /* CharactersDataViewModel.swift in Sources */,
 				EA34254C24C383FB009C043E /* EndPoint.swift in Sources */,
+				EADD1ED824C6916B00B506E6 /* SearchCharacterDataSource.swift in Sources */,
 				EA0FD5B924C2B879007EAE5D /* Service.swift in Sources */,
 				EA34255D24C39789009C043E /* ConstraintView+Extension.swift in Sources */,
 				EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */,
 				EADD1EC424C3A32400B506E6 /* CharacterListDataSource.swift in Sources */,
 				EADD1ED224C50F3E00B506E6 /* LoadingCell.swift in Sources */,
+				EADD1ED624C6776900B506E6 /* SearchCharacterViewController.swift in Sources */,
 				EADD1EC124C39BBB00B506E6 /* CharacterListView.swift in Sources */,
 				EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */,
 				EADD1EC624C3A7DF00B506E6 /* CharacterCell.swift in Sources */,

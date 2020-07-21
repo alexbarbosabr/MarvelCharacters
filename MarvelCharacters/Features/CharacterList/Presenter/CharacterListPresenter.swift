@@ -18,10 +18,7 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
     private var offset = 0
     weak var view: CharacterListViewControllerProtocol?
 
-    private var charactersDataView = CharactersDataViewModel(offset: 0,
-                                                             total: 0,
-                                                             count: 0,
-                                                             characters: [Character]())
+    private var charactersDataView: CharactersDataViewModel = .empty
 
     init(service: CharacterListServiceProtocol = CharacterListService()) {
         self.service = service
@@ -37,7 +34,7 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
         }
 
         isFetchInProgress = true
-        service.request(offset: offset) { [weak self] (result) in
+        service.request(offset: offset, limit: nil, startName: nil) { [weak self] (result) in
             guard let self = self else { return }
             self.isFetchInProgress = false
 
@@ -73,11 +70,4 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
 
         offset = charactersData.data.offset + CharactersEndpoint.limit
     }
-}
-
-struct CharactersDataViewModel {
-    let offset: Int
-    let total: Int
-    let count: Int
-    var characters: [Character]
 }

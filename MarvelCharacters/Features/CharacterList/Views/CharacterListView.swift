@@ -37,13 +37,13 @@ extension CharacterListView: CodeView {
     }
 
     func makeContraints() {
-        tableView.anchor(top: safeAreaLayoutGuide.topAnchor,
+        tableView.anchor(top: topAnchor,
                          leading: leadingAnchor,
                          bottom: bottomAnchor,
                          trailing: trailingAnchor)
     }
 
     func makeAddicionalConfiguration() {
-        backgroundColor = .systemRed
+        backgroundColor = .systemBackground
     }
 }

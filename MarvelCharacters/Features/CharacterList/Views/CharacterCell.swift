@@ -15,6 +15,7 @@ protocol CharacterCellDelegate: AnyObject {
 
 final class CharacterCell: UITableViewCell {
     static let identifier = String(describing: CharacterCell.self)
+    static let heightRow: CGFloat = 114
     private var indexPath: IndexPath?
 
     weak var delegate: CharacterCellDelegate?

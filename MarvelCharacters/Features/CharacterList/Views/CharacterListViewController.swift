@@ -16,6 +16,7 @@ protocol CharacterListViewControllerProtocol: AnyObject {
 
 final class CharacterListViewController: UIViewController {
     private let presenter: CharacterListPresenterProtocol
+    private let searchViewController: SearchCharacterViewController
 
     private lazy var characterListView: CharacterListView = {
         let view = CharacterListView()
@@ -31,8 +32,9 @@ final class CharacterListViewController: UIViewController {
         return dataSource
     }()
 
-    init(presenter: CharacterListPresenterProtocol) {
+    init(presenter: CharacterListPresenterProtocol, searchViewController: SearchCharacterViewController) {
         self.presenter = presenter
+        self.searchViewController = searchViewController
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -53,7 +55,18 @@ final class CharacterListViewController: UIViewController {
         let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
         navigationController?.navigationBar.titleTextAttributes = attributes
 
+        setupSearchBar()
+
         presenter.fetchCharacters(showLoading: true)
+    }
+
+    private func setupSearchBar() {
+        let search = UISearchController(searchResultsController: searchViewController)
+        search.searchResultsUpdater = searchViewController
+        search.searchBar.tintColor = .label
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "search for characters"
+        navigationItem.searchController = search
     }
 
     static func isLoadingCell(for indexPath: IndexPath, currentCount: Int) -> Bool {
@@ -67,8 +80,6 @@ final class CharacterListViewController: UIViewController {
     }
 
     private func fetchCharacters(indexPath: IndexPath? = nil) {
-        dataSource.showError = false
-
         if let indexPath = indexPath {
             characterListView.tableView.beginUpdates()
             characterListView.tableView.reloadRows(at: [indexPath], with: .none)
@@ -114,11 +125,12 @@ extension CharacterListViewController: CharacterListViewControllerProtocol {
 
 extension CharacterListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 114
+        return CharacterCell.heightRow
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == dataSource.data.characters.count && dataSource.showError {
+            dataSource.showError = false
             fetchCharacters(indexPath: indexPath)
             return
         }
@@ -135,7 +147,9 @@ extension CharacterListViewController: UITableViewDataSourcePrefetching {
         if indexPaths.contains(where: { index -> Bool in
             CharacterListViewController.isLoadingCell(for: index, currentCount: currentCount)
         }) {
-            fetchCharacters()
+            if !dataSource.showError {
+                fetchCharacters()
+            }
         }
     }
 }
@@ -143,6 +157,7 @@ extension CharacterListViewController: UITableViewDataSourcePrefetching {
 extension CharacterListViewController: CharacterCellDelegate {
     func setFavorite(index: IndexPath?, isFavorite: Bool) {
         if let index = index?.row {
+            // TODO: check if the presenter is responsible
             dataSource.data.characters[index].setFavorite(isFavorite)
         }
     }
