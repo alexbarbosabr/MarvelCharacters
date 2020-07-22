@@ -10,10 +10,16 @@ import UIKit
 
 protocol SearchCharacterViewControllerProtocol: AnyObject {
     func showCharacters(_ data: CharactersDataViewModel)
+    func showEmptyCharacters()
+    func showError(withIcon icon: AlertIcon, message: String)
+    func showLoading()
+    func hideLoading()
 }
 
 final class SearchCharacterViewController: UIViewController, UISearchResultsUpdating {
     private let presenter: SearchCharacterPresenterProtocol
+    private let loadingView = LoadingView()
+    private let alertView = AlertView()
     private var searchBar: UISearchBar?
 
     private lazy var characterListView: CharacterListView = {
@@ -41,7 +47,7 @@ final class SearchCharacterViewController: UIViewController, UISearchResultsUpda
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view = characterListView
+        makeView()
     }
 
     func updateSearchResults(for searchController: UISearchController) {
@@ -64,6 +70,29 @@ extension SearchCharacterViewController: SearchCharacterViewControllerProtocol {
         dataSource.data = data // TODO: check if the presenter is responsible
         characterListView.tableView.reloadData()
     }
+
+    func showEmptyCharacters() {
+        alertView.isHidden = false
+        alertView.setIcon(.search)
+        alertView.message = L10n.Message.notfound
+    }
+
+    func showError(withIcon icon: AlertIcon, message: String) {
+        alertView.isHidden = false
+        alertView.setIcon(icon)
+        alertView.message = message
+    }
+
+    func showLoading() {
+        alertView.isHidden = true
+        loadingView.isHidden = false
+        loadingView.start()
+    }
+
+    func hideLoading() {
+        loadingView.isHidden = true
+        loadingView.stop()
+    }
 }
 
 extension SearchCharacterViewController: UITableViewDelegate {
@@ -80,5 +109,29 @@ extension SearchCharacterViewController: UITableViewDelegate {
 extension SearchCharacterViewController: CharacterCellDelegate {
     func setFavorite(index: IndexPath?, isFavorite: Bool) {
 
+    }
+}
+
+extension SearchCharacterViewController: CodeView {
+    func buildViewHierarchy() {
+        view.addSubview(characterListView)
+        view.addSubview(loadingView)
+        view.addSubview(alertView)
+    }
+
+    func makeContraints() {
+        characterListView.fillSuperView()
+
+        loadingView.anchor(height: 120)
+        loadingView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                           leading: view.leadingAnchor,
+                           trailing: view.trailingAnchor,
+                           padding: .init(top: 0, left: 0, bottom: 0, right: 0))
+
+        alertView.anchor(height: 200)
+        alertView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                         leading: view.leadingAnchor,
+                         trailing: view.trailingAnchor,
+                         padding: .init(top: 0, left: 0, bottom: 0, right: 0))
     }
 }

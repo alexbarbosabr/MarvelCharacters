@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CharacterListPresenterProtocol {
-    func fetchCharacters(showLoading: Bool)
+    func fetchCharacters(showScreenLoading: Bool)
 }
 
 final class CharacterListPresenter: CharacterListPresenterProtocol {
@@ -24,13 +24,13 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
         self.service = service
     }
 
-    func fetchCharacters(showLoading: Bool) {
+    func fetchCharacters(showScreenLoading: Bool) {
         guard !isFetchInProgress else {
           return
         }
 
-        if showLoading {
-            view?.loading()
+        if showScreenLoading {
+            view?.showLoadingOnScreen()
         }
 
         isFetchInProgress = true
@@ -43,14 +43,25 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
                 self.updateCharacters(charactersData: charactersData)
                 self.view?.showCharacters(self.charactersDataView)
             case .failure(let error):
-                let error: NSError = error as NSError
-                print("Error code \(error.code)")
-                self.view?.error(didShowLoading: showLoading)
+                if showScreenLoading {
+                    self.handleError(error)
+                } else {
+                    self.view?.showErrorOnTableView()
+                }
             }
         }
     }
 
-    func updateCharacters(charactersData: CharactersData) {
+    private func handleError(_ error: Error) {
+        let error: NSError = error as NSError
+        if error.code == -1009 {
+            self.view?.showErrorOnScreen(withIcon: .noInternet, message: L10n.Message.noInternet)
+        } else {
+            self.view?.showErrorOnScreen(withIcon: .generic, message: L10n.Message.generic)
+        }
+    }
+
+    private func updateCharacters(charactersData: CharactersData) {
         if charactersDataView.characters.count == 0 {
             charactersDataView = CharactersDataViewModel(offset: charactersData.data.offset,
                                                          total: charactersData.data.total,

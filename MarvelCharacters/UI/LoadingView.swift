@@ -21,6 +21,14 @@ final class LoadingView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func start() {
+        loading.startAnimating()
+    }
+
+    func stop() {
+        loading.stopAnimating()
+    }
 }
 
 extension LoadingView: CodeView {

@@ -18,11 +18,28 @@ extension UIView {
         }
     }
 
+    func centerXAnchorFromSuperView() {
+        if let view = superview {
+            translatesAutoresizingMaskIntoConstraints = false
+            centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        }
+    }
+
     func centerYAnchorFromSuperView() {
         if let view = superview {
             translatesAutoresizingMaskIntoConstraints = false
             centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         }
+    }
+
+    func centerYAnchor(equalTo anchor: NSLayoutYAxisAnchor, constant: CGFloat? = nil) {
+        translatesAutoresizingMaskIntoConstraints = false
+
+        guard let constant = constant else {
+            centerYAnchor.constraint(equalTo: anchor).isActive = true
+            return
+        }
+        centerYAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
     }
 
     // MARK: - Margins

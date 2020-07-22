@@ -23,6 +23,7 @@ final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
     }
 
     func fetchCharacter(name: String) {
+        view?.showLoading()
         service.cancelRequest()
         service.request(offset: 0, limit: 100, startName: name) { [weak self] (result) in
             guard let self = self else { return }
@@ -33,11 +34,30 @@ final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
                                                    total: charactersData.data.total,
                                                    count: charactersData.data.count,
                                                    characters: charactersData.data.results)
-                self.view?.showCharacters(data)
+                self.view?.hideLoading()
+
+                if data.characters.count > 0 {
+                    self.view?.showCharacters(data)
+                } else {
+                    self.view?.showEmptyCharacters()
+                }
             case .failure(let error):
                 let error: NSError = error as NSError
-                print("Error code \(error.code)")
+
+                if error.code != -999 {
+                    self.view?.hideLoading()
+                    self.handleError(error)
+                }
             }
+        }
+    }
+
+    private func handleError(_ error: Error) {
+        let error: NSError = error as NSError
+        if error.code == -1009 {
+            self.view?.showError(withIcon: .noInternet, message: L10n.Message.noInternet)
+        } else {
+            self.view?.showError(withIcon: .generic, message: L10n.Message.generic)
         }
     }
 }

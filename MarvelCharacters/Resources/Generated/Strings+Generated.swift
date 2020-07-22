@@ -10,6 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
+  /// tryAgain
+  internal static let tryAgain = L10n.tr("Localizable", "tryAgain")
 
   internal enum CharacterList {
     /// MARVEL
@@ -22,6 +24,15 @@ internal enum L10n {
       /// search for characters
       internal static let placeholder = L10n.tr("Localizable", "characterList.searchBar.placeholder")
     }
+  }
+
+  internal enum Message {
+    /// Oops! Something went wrong.
+    internal static let generic = L10n.tr("Localizable", "message.generic")
+    /// No internet connection.
+    internal static let noInternet = L10n.tr("Localizable", "message.noInternet")
+    /// Character not found.
+    internal static let notfound = L10n.tr("Localizable", "message.notfound")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

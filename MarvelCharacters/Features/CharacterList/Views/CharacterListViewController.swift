@@ -10,8 +10,9 @@ import UIKit
 
 protocol CharacterListViewControllerProtocol: AnyObject {
     func showCharacters(_ data: CharactersDataViewModel)
-    func error(didShowLoading: Bool)
-    func loading()
+    func showErrorOnScreen(withIcon icon: AlertIcon, message: String)
+    func showLoadingOnScreen()
+    func showErrorOnTableView()
 }
 
 final class CharacterListViewController: UIViewController {
@@ -58,7 +59,7 @@ final class CharacterListViewController: UIViewController {
 
         setupSearchBar()
 
-        presenter.fetchCharacters(showLoading: true)
+        presenter.fetchCharacters(showScreenLoading: true)
     }
 
     private func setupSearchBar() {
@@ -66,7 +67,7 @@ final class CharacterListViewController: UIViewController {
         search.searchResultsUpdater = searchViewController
         search.searchBar.tintColor = .systemRed
         search.searchBar.placeholder = L10n.CharacterList.SearchBar.placeholder
-        search.obscuresBackgroundDuringPresentation = false
+        search.obscuresBackgroundDuringPresentation = true
         navigationItem.searchController = search
     }
 
@@ -86,7 +87,7 @@ final class CharacterListViewController: UIViewController {
             characterListView.tableView.reloadRows(at: [indexPath], with: .none)
             characterListView.tableView.endUpdates()
         }
-        presenter.fetchCharacters(showLoading: false)
+        presenter.fetchCharacters(showScreenLoading: false)
     }
 
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
@@ -107,18 +108,21 @@ extension CharacterListViewController: CharacterListViewControllerProtocol {
         view = characterListView
     }
 
-    func error(didShowLoading: Bool) {
-        print("show error")
-
-        if didShowLoading {
-
-        } else {
-            dataSource.showError = true
-            characterListView.tableView.reloadData()
-        }
+    func showErrorOnScreen(withIcon icon: AlertIcon, message: String) {
+        let alert = AlertView()
+        alert.setIcon(icon)
+        alert.message = message
+        alert.showTryAgain = true
+        alert.delegate = self
+        view = alert
     }
 
-    func loading() {
+    func showErrorOnTableView() {
+        dataSource.showError = true
+        characterListView.tableView.reloadData()
+    }
+
+    func showLoadingOnScreen() {
         let loading = LoadingView()
         view = loading
     }
@@ -161,5 +165,11 @@ extension CharacterListViewController: CharacterCellDelegate {
             // TODO: check if the presenter is responsible
             dataSource.data.characters[index].setFavorite(isFavorite)
         }
+    }
+}
+
+extension CharacterListViewController: AlertViewDelegate {
+    func tryAgain() {
+        presenter.fetchCharacters(showScreenLoading: true)
     }
 }

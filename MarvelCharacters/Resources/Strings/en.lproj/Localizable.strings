@@ -10,3 +10,11 @@
 "characterList.title" = "MARVEL";
 "characterList.error.tryAgain" = "Something went wrong!\nTouch to try again.";
 "characterList.searchBar.placeholder" = "search for characters";
+
+// Messages
+"message.notfound" = "Character not found.";
+"message.generic" = "Oops! Something went wrong.";
+"message.noInternet" = "No internet connection.";
+
+// Generic
+"tryAgain" = "tryAgain";

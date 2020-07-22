@@ -38,6 +38,7 @@
 		EADD1ED824C6916B00B506E6 /* SearchCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1ED724C6916B00B506E6 /* SearchCharacterDataSource.swift */; };
 		EADD1EDB24C69BD300B506E6 /* CharactersDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EDA24C69BD300B506E6 /* CharactersDataViewModel.swift */; };
 		EADD1EDF24C6A16600B506E6 /* SearchCharacterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EDE24C6A16600B506E6 /* SearchCharacterPresenter.swift */; };
+		EADD1EE124C7DCE900B506E6 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EE024C7DCE900B506E6 /* AlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		EADD1ED724C6916B00B506E6 /* SearchCharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterDataSource.swift; sourceTree = "<group>"; };
 		EADD1EDA24C69BD300B506E6 /* CharactersDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDataViewModel.swift; sourceTree = "<group>"; };
 		EADD1EDE24C6A16600B506E6 /* SearchCharacterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterPresenter.swift; sourceTree = "<group>"; };
+		EADD1EE024C7DCE900B506E6 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				EA34255A24C39642009C043E /* LoadingView.swift */,
+				EADD1EE024C7DCE900B506E6 /* AlertView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				EA0FD5B624C2B44E007EAE5D /* CharacterListViewController.swift in Sources */,
 				EA34254624C35F2F009C043E /* CharactersData.swift in Sources */,
 				EADD1ED424C5278400B506E6 /* ErrorCell.swift in Sources */,
+				EADD1EE124C7DCE900B506E6 /* AlertView.swift in Sources */,
 				EADD1EDB24C69BD300B506E6 /* CharactersDataViewModel.swift in Sources */,
 				EA34254C24C383FB009C043E /* EndPoint.swift in Sources */,
 				EADD1ED824C6916B00B506E6 /* SearchCharacterDataSource.swift in Sources */,
