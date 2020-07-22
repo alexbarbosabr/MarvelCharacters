@@ -19,7 +19,10 @@ struct Character: Codable {
         let `extension`: String
 
         func getImageUrl() -> URL? {
-            let securityPath = path.replacingOccurrences(of: "http", with: "https")
+            var securityPath = path
+            if !path.contains("https") {
+                securityPath = path.replacingOccurrences(of: "http", with: "https")
+            }
 
             let urlString = "\(securityPath).\(self.extension)"
             return URL(string: urlString)

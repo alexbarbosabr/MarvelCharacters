@@ -10,7 +10,7 @@ import Foundation
 
 extension Dictionary {
     var queryItems: [URLQueryItem] {
-        guard self.keys.count > 0 else { return []}
+        guard self.keys.count > 0 else { return [] }
         var output = [URLQueryItem]()
 
         forEach({
