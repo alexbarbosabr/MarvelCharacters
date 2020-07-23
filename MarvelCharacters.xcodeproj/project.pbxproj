@@ -27,6 +27,10 @@
 		EA38943C24C350F7009EFCA2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA38943E24C350F7009EFCA2 /* Localizable.strings */; };
 		EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38944124C351F4009EFCA2 /* Strings+Generated.swift */; };
 		EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38944524C3555D009EFCA2 /* CharacterListService.swift */; };
+		EA39902B24C91AE90086AC95 /* CharacterListViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39902A24C91AE90086AC95 /* CharacterListViewControllerSpy.swift */; };
+		EA39902E24C91BAA0086AC95 /* CharacterListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39902D24C91BAA0086AC95 /* CharacterListPresenterTests.swift */; };
+		EA39903024C93BC80086AC95 /* SearchCharacterPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39902F24C93BC80086AC95 /* SearchCharacterPresenterTests.swift */; };
+		EA39903224C93C400086AC95 /* SearchCharacterViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39903124C93C400086AC95 /* SearchCharacterViewControllerSpy.swift */; };
 		EAAC33E924C8804F00F4A0A7 /* DictionaryExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAC33E824C8804F00F4A0A7 /* DictionaryExtensionTests.swift */; };
 		EADD1EC124C39BBB00B506E6 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */; };
 		EADD1EC424C3A32400B506E6 /* CharacterListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC324C3A32400B506E6 /* CharacterListDataSource.swift */; };
@@ -43,6 +47,7 @@
 		EAFABD1924C8F2DC0015255F /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFABD1824C8F2DC0015255F /* CharacterTests.swift */; };
 		EAFABD1B24C8FBB70015255F /* Character+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFABD1A24C8FBB70015255F /* Character+Extension.swift */; };
 		EAFABD2524C912560015255F /* CharactersEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFABD2424C912560015255F /* CharactersEndpointTests.swift */; };
+		EAFABD2724C916480015255F /* CharacterListServiceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFABD2624C916480015255F /* CharacterListServiceStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +83,10 @@
 		EA38943D24C350F7009EFCA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA38944124C351F4009EFCA2 /* Strings+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		EA38944524C3555D009EFCA2 /* CharacterListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListService.swift; sourceTree = "<group>"; };
+		EA39902A24C91AE90086AC95 /* CharacterListViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewControllerSpy.swift; sourceTree = "<group>"; };
+		EA39902D24C91BAA0086AC95 /* CharacterListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenterTests.swift; sourceTree = "<group>"; };
+		EA39902F24C93BC80086AC95 /* SearchCharacterPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterPresenterTests.swift; sourceTree = "<group>"; };
+		EA39903124C93C400086AC95 /* SearchCharacterViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterViewControllerSpy.swift; sourceTree = "<group>"; };
 		EAAC33DD24C87D5800F4A0A7 /* MarvelCharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelCharactersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAC33E124C87D5900F4A0A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAAC33E824C8804F00F4A0A7 /* DictionaryExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensionTests.swift; sourceTree = "<group>"; };
@@ -95,6 +104,7 @@
 		EAFABD1824C8F2DC0015255F /* CharacterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
 		EAFABD1A24C8FBB70015255F /* Character+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Extension.swift"; sourceTree = "<group>"; };
 		EAFABD2424C912560015255F /* CharactersEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersEndpointTests.swift; sourceTree = "<group>"; };
+		EAFABD2624C916480015255F /* CharacterListServiceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListServiceStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +286,24 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		EA39902924C91AC50086AC95 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EA39902A24C91AE90086AC95 /* CharacterListViewControllerSpy.swift */,
+				EA39903124C93C400086AC95 /* SearchCharacterViewControllerSpy.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EA39902C24C91B8E0086AC95 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				EA39902D24C91BAA0086AC95 /* CharacterListPresenterTests.swift */,
+				EA39902F24C93BC80086AC95 /* SearchCharacterPresenterTests.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		EAAC33DE24C87D5900F4A0A7 /* MarvelCharactersTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,7 +360,9 @@
 		EAFABD2224C912320015255F /* CharacterList */ = {
 			isa = PBXGroup;
 			children = (
+				EA39902C24C91B8E0086AC95 /* Presenter */,
 				EAFABD2324C9123E0015255F /* Service */,
+				EA39902924C91AC50086AC95 /* Views */,
 			);
 			path = CharacterList;
 			sourceTree = "<group>";
@@ -340,6 +370,7 @@
 		EAFABD2324C9123E0015255F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				EAFABD2624C916480015255F /* CharacterListServiceStub.swift */,
 				EAFABD2424C912560015255F /* CharactersEndpointTests.swift */,
 			);
 			path = Service;
@@ -531,7 +562,12 @@
 				EAFABD2524C912560015255F /* CharactersEndpointTests.swift in Sources */,
 				EAAC33E924C8804F00F4A0A7 /* DictionaryExtensionTests.swift in Sources */,
 				EAFABD1B24C8FBB70015255F /* Character+Extension.swift in Sources */,
+				EA39902E24C91BAA0086AC95 /* CharacterListPresenterTests.swift in Sources */,
+				EA39903024C93BC80086AC95 /* SearchCharacterPresenterTests.swift in Sources */,
 				EAFABD1924C8F2DC0015255F /* CharacterTests.swift in Sources */,
+				EA39903224C93C400086AC95 /* SearchCharacterViewControllerSpy.swift in Sources */,
+				EAFABD2724C916480015255F /* CharacterListServiceStub.swift in Sources */,
+				EA39902B24C91AE90086AC95 /* CharacterListViewControllerSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

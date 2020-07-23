@@ -10,10 +10,10 @@ import XCTest
 @testable import MarvelCharacters
 
 class CharactersEndpointTests: XCTestCase {
-
     func testEndpointWithNilParameters() {
         let expectLimit = "30"
         let expectOffset = "0"
+        let apiPath = "/v1/public/characters"
 
         let endpoint = CharactersEndpoint(offset: nil, limit: nil, startName: nil)
         let limit = endpoint.parameters["limit"] as? String
@@ -21,6 +21,7 @@ class CharactersEndpointTests: XCTestCase {
 
         XCTAssertEqual(limit, expectLimit)
         XCTAssertEqual(offset, expectOffset)
+        XCTAssertEqual(endpoint.apiPath, apiPath)
     }
 
     func testEndpointWithAllParameters() {

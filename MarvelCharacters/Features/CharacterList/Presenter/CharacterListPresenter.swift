@@ -54,7 +54,9 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
 
     private func handleError(_ error: Error) {
         let error: NSError = error as NSError
-        if error.code == -1009 {
+        let code = ServiceError(rawValue: error.code)
+
+        if code == .noInternet {
             self.view?.showErrorOnScreen(withIcon: .noInternet, message: L10n.Message.noInternet)
         } else {
             self.view?.showErrorOnScreen(withIcon: .generic, message: L10n.Message.generic)

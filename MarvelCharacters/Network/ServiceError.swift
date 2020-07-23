@@ -6,6 +6,10 @@
 //  Copyright © 2020 Alex Barbosa. All rights reserved.
 //
 
-enum ServiceError: Error {
+import Foundation
+
+enum ServiceError: Int, Error {
     case unexpected
+    case noInternet = -1009
+    case cancelRequest = -999
 }

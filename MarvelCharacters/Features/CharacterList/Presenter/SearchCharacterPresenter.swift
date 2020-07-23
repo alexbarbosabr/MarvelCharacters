@@ -42,19 +42,19 @@ final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
                     self.view?.showEmptyCharacters()
                 }
             case .failure(let error):
-                let error: NSError = error as NSError
-
-                if error.code != -999 {
-                    self.view?.hideLoading()
                     self.handleError(error)
-                }
             }
         }
     }
 
     private func handleError(_ error: Error) {
         let error: NSError = error as NSError
-        if error.code == -1009 {
+        let code = ServiceError(rawValue: error.code)
+
+        guard code != .cancelRequest else { return }
+        self.view?.hideLoading()
+
+        if code == .noInternet {
             self.view?.showError(withIcon: .noInternet, message: L10n.Message.noInternet)
         } else {
             self.view?.showError(withIcon: .generic, message: L10n.Message.generic)
