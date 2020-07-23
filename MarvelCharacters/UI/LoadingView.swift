@@ -15,9 +15,10 @@ final class LoadingView: UIView {
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         makeView()
-        loading.startAnimating()
+        start()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

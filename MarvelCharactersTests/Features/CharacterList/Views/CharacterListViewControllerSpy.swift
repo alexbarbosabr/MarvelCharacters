@@ -10,6 +10,7 @@
 
 class CharacterListViewControllerSpy: CharacterListViewControllerProtocol {
     private (set) var hasCalledShowCharacters = false
+    private (set) var hasCalledShowEmptyList = false
     private (set) var hasCalledShowErrorOnScreen = false
     private (set) var hasCalledShowLoadingOnScreen = false
     private (set) var hasCalledShowErrorOnTableView = false
@@ -18,7 +19,11 @@ class CharacterListViewControllerSpy: CharacterListViewControllerProtocol {
         hasCalledShowCharacters = true
     }
 
-    func showErrorOnScreen(withIcon icon: AlertIcon, message: String) {
+    func showEmptyList(withIcon icon: Icon, message: String) {
+        hasCalledShowEmptyList = true
+    }
+
+    func showErrorOnScreen(withIcon icon: Icon, message: String) {
         hasCalledShowErrorOnScreen = true
     }
 

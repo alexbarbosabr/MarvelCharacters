@@ -41,7 +41,12 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
             switch result {
             case .success(let charactersData):
                 self.updateCharacters(charactersData: charactersData)
-                self.view?.showCharacters(self.charactersDataView)
+                if charactersData.data.results.count == 0 {
+                    self.view?.showEmptyList(withIcon: .emptyList,
+                                             message: L10n.CharacterList.noCharactersFound)
+                } else {
+                    self.view?.showCharacters(self.charactersDataView)
+                }
             case .failure(let error):
                 if showScreenLoading {
                     self.handleError(error)

@@ -23,7 +23,7 @@ class SearchCharacterViewControllerSpy: SearchCharacterViewControllerProtocol {
         hasCalledShowEmptyCharacters = true
     }
 
-    func showError(withIcon icon: AlertIcon, message: String) {
+    func showError(withIcon icon: Icon, message: String) {
         hasCalledShowError = true
     }
 

@@ -13,11 +13,12 @@ protocol AlertViewDelegate: AnyObject {
     func tryAgain()
 }
 
-enum AlertIcon: String {
+enum Icon: String {
     case generic = "exclamationmark.triangle"
     case search = "magnifyingglass"
     case noInternet = "wifi.slash"
     case refresh = "arrow.clockwise"
+    case emptyList = "rectangle.stack.person.crop"
 }
 
 final class AlertView: UIView {
@@ -71,7 +72,7 @@ final class AlertView: UIView {
         delegate?.tryAgain()
     }
 
-    func setIcon(_ icon: AlertIcon) {
+    func setIcon(_ icon: Icon) {
         iconImageView.image = UIImage(systemName: icon.rawValue)
     }
 }

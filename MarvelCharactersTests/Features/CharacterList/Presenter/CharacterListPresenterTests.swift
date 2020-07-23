@@ -21,7 +21,7 @@ class CharacterListPresenterTests: XCTestCase {
     }
 
     // MARK: - Success
-    func testFetchCharacterSuccessully() {
+    func testFetchCharactersSuccessully() {
         stubService = CharacterListServiceStub()
         sut = CharacterListPresenter(service: stubService)
         sut.view = spyView
@@ -29,11 +29,26 @@ class CharacterListPresenterTests: XCTestCase {
 
         XCTAssert(spyView.hasCalledShowLoadingOnScreen)
         XCTAssert(spyView.hasCalledShowCharacters)
+        XCTAssertFalse(spyView.hasCalledShowEmptyList)
         XCTAssertFalse(spyView.hasCalledShowErrorOnScreen)
         XCTAssertFalse(spyView.hasCalledShowErrorOnTableView)
     }
 
-    func testFetchCharacterWithoutLoadingScreenSuccessully() {
+    func testFetchCharactersWhenThereAreNoCharactersSuccessully() {
+        stubService = CharacterListServiceStub()
+        stubService.shouldReturnsEmptyList = true
+        sut = CharacterListPresenter(service: stubService)
+        sut.view = spyView
+        sut.fetchCharacters(showScreenLoading: true)
+
+        XCTAssert(spyView.hasCalledShowLoadingOnScreen)
+        XCTAssert(spyView.hasCalledShowEmptyList)
+        XCTAssertFalse(spyView.hasCalledShowCharacters)
+        XCTAssertFalse(spyView.hasCalledShowErrorOnScreen)
+        XCTAssertFalse(spyView.hasCalledShowErrorOnTableView)
+    }
+
+    func testFetchCharactersWithoutLoadingScreenSuccessully() {
         stubService = CharacterListServiceStub()
         sut = CharacterListPresenter(service: stubService)
         sut.view = spyView
@@ -41,11 +56,12 @@ class CharacterListPresenterTests: XCTestCase {
 
         XCTAssertFalse(spyView.hasCalledShowLoadingOnScreen)
         XCTAssert(spyView.hasCalledShowCharacters)
+        XCTAssertFalse(spyView.hasCalledShowEmptyList)
         XCTAssertFalse(spyView.hasCalledShowErrorOnScreen)
         XCTAssertFalse(spyView.hasCalledShowErrorOnTableView)
     }
 
-    func testFetchCharacterWhenThereAreAlreadyARequestInProgressSuccessully() {
+    func testFetchCharactersWhenThereAreAlreadyARequestInProgressSuccessully() {
         stubService = CharacterListServiceStub()
         sut = CharacterListPresenter(service: stubService)
         sut.view = spyView
@@ -55,12 +71,13 @@ class CharacterListPresenterTests: XCTestCase {
 
         XCTAssert(spyView.hasCalledShowLoadingOnScreen)
         XCTAssert(spyView.hasCalledShowCharacters)
+        XCTAssertFalse(spyView.hasCalledShowEmptyList)
         XCTAssertFalse(spyView.hasCalledShowErrorOnScreen)
         XCTAssertFalse(spyView.hasCalledShowErrorOnTableView)
     }
 
     // MARK: - Error
-    func testFetchCharacterWithError() {
+    func testFetchCharactersWithError() {
         stubService = CharacterListServiceStub()
         stubService.shouldReturnsError = .unexpected
         sut = CharacterListPresenter(service: stubService)
@@ -69,11 +86,12 @@ class CharacterListPresenterTests: XCTestCase {
 
         XCTAssert(spyView.hasCalledShowLoadingOnScreen)
         XCTAssertFalse(spyView.hasCalledShowCharacters)
+        XCTAssertFalse(spyView.hasCalledShowEmptyList)
         XCTAssert(spyView.hasCalledShowErrorOnScreen)
         XCTAssertFalse(spyView.hasCalledShowErrorOnTableView)
     }
 
-    func testFetchCharacterWithNoInternetError() {
+    func testFetchCharactersWithNoInternetError() {
         stubService = CharacterListServiceStub()
         stubService.shouldReturnsError = .noInternet
         sut = CharacterListPresenter(service: stubService)
@@ -82,11 +100,12 @@ class CharacterListPresenterTests: XCTestCase {
 
         XCTAssert(spyView.hasCalledShowLoadingOnScreen)
         XCTAssertFalse(spyView.hasCalledShowCharacters)
+        XCTAssertFalse(spyView.hasCalledShowEmptyList)
         XCTAssert(spyView.hasCalledShowErrorOnScreen)
         XCTAssertFalse(spyView.hasCalledShowErrorOnTableView)
     }
 
-    func testFetchCharacterWhenThereAreAlreadyARequestInProgressWithError() {
+    func testFetchCharactersWhenThereAreAlreadyARequestInProgressWithError() {
         stubService = CharacterListServiceStub()
         stubService.shouldReturnsError = .unexpected
         sut = CharacterListPresenter(service: stubService)
@@ -97,6 +116,7 @@ class CharacterListPresenterTests: XCTestCase {
 
         XCTAssertFalse(spyView.hasCalledShowLoadingOnScreen)
         XCTAssertFalse(spyView.hasCalledShowCharacters)
+        XCTAssertFalse(spyView.hasCalledShowEmptyList)
         XCTAssertFalse(spyView.hasCalledShowErrorOnScreen)
         XCTAssert(spyView.hasCalledShowErrorOnTableView)
     }
@@ -112,6 +132,7 @@ class CharacterListPresenterTests: XCTestCase {
 
         XCTAssertFalse(spyView.hasCalledShowLoadingOnScreen)
         XCTAssertFalse(spyView.hasCalledShowCharacters)
+        XCTAssertFalse(spyView.hasCalledShowEmptyList)
         XCTAssertFalse(spyView.hasCalledShowErrorOnScreen)
         XCTAssert(spyView.hasCalledShowErrorOnTableView)
     }

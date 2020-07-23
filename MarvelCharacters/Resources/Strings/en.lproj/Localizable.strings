@@ -10,6 +10,7 @@
 "characterList.title" = "MARVEL";
 "characterList.error.tryAgain" = "Something went wrong!\nTouch to try again.";
 "characterList.searchBar.placeholder" = "search for characters";
+"characterList.noCharactersFound" = "No characters found.";
 
 // Messages
 "message.notfound" = "Character not found.";

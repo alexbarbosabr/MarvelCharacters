@@ -14,6 +14,8 @@ internal enum L10n {
   internal static let tryAgain = L10n.tr("Localizable", "tryAgain")
 
   internal enum CharacterList {
+    /// No characters found.
+    internal static let noCharactersFound = L10n.tr("Localizable", "characterList.noCharactersFound")
     /// MARVEL
     internal static let title = L10n.tr("Localizable", "characterList.title")
     internal enum Error {

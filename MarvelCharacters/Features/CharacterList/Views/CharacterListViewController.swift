@@ -10,7 +10,8 @@ import UIKit
 
 protocol CharacterListViewControllerProtocol: AnyObject {
     func showCharacters(_ data: CharactersDataViewModel)
-    func showErrorOnScreen(withIcon icon: AlertIcon, message: String)
+    func showEmptyList(withIcon icon: Icon, message: String)
+    func showErrorOnScreen(withIcon icon: Icon, message: String)
     func showLoadingOnScreen()
     func showErrorOnTableView()
 }
@@ -108,7 +109,14 @@ extension CharacterListViewController: CharacterListViewControllerProtocol {
         view = characterListView
     }
 
-    func showErrorOnScreen(withIcon icon: AlertIcon, message: String) {
+    func showEmptyList(withIcon icon: Icon, message: String) {
+        let alert = AlertView()
+        alert.setIcon(icon)
+        alert.message = message
+        view = alert
+    }
+
+    func showErrorOnScreen(withIcon icon: Icon, message: String) {
         let alert = AlertView()
         alert.setIcon(icon)
         alert.message = message

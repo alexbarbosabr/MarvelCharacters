@@ -11,7 +11,7 @@ import UIKit
 protocol SearchCharacterViewControllerProtocol: AnyObject {
     func showCharacters(_ data: CharactersDataViewModel)
     func showEmptyCharacters()
-    func showError(withIcon icon: AlertIcon, message: String)
+    func showError(withIcon icon: Icon, message: String)
     func showLoading()
     func hideLoading()
 }
@@ -77,7 +77,7 @@ extension SearchCharacterViewController: SearchCharacterViewControllerProtocol {
         alertView.message = L10n.Message.notfound
     }
 
-    func showError(withIcon icon: AlertIcon, message: String) {
+    func showError(withIcon icon: Icon, message: String) {
         alertView.isHidden = false
         alertView.setIcon(icon)
         alertView.message = message

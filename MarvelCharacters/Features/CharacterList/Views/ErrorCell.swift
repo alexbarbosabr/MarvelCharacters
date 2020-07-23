@@ -12,7 +12,7 @@ final class ErrorCell: UITableViewCell {
     static let identifier = String(describing: ErrorCell.self)
 
     private let refreshImageView: UIImageView = {
-        let image = UIImage(systemName: AlertIcon.refresh.rawValue)
+        let image = UIImage(systemName: Icon.refresh.rawValue)
         let view = UIImageView()
         view.image = image
         view.tintColor = .secondaryLabel
