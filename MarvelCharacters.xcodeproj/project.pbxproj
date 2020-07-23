@@ -31,6 +31,8 @@
 		EA39902E24C91BAA0086AC95 /* CharacterListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39902D24C91BAA0086AC95 /* CharacterListPresenterTests.swift */; };
 		EA39903024C93BC80086AC95 /* SearchCharacterPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39902F24C93BC80086AC95 /* SearchCharacterPresenterTests.swift */; };
 		EA39903224C93C400086AC95 /* SearchCharacterViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39903124C93C400086AC95 /* SearchCharacterViewControllerSpy.swift */; };
+		EA39B9E024C942310066D17D /* ServiceSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39B9DF24C942310066D17D /* ServiceSpy.swift */; };
+		EA39B9E224C942E10066D17D /* CharacterListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39B9E124C942E10066D17D /* CharacterListServiceTests.swift */; };
 		EAAC33E924C8804F00F4A0A7 /* DictionaryExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAC33E824C8804F00F4A0A7 /* DictionaryExtensionTests.swift */; };
 		EADD1EC124C39BBB00B506E6 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */; };
 		EADD1EC424C3A32400B506E6 /* CharacterListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC324C3A32400B506E6 /* CharacterListDataSource.swift */; };
@@ -87,6 +89,8 @@
 		EA39902D24C91BAA0086AC95 /* CharacterListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenterTests.swift; sourceTree = "<group>"; };
 		EA39902F24C93BC80086AC95 /* SearchCharacterPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterPresenterTests.swift; sourceTree = "<group>"; };
 		EA39903124C93C400086AC95 /* SearchCharacterViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterViewControllerSpy.swift; sourceTree = "<group>"; };
+		EA39B9DF24C942310066D17D /* ServiceSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSpy.swift; sourceTree = "<group>"; };
+		EA39B9E124C942E10066D17D /* CharacterListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListServiceTests.swift; sourceTree = "<group>"; };
 		EAAC33DD24C87D5800F4A0A7 /* MarvelCharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelCharactersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAC33E124C87D5900F4A0A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAAC33E824C8804F00F4A0A7 /* DictionaryExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensionTests.swift; sourceTree = "<group>"; };
@@ -304,12 +308,21 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		EA39B9DE24C9420F0066D17D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EA39B9DF24C942310066D17D /* ServiceSpy.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		EAAC33DE24C87D5900F4A0A7 /* MarvelCharactersTests */ = {
 			isa = PBXGroup;
 			children = (
 				EAAC33E724C87F1000F4A0A7 /* Extension */,
 				EAFABD1724C8F2C20015255F /* Model */,
 				EAFABD2124C912230015255F /* Features */,
+				EA39B9DE24C9420F0066D17D /* Network */,
 				EAAC33E124C87D5900F4A0A7 /* Info.plist */,
 			);
 			path = MarvelCharactersTests;
@@ -372,6 +385,7 @@
 			children = (
 				EAFABD2624C916480015255F /* CharacterListServiceStub.swift */,
 				EAFABD2424C912560015255F /* CharactersEndpointTests.swift */,
+				EA39B9E124C942E10066D17D /* CharacterListServiceTests.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -563,10 +577,12 @@
 				EAAC33E924C8804F00F4A0A7 /* DictionaryExtensionTests.swift in Sources */,
 				EAFABD1B24C8FBB70015255F /* Character+Extension.swift in Sources */,
 				EA39902E24C91BAA0086AC95 /* CharacterListPresenterTests.swift in Sources */,
+				EA39B9E224C942E10066D17D /* CharacterListServiceTests.swift in Sources */,
 				EA39903024C93BC80086AC95 /* SearchCharacterPresenterTests.swift in Sources */,
 				EAFABD1924C8F2DC0015255F /* CharacterTests.swift in Sources */,
 				EA39903224C93C400086AC95 /* SearchCharacterViewControllerSpy.swift in Sources */,
 				EAFABD2724C916480015255F /* CharacterListServiceStub.swift in Sources */,
+				EA39B9E024C942310066D17D /* ServiceSpy.swift in Sources */,
 				EA39902B24C91AE90086AC95 /* CharacterListViewControllerSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
