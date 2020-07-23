@@ -23,6 +23,5 @@ extension Endpoint {
     var host: String { "gateway.marvel.com" }
     var port: Int { 443 }
     var method: HTTPMethod { .get }
-    var headers: [String: String] { [:] }
     var queryItems: [URLQueryItem] { parameters.queryItems }
 }
