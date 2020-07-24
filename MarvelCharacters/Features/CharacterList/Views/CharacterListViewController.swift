@@ -149,7 +149,14 @@ extension CharacterListViewController: UITableViewDelegate {
         }
 
         let character = dataSource.data.characters[indexPath.row]
-        print("go to \(character.name) detail")
+//        print("go to \(character.name) detail")
+
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        let controller = CharacterDetailViewController(character: character)
+        let backItem = UIBarButtonItem()
+        backItem.title = character.name
+        navigationItem.backBarButtonItem = backItem
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 

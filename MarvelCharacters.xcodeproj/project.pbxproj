@@ -53,6 +53,8 @@
 		EAFA11E524CA48CE0000B075 /* SearchCharacterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA11E424CA48CE0000B075 /* SearchCharacterViewControllerTests.swift */; };
 		EAFA11E724CA54040000B075 /* ErrorCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA11E624CA54040000B075 /* ErrorCellTests.swift */; };
 		EAFA11E924CA56370000B075 /* LoadingCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA11E824CA56370000B075 /* LoadingCellTests.swift */; };
+		EAFA11EC24CA70C50000B075 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA11EB24CA70C50000B075 /* CharacterDetailViewController.swift */; };
+		EAFA11EE24CA71410000B075 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA11ED24CA71410000B075 /* CharacterDetailView.swift */; };
 		EAFABD1924C8F2DC0015255F /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFABD1824C8F2DC0015255F /* CharacterTests.swift */; };
 		EAFABD1B24C8FBB70015255F /* Character+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFABD1A24C8FBB70015255F /* Character+Extension.swift */; };
 		EAFABD2524C912560015255F /* CharactersEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFABD2424C912560015255F /* CharactersEndpointTests.swift */; };
@@ -123,6 +125,8 @@
 		EAFA11E424CA48CE0000B075 /* SearchCharacterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterViewControllerTests.swift; sourceTree = "<group>"; };
 		EAFA11E624CA54040000B075 /* ErrorCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCellTests.swift; sourceTree = "<group>"; };
 		EAFA11E824CA56370000B075 /* LoadingCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCellTests.swift; sourceTree = "<group>"; };
+		EAFA11EB24CA70C50000B075 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
+		EAFA11ED24CA71410000B075 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		EAFABD1824C8F2DC0015255F /* CharacterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
 		EAFABD1A24C8FBB70015255F /* Character+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Extension.swift"; sourceTree = "<group>"; };
 		EAFABD2424C912560015255F /* CharactersEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersEndpointTests.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				EA38944324C354F5009EFCA2 /* CharacterList */,
+				EAFA11EA24CA6FB40000B075 /* CharacterDetail */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -406,6 +411,15 @@
 				EAFA11DD24C9532B0000B075 /* LoadingViewTests.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		EAFA11EA24CA6FB40000B075 /* CharacterDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EAFA11EB24CA70C50000B075 /* CharacterDetailViewController.swift */,
+				EAFA11ED24CA71410000B075 /* CharacterDetailView.swift */,
+			);
+			path = CharacterDetail;
 			sourceTree = "<group>";
 		};
 		EAFABD1724C8F2C20015255F /* Model */ = {
@@ -659,6 +673,7 @@
 			files = (
 				EA34255424C38DF8009C043E /* CharacterListPresenter.swift in Sources */,
 				EA34254A24C380EF009C043E /* ServiceError.swift in Sources */,
+				EAFA11EC24CA70C50000B075 /* CharacterDetailViewController.swift in Sources */,
 				EADD1EDF24C6A16600B506E6 /* SearchCharacterPresenter.swift in Sources */,
 				EA34255124C384EF009C043E /* CharactersEndpoint.swift in Sources */,
 				EADD1ECA24C41DF200B506E6 /* UIColor+Extension.swift in Sources */,
@@ -671,6 +686,7 @@
 				EADD1EE124C7DCE900B506E6 /* AlertView.swift in Sources */,
 				EADD1EDB24C69BD300B506E6 /* CharactersDataViewModel.swift in Sources */,
 				EA34254C24C383FB009C043E /* EndPoint.swift in Sources */,
+				EAFA11EE24CA71410000B075 /* CharacterDetailView.swift in Sources */,
 				EADD1ED824C6916B00B506E6 /* SearchCharacterDataSource.swift in Sources */,
 				EA0FD5B924C2B879007EAE5D /* Service.swift in Sources */,
 				EA34255D24C39789009C043E /* ConstraintView+Extension.swift in Sources */,
