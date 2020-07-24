@@ -8,7 +8,7 @@
 
 @testable import MarvelCharacters
 
-class CharacterListViewControllerSpy: CharacterListViewControllerProtocol {
+class CharacterListViewControllerSpy: CharacterListViewProtocol {
     private (set) var hasCalledShowCharacters = false
     private (set) var hasCalledShowEmptyList = false
     private (set) var hasCalledShowErrorOnScreen = false

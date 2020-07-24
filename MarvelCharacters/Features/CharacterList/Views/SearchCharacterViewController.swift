@@ -21,6 +21,7 @@ final class SearchCharacterViewController: UIViewController, UISearchResultsUpda
     private let loadingView = LoadingView()
     private let alertView = AlertView()
     private var searchBar: UISearchBar?
+    weak var delegate: CharacterListViewDelegate?
 
     private lazy var characterListView: CharacterListView = {
         let view = CharacterListView()
@@ -98,7 +99,7 @@ extension SearchCharacterViewController: SearchCharacterViewControllerProtocol {
 extension SearchCharacterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let character = dataSource.data.characters[indexPath.row]
-        print("go to \(character.name) detail")
+        delegate?.goToDetail(character: character)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

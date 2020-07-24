@@ -16,7 +16,7 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
     private let service: CharacterListServiceProtocol
     private var isFetchInProgress = false
     private var offset = 0
-    weak var view: CharacterListViewControllerProtocol?
+    weak var view: CharacterListViewProtocol?
 
     private var charactersDataView: CharactersDataViewModel = .empty
 

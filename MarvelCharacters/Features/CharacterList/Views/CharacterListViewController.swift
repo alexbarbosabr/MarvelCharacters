@@ -8,12 +8,16 @@
 
 import UIKit
 
-protocol CharacterListViewControllerProtocol: AnyObject {
+protocol CharacterListViewProtocol: AnyObject {
     func showCharacters(_ data: CharactersDataViewModel)
     func showEmptyList(withIcon icon: Icon, message: String)
     func showErrorOnScreen(withIcon icon: Icon, message: String)
     func showLoadingOnScreen()
     func showErrorOnTableView()
+}
+
+protocol CharacterListViewDelegate: AnyObject {
+    func goToDetail(character: Character)
 }
 
 final class CharacterListViewController: UIViewController {
@@ -64,6 +68,7 @@ final class CharacterListViewController: UIViewController {
     }
 
     private func setupSearchBar() {
+        searchViewController.delegate = self
         let search = UISearchController(searchResultsController: searchViewController)
         search.searchResultsUpdater = searchViewController
         search.searchBar.tintColor = .systemRed
@@ -92,16 +97,15 @@ final class CharacterListViewController: UIViewController {
     }
 
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-       if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
-          navigationController?.setNavigationBarHidden(true, animated: true)
-
-       } else {
-          navigationController?.setNavigationBarHidden(false, animated: true)
-       }
+        if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+        } else {
+            navigationController?.setNavigationBarHidden(false, animated: true)
+        }
     }
 }
 
-extension CharacterListViewController: CharacterListViewControllerProtocol {
+extension CharacterListViewController: CharacterListViewProtocol {
     func showCharacters(_ data: CharactersDataViewModel) {
         dataSource.data = data
         characterListView.tableView.reloadData()
@@ -149,13 +153,7 @@ extension CharacterListViewController: UITableViewDelegate {
         }
 
         let character = dataSource.data.characters[indexPath.row]
-//        print("go to \(character.name) detail")
-
-        navigationController?.setNavigationBarHidden(false, animated: true)
         let controller = CharacterDetailViewController(character: character)
-        let backItem = UIBarButtonItem()
-        backItem.title = character.name
-        navigationItem.backBarButtonItem = backItem
         navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -186,5 +184,12 @@ extension CharacterListViewController: CharacterCellDelegate {
 extension CharacterListViewController: AlertViewDelegate {
     func tryAgain() {
         presenter.fetchCharacters(showScreenLoading: true)
+    }
+}
+
+extension CharacterListViewController: CharacterListViewDelegate {
+    func goToDetail(character: Character) {
+        let controller = CharacterDetailViewController(character: character)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
