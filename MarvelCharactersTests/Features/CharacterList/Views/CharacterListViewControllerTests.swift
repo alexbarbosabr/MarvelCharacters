@@ -18,7 +18,8 @@ final class CharacterListViewControllerTests: XCTestCase {
     private var stubCharacterListService: CharacterListServiceStub!
     private var controllerSearchCharacter: SearchCharacterViewController!
     private var window: UIWindow!
-    private var navigation: UINavigationController!
+    private var navigation: MarvelNavigationController!
+    private var navigatorListener: CharacterListNavigatorListenerMock!
 
     override func tearDown() {
         super.tearDown()
@@ -38,11 +39,13 @@ final class CharacterListViewControllerTests: XCTestCase {
         presenterSearchCharacter = SearchCharacterPresenter(service: stubCharacterListService)
         presenterCharacterList = CharacterListPresenter(service: stubCharacterListService)
         controllerSearchCharacter = SearchCharacterViewController(presenter: presenterSearchCharacter)
+        navigatorListener = CharacterListNavigatorListenerMock()
 
         sut = CharacterListViewController(presenter: presenterCharacterList,
-                                          searchViewController: controllerSearchCharacter)
+                                          searchViewController: controllerSearchCharacter,
+                                          navigatorListener: navigatorListener)
         presenterCharacterList.view = sut
-        navigation = UINavigationController(rootViewController: sut)
+        navigation = MarvelNavigationController(rootViewController: sut)
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = navigation

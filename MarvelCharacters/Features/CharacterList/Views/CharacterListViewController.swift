@@ -20,9 +20,14 @@ protocol CharacterListViewDelegate: AnyObject {
     func goToDetail(character: Character)
 }
 
+protocol CharacterListNavigatorListener {
+    func goToDetail(character: Character)
+}
+
 final class CharacterListViewController: UIViewController {
     private let presenter: CharacterListPresenterProtocol
     private let searchViewController: SearchCharacterViewController
+    private let navigatorListener: CharacterListNavigatorListener
 
     private lazy var characterListView: CharacterListView = {
         let view = CharacterListView()
@@ -38,9 +43,12 @@ final class CharacterListViewController: UIViewController {
         return dataSource
     }()
 
-    init(presenter: CharacterListPresenterProtocol, searchViewController: SearchCharacterViewController) {
+    init(presenter: CharacterListPresenterProtocol,
+         searchViewController: SearchCharacterViewController,
+         navigatorListener: CharacterListNavigatorListener) {
         self.presenter = presenter
         self.searchViewController = searchViewController
+        self.navigatorListener = navigatorListener
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -153,8 +161,7 @@ extension CharacterListViewController: UITableViewDelegate {
         }
 
         let character = dataSource.data.characters[indexPath.row]
-        let controller = CharacterDetailViewController(character: character)
-        navigationController?.pushViewController(controller, animated: true)
+        navigatorListener.goToDetail(character: character)
     }
 }
 
@@ -189,7 +196,6 @@ extension CharacterListViewController: AlertViewDelegate {
 
 extension CharacterListViewController: CharacterListViewDelegate {
     func goToDetail(character: Character) {
-        let controller = CharacterDetailViewController(character: character)
-        navigationController?.pushViewController(controller, animated: true)
+        navigatorListener.goToDetail(character: character)
     }
 }
