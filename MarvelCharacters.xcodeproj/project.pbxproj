@@ -232,6 +232,7 @@
 		EA0FD5B324C2B3FC007EAE5D /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				EA14014124CE1463009E3765 /* Favorites */,
 				EA38944324C354F5009EFCA2 /* CharacterList */,
 				EAFA11EA24CA6FB40000B075 /* CharacterDetail */,
 			);
@@ -260,6 +261,21 @@
 				EA34254B24C383FB009C043E /* EndPoint.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		EA14014124CE1463009E3765 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				EA14014224CE1472009E3765 /* View */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		EA14014224CE1472009E3765 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		EA34254424C35E5D009C043E /* Model */ = {

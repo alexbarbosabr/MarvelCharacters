@@ -11,7 +11,8 @@
 extension Character {
     static func mockWithHttpUrl() -> Character {
         let thumbnail = Character.Thumbnail(path: "http://xxxx", extension: "jpg")
-        let mock = Character(name: "Spider-man",
+        let mock = Character(id: 1,
+                             name: "Spider-man",
                              description: "",
                              thumbnail: thumbnail)
         return mock
@@ -19,7 +20,8 @@ extension Character {
 
     static func mockWithHttpsUrl() -> Character {
         let thumbnail = Character.Thumbnail(path: "https://xxxx", extension: "jpg")
-        let mock = Character(name: "Spider-man",
+        let mock = Character(id: 1,
+                             name: "Spider-man",
                              description: "",
                              thumbnail: thumbnail)
         return mock
@@ -27,7 +29,8 @@ extension Character {
 
     static func mockWithNilUrl() -> Character {
         let thumbnail = Character.Thumbnail(path: "https:\\xxxx", extension: "jpg")
-        let mock = Character(name: "Spider-man",
+        let mock = Character(id: 1,
+                             name: "Spider-man",
                              description: "",
                              thumbnail: thumbnail,
                              favorite: false)

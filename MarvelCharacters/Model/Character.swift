@@ -15,6 +15,14 @@ class Character: Codable {
     let thumbnail: Thumbnail
     var favorite: Bool? = false
 
+    init(id: Int, name: String, description desc: String, thumbnail: Thumbnail, favorite: Bool? = false) {
+        self.id = id
+        self.name = name
+        self.description = desc
+        self.thumbnail = thumbnail
+        self.favorite = favorite
+    }
+
     public struct Thumbnail: Codable {
         let path: String
         let `extension`: String

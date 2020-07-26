@@ -23,7 +23,7 @@ final class SearchCharacterViewController: UIViewController, UISearchResultsUpda
     private let alertView = AlertView()
     private var searchBar: UISearchBar?
     private var updateWhenBackFromDetail: Bool = false
-    private var currentSearchText = String()
+    private var currentSearchText: String?
     weak var delegate: CharacterListViewDelegate?
 
     private lazy var characterListView: CharacterListView = {

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Alex Barbosa. All rights reserved.
 //
 
+import Foundation
 @testable import MarvelCharacters
 
 class SearchCharacterViewControllerSpy: SearchCharacterViewControllerProtocol {
@@ -14,6 +15,7 @@ class SearchCharacterViewControllerSpy: SearchCharacterViewControllerProtocol {
     private (set) var hasCalledShowError = false
     private (set) var hasCalledShowLoading = false
     private (set) var hasCalledShowHideLoading = false
+    private (set) var hasCalledUpdateCell = false
 
     func showCharacters(_ data: CharactersDataViewModel) {
         hasCalledShowCharacters = true
@@ -33,5 +35,9 @@ class SearchCharacterViewControllerSpy: SearchCharacterViewControllerProtocol {
 
     func hideLoading() {
         hasCalledShowHideLoading = true
+    }
+
+    func updateCell(index: IndexPath) {
+        hasCalledUpdateCell = true
     }
 }
