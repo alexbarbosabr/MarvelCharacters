@@ -14,6 +14,7 @@ protocol SearchCharacterViewControllerProtocol: AnyObject {
     func showError(withIcon icon: Icon, message: String)
     func showLoading()
     func hideLoading()
+    func updateCell(index: IndexPath)
 }
 
 final class SearchCharacterViewController: UIViewController, UISearchResultsUpdating {
@@ -21,6 +22,8 @@ final class SearchCharacterViewController: UIViewController, UISearchResultsUpda
     private let loadingView = LoadingView()
     private let alertView = AlertView()
     private var searchBar: UISearchBar?
+    private var updateWhenBackFromDetail: Bool = false
+    private var currentSearchText = String()
     weak var delegate: CharacterListViewDelegate?
 
     private lazy var characterListView: CharacterListView = {
@@ -52,10 +55,11 @@ final class SearchCharacterViewController: UIViewController, UISearchResultsUpda
     }
 
     func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text, currentSearchText != text else { return }
+        currentSearchText = text
+
         dataSource.data = .empty
         characterListView.tableView.reloadData()
-
-        guard let text = searchController.searchBar.text else { return }
 
         searchBar = searchController.searchBar
         presenter.fetchCharacter(name: text)
@@ -64,11 +68,15 @@ final class SearchCharacterViewController: UIViewController, UISearchResultsUpda
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar?.endEditing(true)
     }
+
+    func updateCharactersWhenSetFavoriteInOtherContext() {
+        presenter.updateCharactersWhenSetFavoriteInOtherContext()
+    }
 }
 
 extension SearchCharacterViewController: SearchCharacterViewControllerProtocol {
     func showCharacters(_ data: CharactersDataViewModel) {
-        dataSource.data = data // TODO: check if the presenter is responsible
+        dataSource.data = data
         characterListView.tableView.reloadData()
     }
 
@@ -94,10 +102,20 @@ extension SearchCharacterViewController: SearchCharacterViewControllerProtocol {
         loadingView.isHidden = true
         loadingView.stop()
     }
+
+    func updateCell(index: IndexPath) {
+        characterListView.tableView.beginUpdates()
+        characterListView.tableView.reloadRows(at: [index], with: .none)
+        characterListView.tableView.endUpdates()
+        delegate?.reloadTable()
+    }
 }
 
 extension SearchCharacterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        updateWhenBackFromDetail = true
+        searchBar?.searchTextField.endEditing(true)
+
         let character = dataSource.data.characters[indexPath.row]
         delegate?.goToDetail(character: character)
     }
@@ -108,8 +126,8 @@ extension SearchCharacterViewController: UITableViewDelegate {
 }
 
 extension SearchCharacterViewController: CharacterCellDelegate {
-    func setFavorite(index: IndexPath?, isFavorite: Bool) {
-
+    func setFavorite(index: IndexPath, isFavorite: Bool, imageData: Data?) {
+        presenter.setFavorite(indexPath: index, isFavorite: isFavorite, imageData: imageData)
     }
 }
 

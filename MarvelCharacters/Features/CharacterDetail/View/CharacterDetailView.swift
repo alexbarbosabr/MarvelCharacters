@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 protocol CharacterDetailViewDelegate: AnyObject {
-    func setFavorite(character: Character)
+    func setFavorite(character: Character, isFavorite: Bool, imageData: Data?)
 }
 
 final class CharacterDetailView: UIView {
@@ -109,7 +109,9 @@ final class CharacterDetailView: UIView {
     private func setFavorite() {
         favoriteButton.isSelected.toggle()
         setFavoriteButtonTintColor()
-        delegate?.setFavorite(character: character)
+        delegate?.setFavorite(character: character,
+                              isFavorite: favoriteButton.isSelected,
+                              imageData: imageView.image?.pngData())
     }
 
     @objc

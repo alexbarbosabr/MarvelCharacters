@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Character: Codable {
+class Character: Codable {
+    let id: Int
     let name: String
     let description: String
     let thumbnail: Thumbnail
@@ -29,7 +30,7 @@ struct Character: Codable {
         }
     }
 
-    mutating func setFavorite(_ favorite: Bool) {
+    func setFavorite(_ favorite: Bool) {
         self.favorite = favorite
     }
 }

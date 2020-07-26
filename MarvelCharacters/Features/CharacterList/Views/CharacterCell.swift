@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 protocol CharacterCellDelegate: AnyObject {
-    func setFavorite(index: IndexPath?, isFavorite: Bool)
+    func setFavorite(index: IndexPath, isFavorite: Bool, imageData: Data?)
 }
 
 final class CharacterCell: UITableViewCell {
@@ -89,9 +89,13 @@ final class CharacterCell: UITableViewCell {
 
     @objc
     private func setFavorite() {
-        favoriteButton.isSelected.toggle()
-        setFavoriteButtonTintColor()
-        delegate?.setFavorite(index: indexPath, isFavorite: favoriteButton.isSelected)
+        if let index = indexPath {
+//            favoriteButton.isSelected.toggle()
+//            setFavoriteButtonTintColor()
+            delegate?.setFavorite(index: index,
+                                  isFavorite: !favoriteButton.isSelected,
+                                  imageData: imageView?.image?.pngData())
+        }
     }
 
     private func setFavoriteButtonTintColor() {

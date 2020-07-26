@@ -11,6 +11,7 @@ import UIKit
 final class CharacterDetailViewController: UIViewController {
     private lazy var viewDetail: CharacterDetailView = {
         let view = CharacterDetailView(character: character)
+        view.delegate = self
         return view
     }()
 
@@ -28,8 +29,10 @@ final class CharacterDetailViewController: UIViewController {
     }()
 
     private let character: Character
+    private let presenter: CharacterDetailPresenterProtocol
 
-    init(character: Character) {
+    init(presenter: CharacterDetailPresenterProtocol, character: Character) {
+        self.presenter = presenter
         self.character = character
         super.init(nibName: nil, bundle: nil)
     }
@@ -67,6 +70,12 @@ final class CharacterDetailViewController: UIViewController {
     @objc
     private func goBack() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension CharacterDetailViewController: CharacterDetailViewDelegate {
+    func setFavorite(character: Character, isFavorite: Bool, imageData: Data?) {
+        presenter.setFavorite(character: character, isFavorite: isFavorite, imageData: imageData)
     }
 }
 

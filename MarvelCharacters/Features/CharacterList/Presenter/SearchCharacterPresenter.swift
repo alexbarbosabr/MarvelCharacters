@@ -10,6 +10,8 @@ import Foundation
 
 protocol SearchCharacterPresenterProtocol {
     func fetchCharacter(name: String)
+    func setFavorite(indexPath: IndexPath, isFavorite: Bool, imageData: Data?)
+    func updateCharactersWhenSetFavoriteInOtherContext()
 }
 
 final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
@@ -34,6 +36,9 @@ final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
                                                    total: charactersData.data.total,
                                                    count: charactersData.data.count,
                                                    characters: charactersData.data.results)
+                self.charactersDataView = data
+                self.updateFavoriteCharacters()
+
                 self.view?.hideLoading()
 
                 if data.characters.count > 0 {
@@ -59,5 +64,44 @@ final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
         } else {
             self.view?.showError(withIcon: .generic, message: L10n.Message.generic)
         }
+    }
+
+    private func updateFavoriteCharacters() {
+        let manageDAO = ManageCharacterDAO()
+        let favorites = manageDAO.fetchCharacters()
+
+        var ids = [Int]()
+
+        for favorite in favorites {
+            ids.append(Int(favorite.id))
+        }
+
+        for character in charactersDataView.characters {
+            if ids.contains(character.id) {
+                character.setFavorite(true)
+            } else {
+                character.setFavorite(false)
+            }
+        }
+    }
+
+    func setFavorite(indexPath: IndexPath, isFavorite: Bool, imageData: Data?) {
+        let manageDAO = ManageCharacterDAO()
+
+        let character = charactersDataView.characters[indexPath.row]
+        character.setFavorite(isFavorite)
+
+        if isFavorite {
+            manageDAO.save(with: character, imageData: imageData)
+        } else {
+            manageDAO.delete(with: character)
+        }
+
+        view?.updateCell(index: indexPath)
+    }
+
+    func updateCharactersWhenSetFavoriteInOtherContext() {
+        updateFavoriteCharacters()
+        view?.showCharacters(charactersDataView)
     }
 }

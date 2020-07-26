@@ -38,7 +38,8 @@ final class Navigator {
 
 extension Navigator: CharacterListNavigatorListener {
     func goToDetail(character: Character) {
-        let controller = CharacterDetailViewController(character: character)
+        let presenter = CharacterDetailPresenter()
+        let controller = CharacterDetailViewController(presenter: presenter, character: character)
         navigationController?.pushViewController(controller, animated: true)
     }
 }

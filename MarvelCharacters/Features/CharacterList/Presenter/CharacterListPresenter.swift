@@ -10,6 +10,8 @@ import Foundation
 
 protocol CharacterListPresenterProtocol {
     func fetchCharacters(showScreenLoading: Bool)
+    func setFavorite(indexPath: IndexPath, isFavorite: Bool, imageData: Data?)
+    func updateCharactersWhenSetFavoriteInOtherContext()
 }
 
 final class CharacterListPresenter: CharacterListPresenterProtocol {
@@ -45,6 +47,7 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
                     self.view?.showEmptyList(withIcon: .emptyList,
                                              message: L10n.CharacterList.noCharactersFound)
                 } else {
+                    self.updateFavoriteCharacters()
                     self.view?.showCharacters(self.charactersDataView)
                 }
             case .failure(let error):
@@ -87,5 +90,44 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
         }
 
         offset = charactersData.data.offset + CharactersEndpoint.limit
+    }
+
+    func setFavorite(indexPath: IndexPath, isFavorite: Bool, imageData: Data?) {
+        let manageDAO = ManageCharacterDAO()
+
+        let character = charactersDataView.characters[indexPath.row]
+        character.setFavorite(isFavorite)
+
+        if isFavorite {
+            manageDAO.save(with: character, imageData: imageData)
+        } else {
+            manageDAO.delete(with: character)
+        }
+
+        view?.updateCell(index: indexPath)
+    }
+
+    private func updateFavoriteCharacters() {
+        let manageDAO = ManageCharacterDAO()
+        let favorites = manageDAO.fetchCharacters()
+
+        var ids = [Int]()
+
+        for favorite in favorites {
+            ids.append(Int(favorite.id))
+        }
+
+        for character in charactersDataView.characters {
+            if ids.contains(character.id) {
+                character.setFavorite(true)
+            } else {
+                character.setFavorite(false)
+            }
+        }
+    }
+
+    func updateCharactersWhenSetFavoriteInOtherContext() {
+        updateFavoriteCharacters()
+        view?.refreshTable(self.charactersDataView)
     }
 }

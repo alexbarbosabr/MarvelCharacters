@@ -14,10 +14,13 @@ protocol CharacterListViewProtocol: AnyObject {
     func showErrorOnScreen(withIcon icon: Icon, message: String)
     func showLoadingOnScreen()
     func showErrorOnTableView()
+    func updateCell(index: IndexPath)
+    func refreshTable(_ data: CharactersDataViewModel)
 }
 
 protocol CharacterListViewDelegate: AnyObject {
     func goToDetail(character: Character)
+    func reloadTable()
 }
 
 protocol CharacterListNavigatorListener {
@@ -28,6 +31,7 @@ final class CharacterListViewController: UIViewController {
     private let presenter: CharacterListPresenterProtocol
     private let searchViewController: SearchCharacterViewController
     private let navigatorListener: CharacterListNavigatorListener
+    private var updateWhenBackFromDetail: Bool = false
 
     private lazy var characterListView: CharacterListView = {
         let view = CharacterListView()
@@ -73,6 +77,16 @@ final class CharacterListViewController: UIViewController {
         setupSearchBar()
 
         presenter.fetchCharacters(showScreenLoading: true)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if updateWhenBackFromDetail {
+            updateWhenBackFromDetail = false
+            presenter.updateCharactersWhenSetFavoriteInOtherContext()
+            searchViewController.updateCharactersWhenSetFavoriteInOtherContext()
+        }
     }
 
     private func setupSearchBar() {
@@ -146,6 +160,17 @@ extension CharacterListViewController: CharacterListViewProtocol {
         let loading = LoadingView()
         view = loading
     }
+
+    func updateCell(index: IndexPath) {
+        characterListView.tableView.beginUpdates()
+        characterListView.tableView.reloadRows(at: [index], with: .none)
+        characterListView.tableView.endUpdates()
+    }
+
+    func refreshTable(_ data: CharactersDataViewModel) {
+        dataSource.data = data
+        characterListView.tableView.reloadData()
+    }
 }
 
 extension CharacterListViewController: UITableViewDelegate {
@@ -160,6 +185,7 @@ extension CharacterListViewController: UITableViewDelegate {
             return
         }
 
+        updateWhenBackFromDetail = true
         let character = dataSource.data.characters[indexPath.row]
         navigatorListener.goToDetail(character: character)
     }
@@ -180,11 +206,8 @@ extension CharacterListViewController: UITableViewDataSourcePrefetching {
 }
 
 extension CharacterListViewController: CharacterCellDelegate {
-    func setFavorite(index: IndexPath?, isFavorite: Bool) {
-        if let index = index?.row {
-            // TODO: check if the presenter is responsible
-            dataSource.data.characters[index].setFavorite(isFavorite)
-        }
+    func setFavorite(index: IndexPath, isFavorite: Bool, imageData: Data?) {
+        presenter.setFavorite(indexPath: index, isFavorite: isFavorite, imageData: imageData)
     }
 }
 
@@ -196,6 +219,11 @@ extension CharacterListViewController: AlertViewDelegate {
 
 extension CharacterListViewController: CharacterListViewDelegate {
     func goToDetail(character: Character) {
+        updateWhenBackFromDetail = true
         navigatorListener.goToDetail(character: character)
+    }
+
+    func reloadTable() {
+        presenter.updateCharactersWhenSetFavoriteInOtherContext()
     }
 }
