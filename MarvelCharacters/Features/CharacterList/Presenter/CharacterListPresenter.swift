@@ -17,19 +17,17 @@ protocol CharacterListPresenterProtocol {
 
 final class CharacterListPresenter: CharacterListPresenterProtocol {
     private let service: CharacterListServiceProtocol
-    private let manage = ManageCharacterEmtity()
+    private let manageData: ManageCharacterEmtityProtocol
     private var isFetchInProgress = false
     private var offset = 0
     weak var view: CharacterListViewProtocol?
 
-//    private var isRunningTests: Bool {
-//        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
-//    }
-
     private var charactersDataView: CharactersDataViewModel = .empty
 
-    init(service: CharacterListServiceProtocol = CharacterListService()) {
+    init(service: CharacterListServiceProtocol = CharacterListService(),
+         manageData: ManageCharacterEmtityProtocol = ManageCharacterEmtity()) {
         self.service = service
+        self.manageData = manageData
     }
 
     func fetchCharacters(showScreenLoading: Bool) {
@@ -80,9 +78,9 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
         character.setFavorite(isFavorite)
 
         if isFavorite {
-            manage.save(with: character, imageData: imageData)
+            manageData.save(with: character, imageData: imageData)
         } else {
-            manage.delete(with: character)
+            manageData.delete(with: character)
         }
 
         view?.updateCell(index: indexPath)
@@ -122,13 +120,13 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
     }
 
     private func updateBadge() {
-        let characters = manage.fetchCharacters()
+        let characters = manageData.fetchCharacters()
 
         view?.updateBadgeFavoriteButton(amount: characters.count)
     }
 
     private func updateFavoriteCharacters() {
-        let characters = manage.fetchCharacters()
+        let characters = manageData.fetchCharacters()
 
         var ids = [Int]()
 

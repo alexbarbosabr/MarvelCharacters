@@ -30,6 +30,7 @@ final class CharacterListViewControllerTests: XCTestCase {
         controllerSearchCharacter = nil
         window = nil
         navigation = nil
+        navigatorListener = nil
     }
 
     func setupView(withError error: ServiceError? = nil, isEmpytList: Bool = false) {

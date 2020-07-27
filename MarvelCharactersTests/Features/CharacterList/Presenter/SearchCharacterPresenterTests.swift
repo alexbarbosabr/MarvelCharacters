@@ -10,9 +10,10 @@ import XCTest
 @testable import MarvelCharacters
 
 class SearchCharacterPresenterTests: XCTestCase {
-    var sut: SearchCharacterPresenter!
-    var stubService: CharacterListServiceStub!
-    var spyView: SearchCharacterViewControllerSpy!
+    private var sut: SearchCharacterPresenter!
+    private var stubService: CharacterListServiceStub!
+    private var spyView: SearchCharacterViewControllerSpy!
+    private let characterName = "Thanos"
 
     override func setUp() {
         super.setUp()
@@ -20,12 +21,18 @@ class SearchCharacterPresenterTests: XCTestCase {
         spyView = SearchCharacterViewControllerSpy()
     }
 
+    override func tearDown() {
+        super.tearDown()
+        sut = nil
+        stubService = nil
+        spyView = nil
+    }
+
     // MARK: - Success
     func testFetchCharacterSuccessully() {
-        stubService = CharacterListServiceStub()
         sut = SearchCharacterPresenter(service: stubService)
         sut.view = spyView
-        sut.fetchCharacter(name: "Thanos")
+        sut.fetchCharacter(name: characterName)
 
         XCTAssert(spyView.hasCalledShowLoading)
         XCTAssert(spyView.hasCalledShowHideLoading)
@@ -34,11 +41,10 @@ class SearchCharacterPresenterTests: XCTestCase {
     }
 
     func testFetchCharacterWhenReturnEmptyListSuccessully() {
-        stubService = CharacterListServiceStub()
         stubService.shouldReturnsEmptyList = true
         sut = SearchCharacterPresenter(service: stubService)
         sut.view = spyView
-        sut.fetchCharacter(name: "Thannos")
+        sut.fetchCharacter(name: characterName)
 
         XCTAssert(spyView.hasCalledShowLoading)
         XCTAssert(spyView.hasCalledShowHideLoading)
@@ -46,13 +52,45 @@ class SearchCharacterPresenterTests: XCTestCase {
         XCTAssertFalse(spyView.hasCalledShowError)
     }
 
+    // MARK: - Favorites
+    func testUpdateCharactersWhenSetFavoriteInOtherContext() {
+        sut = SearchCharacterPresenter(service: stubService)
+        sut.view = spyView
+        sut.fetchCharacter(name: characterName)
+
+        sut.updateCharactersWhenSetFavoriteInOtherContext()
+
+        XCTAssert(spyView.hasCalledShowCharacters)
+    }
+
+    func testSetFavoriteWhenIsTrueValue() {
+        sut = SearchCharacterPresenter(service: stubService)
+        sut.view = spyView
+        sut.fetchCharacter(name: characterName)
+
+        let index = IndexPath(row: 0, section: 0)
+        sut.setFavorite(indexPath: index, isFavorite: true, imageData: nil)
+
+        XCTAssert(spyView.hasCalledUpdateCell)
+    }
+
+    func testSetFavoriteWhenIsFalseValue() {
+        sut = SearchCharacterPresenter(service: stubService)
+        sut.view = spyView
+        sut.fetchCharacter(name: characterName)
+
+        let index = IndexPath(row: 0, section: 0)
+        sut.setFavorite(indexPath: index, isFavorite: false, imageData: nil)
+
+        XCTAssert(spyView.hasCalledUpdateCell)
+    }
+
     // MARK: - Error
     func testFetchCharacterWithError() {
-        stubService = CharacterListServiceStub()
         stubService.shouldReturnsError = .unexpected
         sut = SearchCharacterPresenter(service: stubService)
         sut.view = spyView
-        sut.fetchCharacter(name: "Thanos")
+        sut.fetchCharacter(name: characterName)
 
         XCTAssert(spyView.hasCalledShowLoading)
         XCTAssert(spyView.hasCalledShowHideLoading)
@@ -62,11 +100,10 @@ class SearchCharacterPresenterTests: XCTestCase {
     }
 
     func testFetchCharacterWithNoInternetError() {
-        stubService = CharacterListServiceStub()
         stubService.shouldReturnsError = .noInternet
         sut = SearchCharacterPresenter(service: stubService)
         sut.view = spyView
-        sut.fetchCharacter(name: "Thanos")
+        sut.fetchCharacter(name: characterName)
 
         XCTAssert(spyView.hasCalledShowLoading)
         XCTAssert(spyView.hasCalledShowHideLoading)
