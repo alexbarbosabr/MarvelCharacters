@@ -14,12 +14,12 @@ protocol CharacterDetailPresenterProtocol {
 
 final class CharacterDetailPresenter: CharacterDetailPresenterProtocol {
     func setFavorite(character: Character, isFavorite: Bool, imageData: Data?) {
-        let manageDAO = ManageCharacterDAO()
+        let manage = ManageCharacterEmtity()
 
         if isFavorite {
-            manageDAO.save(with: character, imageData: imageData)
+            manage.save(with: character, imageData: imageData)
         } else {
-            manageDAO.delete(with: character)
+            manage.delete(with: character)
         }
     }
 }

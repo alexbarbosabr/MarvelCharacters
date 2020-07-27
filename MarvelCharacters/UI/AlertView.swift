@@ -19,6 +19,13 @@ enum Icon: String {
     case noInternet = "wifi.slash"
     case refresh = "arrow.clockwise"
     case emptyList = "rectangle.stack.person.crop"
+    case back = "chevron.left"
+    case heart = "heart"
+    case heartFill = "heart.fill"
+
+    var image: UIImage {
+        UIImage(systemName: rawValue)!
+    }
 }
 
 final class AlertView: UIView {

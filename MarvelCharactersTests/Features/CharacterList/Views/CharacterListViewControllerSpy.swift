@@ -17,6 +17,7 @@ class CharacterListViewControllerSpy: CharacterListViewProtocol {
     private (set) var hasCalledShowErrorOnTableView = false
     private (set) var hasCalledUpdateCell = false
     private (set) var hasCalledRefreshTable = false
+    private (set) var hasCalledUpdateBadgeFavoriteButton = false
 
     func showCharacters(_ data: CharactersDataViewModel) {
         hasCalledShowCharacters = true
@@ -44,5 +45,9 @@ class CharacterListViewControllerSpy: CharacterListViewProtocol {
 
     func refreshTable(_ data: CharactersDataViewModel) {
         hasCalledRefreshTable = true
+    }
+
+    func updateBadgeFavoriteButton(amount: Int) {
+        hasCalledUpdateBadgeFavoriteButton = true
     }
 }

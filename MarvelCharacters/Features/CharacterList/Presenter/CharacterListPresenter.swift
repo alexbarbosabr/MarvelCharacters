@@ -12,13 +12,19 @@ protocol CharacterListPresenterProtocol {
     func fetchCharacters(showScreenLoading: Bool)
     func setFavorite(indexPath: IndexPath, isFavorite: Bool, imageData: Data?)
     func updateCharactersWhenSetFavoriteInOtherContext()
+    func fetchFavoriteCharacters()
 }
 
 final class CharacterListPresenter: CharacterListPresenterProtocol {
     private let service: CharacterListServiceProtocol
+    private let manage = ManageCharacterEmtity()
     private var isFetchInProgress = false
     private var offset = 0
     weak var view: CharacterListViewProtocol?
+
+//    private var isRunningTests: Bool {
+//        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+//    }
 
     private var charactersDataView: CharactersDataViewModel = .empty
 
@@ -60,6 +66,29 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
         }
     }
 
+    func fetchFavoriteCharacters() {
+        updateBadge()
+    }
+
+    func updateCharactersWhenSetFavoriteInOtherContext() {
+        updateFavoriteCharacters()
+        view?.refreshTable(self.charactersDataView)
+    }
+
+    func setFavorite(indexPath: IndexPath, isFavorite: Bool, imageData: Data?) {
+        let character = charactersDataView.characters[indexPath.row]
+        character.setFavorite(isFavorite)
+
+        if isFavorite {
+            manage.save(with: character, imageData: imageData)
+        } else {
+            manage.delete(with: character)
+        }
+
+        view?.updateCell(index: indexPath)
+        updateBadge()
+    }
+
     private func handleError(_ error: Error) {
         let error: NSError = error as NSError
         let code = ServiceError(rawValue: error.code)
@@ -92,28 +121,18 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
         offset = charactersData.data.offset + CharactersEndpoint.limit
     }
 
-    func setFavorite(indexPath: IndexPath, isFavorite: Bool, imageData: Data?) {
-        let manageDAO = ManageCharacterDAO()
+    private func updateBadge() {
+        let characters = manage.fetchCharacters()
 
-        let character = charactersDataView.characters[indexPath.row]
-        character.setFavorite(isFavorite)
-
-        if isFavorite {
-            manageDAO.save(with: character, imageData: imageData)
-        } else {
-            manageDAO.delete(with: character)
-        }
-
-        view?.updateCell(index: indexPath)
+        view?.updateBadgeFavoriteButton(amount: characters.count)
     }
 
     private func updateFavoriteCharacters() {
-        let manageDAO = ManageCharacterDAO()
-        let favorites = manageDAO.fetchCharacters()
+        let characters = manage.fetchCharacters()
 
         var ids = [Int]()
 
-        for favorite in favorites {
+        for favorite in characters {
             ids.append(Int(favorite.id))
         }
 
@@ -124,10 +143,5 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
                 character.setFavorite(false)
             }
         }
-    }
-
-    func updateCharactersWhenSetFavoriteInOtherContext() {
-        updateFavoriteCharacters()
-        view?.refreshTable(self.charactersDataView)
     }
 }

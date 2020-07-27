@@ -11,7 +11,13 @@ import Foundation
 
 class CharacterListNavigatorListenerMock: CharacterListNavigatorListener {
     private (set) var hasCalledGoToDetail = false
+    private (set) var hasCalledGoToFavorite = false
+
     func goToDetail(character: Character) {
         hasCalledGoToDetail = true
+    }
+
+    func goToFavorite() {
+        hasCalledGoToFavorite = true
     }
 }

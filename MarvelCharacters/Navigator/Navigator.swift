@@ -36,10 +36,17 @@ final class Navigator {
     }
 }
 
-extension Navigator: CharacterListNavigatorListener {
+extension Navigator: CharacterListNavigatorListener, FavoriteCharactersNavigatorListener {
     func goToDetail(character: Character) {
         let presenter = CharacterDetailPresenter()
         let controller = CharacterDetailViewController(presenter: presenter, character: character)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+
+    func goToFavorite() {
+        let presenter = FavoriteCharactersPresenter()
+        let controller = FavoriteCharactersViewController(presenter: presenter, navigatorListener: self)
+        presenter.view = controller
         navigationController?.pushViewController(controller, animated: true)
     }
 }

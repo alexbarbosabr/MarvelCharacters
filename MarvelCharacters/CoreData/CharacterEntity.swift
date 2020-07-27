@@ -1,5 +1,5 @@
 //
-//  CharacterDAO.swift
+//  CharacterEntity.swift
 //  MarvelCharacters
 //
 //  Created by Alex Barbosa on 26/07/20.
@@ -9,21 +9,29 @@
 import Foundation
 import CoreData
 
-public class CharacterDAO: NSManagedObject, Identifiable {
-    @NSManaged public var desc: String?
+public class CharacterEntity: NSManagedObject, Identifiable {
     @NSManaged public var id: Int32
+    @NSManaged public var name: String
+    @NSManaged public var desc: String
+    @NSManaged public var favorite: Bool
+    @NSManaged public var path: String
+    @NSManaged public var `extension`: String
     @NSManaged public var image: Data?
-    @NSManaged public var name: String?
 }
 
-class ManageCharacterDAO {
+class ManageCharacterEmtity {
     private let entityName: String = "Character"
+    private var isRunningTests: Bool {
+        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    }
 
-    func fetchCharacters() -> [CharacterDAO] {
+    func fetchCharacters() -> [CharacterEntity] {
+        if isRunningTests { return [CharacterEntity]() }
+
         let dataManager = DataManager()
         let context = dataManager.persistentContainer.viewContext
 
-        let reqquest = NSFetchRequest<CharacterDAO>(entityName: entityName)
+        let reqquest = NSFetchRequest<CharacterEntity>(entityName: entityName)
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         reqquest.sortDescriptors = [sortDescriptor]
 
@@ -36,6 +44,8 @@ class ManageCharacterDAO {
     }
 
     func save(with character: Character, imageData: Data?) {
+        if isRunningTests { return }
+
         let dataManager = DataManager()
         let context = dataManager.persistentContainer.viewContext
 
@@ -45,6 +55,9 @@ class ManageCharacterDAO {
         characterData.setValue(character.id, forKey: "id")
         characterData.setValue(character.name, forKey: "name")
         characterData.setValue(character.description, forKey: "desc")
+        characterData.setValue(true, forKey: "favorite")
+        characterData.setValue(character.thumbnail.extension, forKey: "extension")
+        characterData.setValue(character.thumbnail.path, forKey: "path")
         characterData.setValue(imageData, forKey: "image")
 
         do {
@@ -55,10 +68,12 @@ class ManageCharacterDAO {
     }
 
     func delete(with character: Character) {
+        if isRunningTests { return }
+
         let dataManager = DataManager()
         let context = dataManager.persistentContainer.viewContext
 
-        let reqquest = NSFetchRequest<CharacterDAO>(entityName: entityName)
+        let reqquest = NSFetchRequest<CharacterEntity>(entityName: entityName)
         reqquest.predicate = NSPredicate(format: "id = \(character.id)")
 
         do {

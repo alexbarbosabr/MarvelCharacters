@@ -73,15 +73,19 @@ final class CharacterCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup(character: Character, indexPath: IndexPath?) {
+    func setup(character: Character, indexPath: IndexPath?, imageData: Data? = nil) {
         self.indexPath = indexPath
 
         favoriteButton.isSelected = character.favorite ?? false
         setFavoriteButtonTintColor()
 
-        let placeholder = UIImage(named: "placeholder")
-        let url = character.thumbnail.getImageUrl()
-        characterImageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: nil)
+        if let data = imageData {
+            characterImageView.image = UIImage(data: data)
+        } else {
+            let placeholder = UIImage(named: "placeholder")
+            let url = character.thumbnail.getImageUrl()
+            characterImageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: nil)
+        }
 
         nameLabel.text = character.name
         addDescription(character: character)

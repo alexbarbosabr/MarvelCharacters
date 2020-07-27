@@ -16,6 +16,7 @@ protocol CharacterListViewProtocol: AnyObject {
     func showErrorOnTableView()
     func updateCell(index: IndexPath)
     func refreshTable(_ data: CharactersDataViewModel)
+    func updateBadgeFavoriteButton(amount: Int)
 }
 
 protocol CharacterListViewDelegate: AnyObject {
@@ -25,13 +26,15 @@ protocol CharacterListViewDelegate: AnyObject {
 
 protocol CharacterListNavigatorListener {
     func goToDetail(character: Character)
+    func goToFavorite()
 }
 
 final class CharacterListViewController: UIViewController {
     private let presenter: CharacterListPresenterProtocol
     private let searchViewController: SearchCharacterViewController
     private let navigatorListener: CharacterListNavigatorListener
-    private var updateWhenBackFromDetail: Bool = false
+    private let badgedButton = BadgedButtonItem()
+    private var updateWhenBackFromOtherContext: Bool = false
 
     private lazy var characterListView: CharacterListView = {
         let view = CharacterListView()
@@ -67,26 +70,35 @@ final class CharacterListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = L10n.CharacterList.title
-
-        let font = UIFont.boldSystemFont(ofSize: 20)
-        let attributes: [NSAttributedString.Key: Any] = [.font: font,
-                                                         .foregroundColor: UIColor.systemRed]
-        navigationController?.navigationBar.titleTextAttributes = attributes
-
+        setupNavigationBar()
         setupSearchBar()
 
         presenter.fetchCharacters(showScreenLoading: true)
+        presenter.fetchFavoriteCharacters()
+    }
+
+    @objc
+    func goToFavorites() {
+        updateWhenBackFromOtherContext = true
+        navigatorListener.goToFavorite()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if updateWhenBackFromDetail {
-            updateWhenBackFromDetail = false
+        if updateWhenBackFromOtherContext {
+            updateWhenBackFromOtherContext = false
+
+            presenter.fetchFavoriteCharacters()
+
             presenter.updateCharactersWhenSetFavoriteInOtherContext()
             searchViewController.updateCharactersWhenSetFavoriteInOtherContext()
         }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        updateWhenBackFromOtherContext = true
     }
 
     private func setupSearchBar() {
@@ -124,6 +136,21 @@ final class CharacterListViewController: UIViewController {
         } else {
             navigationController?.setNavigationBarHidden(false, animated: true)
         }
+    }
+
+    private func setupNavigationBar() {
+        title = L10n.CharacterList.title
+
+        let font = UIFont.boldSystemFont(ofSize: 20)
+        let attributes: [NSAttributedString.Key: Any] = [.font: font,
+                                                         .foregroundColor: UIColor.systemRed]
+        navigationController?.navigationBar.titleTextAttributes = attributes
+
+        badgedButton.tapAction = {
+            self.goToFavorites()
+        }
+
+        navigationItem.rightBarButtonItem = badgedButton
     }
 }
 
@@ -171,6 +198,10 @@ extension CharacterListViewController: CharacterListViewProtocol {
         dataSource.data = data
         characterListView.tableView.reloadData()
     }
+
+    func updateBadgeFavoriteButton(amount: Int) {
+        badgedButton.setBadge(with: amount)
+    }
 }
 
 extension CharacterListViewController: UITableViewDelegate {
@@ -185,7 +216,7 @@ extension CharacterListViewController: UITableViewDelegate {
             return
         }
 
-        updateWhenBackFromDetail = true
+        updateWhenBackFromOtherContext = true
         let character = dataSource.data.characters[indexPath.row]
         navigatorListener.goToDetail(character: character)
     }
@@ -219,7 +250,7 @@ extension CharacterListViewController: AlertViewDelegate {
 
 extension CharacterListViewController: CharacterListViewDelegate {
     func goToDetail(character: Character) {
-        updateWhenBackFromDetail = true
+        updateWhenBackFromOtherContext = true
         navigatorListener.goToDetail(character: character)
     }
 

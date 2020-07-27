@@ -30,14 +30,14 @@ class CharacterTests: XCTestCase {
     }
 
     func testSetFavoriteWithFalseValue() {
-        var character = Character.mockWithHttpUrl()
+        let character = Character.mockWithHttpUrl()
         character.setFavorite(false)
 
         XCTAssertEqual(character.favorite, false)
     }
 
     func testSetFavoriteWithTrueValue() {
-        var character = Character.mockWithHttpUrl()
+        let character = Character.mockWithHttpUrl()
         character.setFavorite(true)
 
         XCTAssertEqual(character.favorite, true)

@@ -16,6 +16,7 @@
 		EA0FD5B624C2B44E007EAE5D /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD5B524C2B44E007EAE5D /* CharacterListViewController.swift */; };
 		EA0FD5B924C2B879007EAE5D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD5B824C2B879007EAE5D /* Service.swift */; };
 		EA0FD5BB24C2BA06007EAE5D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD5BA24C2BA06007EAE5D /* HTTPMethod.swift */; };
+		EA14014424CE1B16009E3765 /* FavoriteCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA14014324CE1B16009E3765 /* FavoriteCharactersViewController.swift */; };
 		EA34254624C35F2F009C043E /* CharactersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA34254524C35F2F009C043E /* CharactersData.swift */; };
 		EA34254824C36206009C043E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA34254724C36206009C043E /* Character.swift */; };
 		EA34254A24C380EF009C043E /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA34254924C380EF009C043E /* ServiceError.swift */; };
@@ -35,12 +36,15 @@
 		EA39903224C93C400086AC95 /* SearchCharacterViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39903124C93C400086AC95 /* SearchCharacterViewControllerSpy.swift */; };
 		EA39B9E024C942310066D17D /* ServiceSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39B9DF24C942310066D17D /* ServiceSpy.swift */; };
 		EA39B9E224C942E10066D17D /* CharacterListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39B9E124C942E10066D17D /* CharacterListServiceTests.swift */; };
+		EA3D0FF324CE226F00D97CB7 /* FavoriteCharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D0FF224CE226F00D97CB7 /* FavoriteCharactersPresenter.swift */; };
+		EA3D0FF624CE265200D97CB7 /* FavoriteCharactersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D0FF524CE265200D97CB7 /* FavoriteCharactersDataSource.swift */; };
+		EA3D0FF824CE5E1600D97CB7 /* BadgedButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D0FF724CE5E1600D97CB7 /* BadgedButtonItem.swift */; };
 		EAAC33E924C8804F00F4A0A7 /* DictionaryExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAC33E824C8804F00F4A0A7 /* DictionaryExtensionTests.swift */; };
 		EABE0CAE24CB970D00C13A24 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE0CAD24CB970D00C13A24 /* Navigator.swift */; };
 		EABE0CB024CB9C0900C13A24 /* MarvelNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE0CAF24CB9C0900C13A24 /* MarvelNavigationController.swift */; };
 		EABE0CB324CB9D2F00C13A24 /* CharacterListNavigatorListenerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE0CB224CB9D2F00C13A24 /* CharacterListNavigatorListenerSpy.swift */; };
 		EABE0CB924CD9BE700C13A24 /* CoreDataMarvel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EABE0CB724CD9BE700C13A24 /* CoreDataMarvel.xcdatamodeld */; };
-		EABE0CBB24CDA15500C13A24 /* CharacterDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE0CBA24CDA15500C13A24 /* CharacterDAO.swift */; };
+		EABE0CBB24CDA15500C13A24 /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE0CBA24CDA15500C13A24 /* CharacterEntity.swift */; };
 		EABE0CE024CDA8FD00C13A24 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE0CDF24CDA8FD00C13A24 /* DataManager.swift */; };
 		EABE0CE424CDE12300C13A24 /* CharacterDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE0CE324CDE12300C13A24 /* CharacterDetailPresenter.swift */; };
 		EADD1EC124C39BBB00B506E6 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */; };
@@ -94,6 +98,7 @@
 		EA0FD5B524C2B44E007EAE5D /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		EA0FD5B824C2B879007EAE5D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		EA0FD5BA24C2BA06007EAE5D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		EA14014324CE1B16009E3765 /* FavoriteCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharactersViewController.swift; sourceTree = "<group>"; };
 		EA34254524C35F2F009C043E /* CharactersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersData.swift; sourceTree = "<group>"; };
 		EA34254724C36206009C043E /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		EA34254924C380EF009C043E /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -113,6 +118,9 @@
 		EA39903124C93C400086AC95 /* SearchCharacterViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterViewControllerSpy.swift; sourceTree = "<group>"; };
 		EA39B9DF24C942310066D17D /* ServiceSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSpy.swift; sourceTree = "<group>"; };
 		EA39B9E124C942E10066D17D /* CharacterListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListServiceTests.swift; sourceTree = "<group>"; };
+		EA3D0FF224CE226F00D97CB7 /* FavoriteCharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharactersPresenter.swift; sourceTree = "<group>"; };
+		EA3D0FF524CE265200D97CB7 /* FavoriteCharactersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharactersDataSource.swift; sourceTree = "<group>"; };
+		EA3D0FF724CE5E1600D97CB7 /* BadgedButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgedButtonItem.swift; sourceTree = "<group>"; };
 		EAAC33DD24C87D5800F4A0A7 /* MarvelCharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelCharactersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAC33E124C87D5900F4A0A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAAC33E824C8804F00F4A0A7 /* DictionaryExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensionTests.swift; sourceTree = "<group>"; };
@@ -120,7 +128,7 @@
 		EABE0CAF24CB9C0900C13A24 /* MarvelNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelNavigationController.swift; sourceTree = "<group>"; };
 		EABE0CB224CB9D2F00C13A24 /* CharacterListNavigatorListenerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListNavigatorListenerSpy.swift; sourceTree = "<group>"; };
 		EABE0CB824CD9BE700C13A24 /* CoreDataMarvel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataMarvel.xcdatamodel; sourceTree = "<group>"; };
-		EABE0CBA24CDA15500C13A24 /* CharacterDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDAO.swift; sourceTree = "<group>"; };
+		EABE0CBA24CDA15500C13A24 /* CharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEntity.swift; sourceTree = "<group>"; };
 		EABE0CDF24CDA8FD00C13A24 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		EABE0CE324CDE12300C13A24 /* CharacterDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailPresenter.swift; sourceTree = "<group>"; };
 		EADD1EC024C39BBA00B506E6 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
@@ -232,7 +240,7 @@
 		EA0FD5B324C2B3FC007EAE5D /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				EA14014124CE1463009E3765 /* Favorites */,
+				EA14014124CE1463009E3765 /* FavoriteCharacters */,
 				EA38944324C354F5009EFCA2 /* CharacterList */,
 				EAFA11EA24CA6FB40000B075 /* CharacterDetail */,
 			);
@@ -248,6 +256,7 @@
 				EADD1ED124C50F3E00B506E6 /* LoadingCell.swift */,
 				EADD1ED324C5278400B506E6 /* ErrorCell.swift */,
 				EADD1ED524C6776900B506E6 /* SearchCharacterViewController.swift */,
+				EA3D0FF724CE5E1600D97CB7 /* BadgedButtonItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,19 +272,30 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		EA14014124CE1463009E3765 /* Favorites */ = {
+		EA14014124CE1463009E3765 /* FavoriteCharacters */ = {
 			isa = PBXGroup;
 			children = (
+				EA3D0FF424CE263700D97CB7 /* DataSource */,
+				EA14014524CE1B6D009E3765 /* Presenter */,
 				EA14014224CE1472009E3765 /* View */,
 			);
-			path = Favorites;
+			path = FavoriteCharacters;
 			sourceTree = "<group>";
 		};
 		EA14014224CE1472009E3765 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EA14014324CE1B16009E3765 /* FavoriteCharactersViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EA14014524CE1B6D009E3765 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				EA3D0FF224CE226F00D97CB7 /* FavoriteCharactersPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		EA34254424C35E5D009C043E /* Model */ = {
@@ -400,6 +420,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		EA3D0FF424CE263700D97CB7 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				EA3D0FF524CE265200D97CB7 /* FavoriteCharactersDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		EAAC33DE24C87D5900F4A0A7 /* MarvelCharactersTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,7 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				EABE0CB724CD9BE700C13A24 /* CoreDataMarvel.xcdatamodeld */,
-				EABE0CBA24CDA15500C13A24 /* CharacterDAO.swift */,
+				EABE0CBA24CDA15500C13A24 /* CharacterEntity.swift */,
 				EABE0CDF24CDA8FD00C13A24 /* DataManager.swift */,
 			);
 			path = CoreData;
@@ -753,12 +781,14 @@
 				EAFA11EC24CA70C50000B075 /* CharacterDetailViewController.swift in Sources */,
 				EADD1EDF24C6A16600B506E6 /* SearchCharacterPresenter.swift in Sources */,
 				EA34255124C384EF009C043E /* CharactersEndpoint.swift in Sources */,
+				EA3D0FF624CE265200D97CB7 /* FavoriteCharactersDataSource.swift in Sources */,
 				EADD1ECA24C41DF200B506E6 /* UIColor+Extension.swift in Sources */,
 				EA34255724C39576009C043E /* CodeView.swift in Sources */,
+				EA3D0FF824CE5E1600D97CB7 /* BadgedButtonItem.swift in Sources */,
 				EA34254824C36206009C043E /* Character.swift in Sources */,
 				EA34255B24C39642009C043E /* LoadingView.swift in Sources */,
 				EABE0CB024CB9C0900C13A24 /* MarvelNavigationController.swift in Sources */,
-				EABE0CBB24CDA15500C13A24 /* CharacterDAO.swift in Sources */,
+				EABE0CBB24CDA15500C13A24 /* CharacterEntity.swift in Sources */,
 				EA0FD5B624C2B44E007EAE5D /* CharacterListViewController.swift in Sources */,
 				EA34254624C35F2F009C043E /* CharactersData.swift in Sources */,
 				EABE0CAE24CB970D00C13A24 /* Navigator.swift in Sources */,
@@ -770,6 +800,7 @@
 				EA34254C24C383FB009C043E /* EndPoint.swift in Sources */,
 				EAFA11EE24CA71410000B075 /* CharacterDetailView.swift in Sources */,
 				EADD1ED824C6916B00B506E6 /* SearchCharacterDataSource.swift in Sources */,
+				EA3D0FF324CE226F00D97CB7 /* FavoriteCharactersPresenter.swift in Sources */,
 				EA0FD5B924C2B879007EAE5D /* Service.swift in Sources */,
 				EA34255D24C39789009C043E /* ConstraintView+Extension.swift in Sources */,
 				EA38944224C351F4009EFCA2 /* Strings+Generated.swift in Sources */,
@@ -780,6 +811,7 @@
 				EA38944624C3555D009EFCA2 /* CharacterListService.swift in Sources */,
 				EADD1EC624C3A7DF00B506E6 /* CharacterCell.swift in Sources */,
 				EA0FD5A024C2B22D007EAE5D /* AppDelegate.swift in Sources */,
+				EA14014424CE1B16009E3765 /* FavoriteCharactersViewController.swift in Sources */,
 				EABE0CE024CDA8FD00C13A24 /* DataManager.swift in Sources */,
 				EA0FD5BB24C2BA06007EAE5D /* HTTPMethod.swift in Sources */,
 				EA0FD5A224C2B22D007EAE5D /* SceneDelegate.swift in Sources */,

@@ -20,8 +20,7 @@ final class CharacterDetailViewController: UIViewController {
         let button = UIButton(frame: .init(x: 0, y: 0, width: size, height: size))
         button.layer.cornerRadius = size / 2
         button.layer.borderWidth = 0
-//        let image = UIImage(systemName: "arrow.left")
-        let image = UIImage(systemName: "chevron.left")
+        let image = UIImage(systemName: Icon.back.rawValue)
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         button.backgroundColor = .systemFill

@@ -67,8 +67,8 @@ final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
     }
 
     private func updateFavoriteCharacters() {
-        let manageDAO = ManageCharacterDAO()
-        let favorites = manageDAO.fetchCharacters()
+        let manage = ManageCharacterEmtity()
+        let favorites = manage.fetchCharacters()
 
         var ids = [Int]()
 
@@ -86,15 +86,15 @@ final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
     }
 
     func setFavorite(indexPath: IndexPath, isFavorite: Bool, imageData: Data?) {
-        let manageDAO = ManageCharacterDAO()
+        let manage = ManageCharacterEmtity()
 
         let character = charactersDataView.characters[indexPath.row]
         character.setFavorite(isFavorite)
 
         if isFavorite {
-            manageDAO.save(with: character, imageData: imageData)
+            manage.save(with: character, imageData: imageData)
         } else {
-            manageDAO.delete(with: character)
+            manage.delete(with: character)
         }
 
         view?.updateCell(index: indexPath)
