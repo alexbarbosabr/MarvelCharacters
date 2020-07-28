@@ -70,6 +70,7 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
 
     func updateCharactersWhenSetFavoriteInOtherContext() {
         updateFavoriteCharacters()
+        updateBadge()
         view?.refreshTable(self.charactersDataView)
     }
 
