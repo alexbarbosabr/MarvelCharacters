@@ -71,7 +71,7 @@ final class FavoriteCharactersViewController: UIViewController {
 
 extension FavoriteCharactersViewController: FavoriteCharactersViewProtocol {
     func showEmptyList() {
-        let empty = AlertView()
+        let empty = MessageView()
         empty.setIcon(.heart)
         empty.message = "You don't have favorite characters"
         view = empty

@@ -1,5 +1,5 @@
 //
-//  AlertView.swift
+//  MessageView.swift
 //  MarvelCharacters
 //
 //  Created by Alex Barbosa on 21/07/20.
@@ -30,7 +30,7 @@ enum Icon: String {
     }
 }
 
-final class AlertView: UIView {
+final class MessageView: UIView {
     weak var delegate: AlertViewDelegate?
 
     var message: String? {
@@ -86,7 +86,7 @@ final class AlertView: UIView {
     }
 }
 
-extension AlertView: CodeView {
+extension MessageView: CodeView {
     func buildViewHierarchy() {
         addSubview(iconImageView)
         addSubview(messageLabel)

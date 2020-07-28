@@ -20,7 +20,7 @@ protocol SearchCharacterViewControllerProtocol: AnyObject {
 final class SearchCharacterViewController: UIViewController, UISearchResultsUpdating {
     private let presenter: SearchCharacterPresenterProtocol
     private let loadingView = LoadingView()
-    private let alertView = AlertView()
+    private let messageView = MessageView()
     private var searchBar: UISearchBar?
     private var updateWhenBackFromDetail: Bool = false
     private var currentSearchText: String?
@@ -81,19 +81,19 @@ extension SearchCharacterViewController: SearchCharacterViewControllerProtocol {
     }
 
     func showEmptyCharacters() {
-        alertView.isHidden = false
-        alertView.setIcon(.search)
-        alertView.message = L10n.Message.notfound
+        messageView.isHidden = false
+        messageView.setIcon(.search)
+        messageView.message = L10n.Message.notfound
     }
 
     func showError(withIcon icon: Icon, message: String) {
-        alertView.isHidden = false
-        alertView.setIcon(icon)
-        alertView.message = message
+        messageView.isHidden = false
+        messageView.setIcon(icon)
+        messageView.message = message
     }
 
     func showLoading() {
-        alertView.isHidden = true
+        messageView.isHidden = true
         loadingView.isHidden = false
         loadingView.start()
     }
@@ -135,7 +135,7 @@ extension SearchCharacterViewController: CodeView {
     func buildViewHierarchy() {
         view.addSubview(characterListView)
         view.addSubview(loadingView)
-        view.addSubview(alertView)
+        view.addSubview(messageView)
     }
 
     func makeContraints() {
@@ -147,10 +147,10 @@ extension SearchCharacterViewController: CodeView {
                            trailing: view.trailingAnchor,
                            padding: .init(top: 0, left: 0, bottom: 0, right: 0))
 
-        alertView.anchor(height: 200)
-        alertView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                         leading: view.leadingAnchor,
-                         trailing: view.trailingAnchor,
-                         padding: .init(top: 0, left: 0, bottom: 0, right: 0))
+        messageView.anchor(height: 200)
+        messageView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                           leading: view.leadingAnchor,
+                           trailing: view.trailingAnchor,
+                           padding: .init(top: 0, left: 0, bottom: 0, right: 0))
     }
 }

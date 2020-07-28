@@ -163,19 +163,19 @@ extension CharacterListViewController: CharacterListViewProtocol {
     }
 
     func showEmptyList(withIcon icon: Icon, message: String) {
-        let alert = AlertView()
-        alert.setIcon(icon)
-        alert.message = message
-        view = alert
+        let messageView = MessageView()
+        messageView.setIcon(icon)
+        messageView.message = message
+        view = messageView
     }
 
     func showErrorOnScreen(withIcon icon: Icon, message: String) {
-        let alert = AlertView()
-        alert.setIcon(icon)
-        alert.message = message
-        alert.showTryAgain = true
-        alert.delegate = self
-        view = alert
+        let messageView = MessageView()
+        messageView.setIcon(icon)
+        messageView.message = message
+        messageView.showTryAgain = true
+        messageView.delegate = self
+        view = messageView
     }
 
     func showErrorOnTableView() {

@@ -66,7 +66,7 @@
 		EADD1ED824C6916B00B506E6 /* SearchCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1ED724C6916B00B506E6 /* SearchCharacterDataSource.swift */; };
 		EADD1EDB24C69BD300B506E6 /* CharactersDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EDA24C69BD300B506E6 /* CharactersDataViewModel.swift */; };
 		EADD1EDF24C6A16600B506E6 /* SearchCharacterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EDE24C6A16600B506E6 /* SearchCharacterPresenter.swift */; };
-		EADD1EE124C7DCE900B506E6 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EE024C7DCE900B506E6 /* AlertView.swift */; };
+		EADD1EE124C7DCE900B506E6 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD1EE024C7DCE900B506E6 /* MessageView.swift */; };
 		EAFA11DE24C9532B0000B075 /* LoadingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA11DD24C9532B0000B075 /* LoadingViewTests.swift */; };
 		EAFA11E024C95F240000B075 /* CharacterListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA11DF24C95F240000B075 /* CharacterListViewControllerTests.swift */; };
 		EAFA11E524CA48CE0000B075 /* SearchCharacterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA11E424CA48CE0000B075 /* SearchCharacterViewControllerTests.swift */; };
@@ -157,7 +157,7 @@
 		EADD1ED724C6916B00B506E6 /* SearchCharacterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterDataSource.swift; sourceTree = "<group>"; };
 		EADD1EDA24C69BD300B506E6 /* CharactersDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDataViewModel.swift; sourceTree = "<group>"; };
 		EADD1EDE24C6A16600B506E6 /* SearchCharacterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterPresenter.swift; sourceTree = "<group>"; };
-		EADD1EE024C7DCE900B506E6 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		EADD1EE024C7DCE900B506E6 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		EAFA11DD24C9532B0000B075 /* LoadingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewTests.swift; sourceTree = "<group>"; };
 		EAFA11DF24C95F240000B075 /* CharacterListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewControllerTests.swift; sourceTree = "<group>"; };
 		EAFA11E424CA48CE0000B075 /* SearchCharacterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCharacterViewControllerTests.swift; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				EA34255A24C39642009C043E /* LoadingView.swift */,
-				EADD1EE024C7DCE900B506E6 /* AlertView.swift */,
+				EADD1EE024C7DCE900B506E6 /* MessageView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -874,7 +874,7 @@
 				EABE0CAE24CB970D00C13A24 /* Navigator.swift in Sources */,
 				EADD1ED424C5278400B506E6 /* ErrorCell.swift in Sources */,
 				EABE0CB924CD9BE700C13A24 /* CoreDataMarvel.xcdatamodeld in Sources */,
-				EADD1EE124C7DCE900B506E6 /* AlertView.swift in Sources */,
+				EADD1EE124C7DCE900B506E6 /* MessageView.swift in Sources */,
 				EABE0CE424CDE12300C13A24 /* CharacterDetailPresenter.swift in Sources */,
 				EADD1EDB24C69BD300B506E6 /* CharactersDataViewModel.swift in Sources */,
 				EA34254C24C383FB009C043E /* EndPoint.swift in Sources */,
