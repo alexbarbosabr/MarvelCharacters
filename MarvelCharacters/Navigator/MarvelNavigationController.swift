@@ -12,6 +12,11 @@ final class MarvelNavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         navigationBar.tintColor = .systemRed
+
+        let font = UIFont.boldSystemFont(ofSize: 20)
+        let attributes: [NSAttributedString.Key: Any] = [.font: font,
+                                                         .foregroundColor: UIColor.systemRed]
+        navigationBar.titleTextAttributes = attributes
     }
 
     @available(*, unavailable)

@@ -10,6 +10,6 @@ import Foundation
 
 enum ServiceError: Int, Error {
     case unexpected
-    case noInternet = -1009
+    case noInternetConnection = -1009
     case cancelRequest = -999
 }

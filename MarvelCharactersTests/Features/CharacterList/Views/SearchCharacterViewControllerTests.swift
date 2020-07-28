@@ -53,7 +53,7 @@ class SearchCharacterViewControllerTests: XCTestCase {
     }
 
     func testSearchChracterViewControllerNoConnectionLayout() {
-        setup(withError: .noInternet)
+        setup(withError: .noInternetConnection)
         expect(self.sut).to(haveValidSnapshot())
     }
 

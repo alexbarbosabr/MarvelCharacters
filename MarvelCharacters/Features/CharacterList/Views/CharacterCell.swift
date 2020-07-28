@@ -15,7 +15,8 @@ protocol CharacterCellDelegate: AnyObject {
 
 final class CharacterCell: UITableViewCell {
     static let identifier = String(describing: CharacterCell.self)
-    static let heightRow: CGFloat = 114
+    static let heightRow: CGFloat = 122
+    private let topMargin: CGFloat = 6
     private var indexPath: IndexPath?
 
     weak var delegate: CharacterCellDelegate?
@@ -63,7 +64,7 @@ final class CharacterCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: .init(top: 5, left: 16, bottom: 5, right: 16))
+        contentView.frame = contentView.frame.inset(by: .init(top: topMargin, left: 16, bottom: topMargin, right: 16))
     }
 
     @available(*, unavailable)
@@ -82,7 +83,7 @@ final class CharacterCell: UITableViewCell {
         } else {
             let placeholder = UIImage(named: "placeholder")
             let url = character.thumbnail.getImageUrl()
-            characterImageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: nil)
+            characterImageView.kf.setImage(with: url, placeholder: placeholder)
         }
 
         nameLabel.text = character.name
@@ -120,7 +121,7 @@ extension CharacterCell: CodeView {
     }
 
     func makeContraints() {
-        characterImageView.anchor(width: 104)
+        characterImageView.anchor(width: CharacterCell.heightRow - topMargin * 2)
         characterImageView.anchor(top: contentView.topAnchor,
                                   leading: contentView.leadingAnchor,
                                   bottom: contentView.bottomAnchor)
@@ -136,7 +137,7 @@ extension CharacterCell: CodeView {
     }
 
     func makeAddicionalConfiguration() {
-        contentView.backgroundColor = .customSecondaryBackground
+        contentView.backgroundColor = .secondaryBackground
         contentView.layer.cornerRadius = 3
         contentView.layer.borderWidth = 0
         contentView.clipsToBounds = true

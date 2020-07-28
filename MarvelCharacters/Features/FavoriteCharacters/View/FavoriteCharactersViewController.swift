@@ -47,7 +47,7 @@ final class FavoriteCharactersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "favorites"
+        title = L10n.FavoriteCharacters.title
 
         let backButton = UIBarButtonItem(image: Icon.back.image,
                                          style: .plain,
@@ -73,7 +73,7 @@ extension FavoriteCharactersViewController: FavoriteCharactersViewProtocol {
     func showEmptyList() {
         let empty = MessageView()
         empty.setIcon(.heart)
-        empty.message = "You don't have favorite characters"
+        empty.message = L10n.FavoriteCharacters.Message.empty
         view = empty
     }
 

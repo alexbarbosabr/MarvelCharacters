@@ -64,7 +64,7 @@ extension ErrorCell: CodeView {
     }
 
     func makeAddicionalConfiguration() {
-        contentView.backgroundColor = .customSecondaryBackground
+        contentView.backgroundColor = .secondaryBackground
         contentView.layer.cornerRadius = 3
         contentView.layer.borderWidth = 0
         contentView.clipsToBounds = true

@@ -83,7 +83,7 @@ extension CharacterDetailViewController: CodeView {
     }
 
     func makeContraints() {
-        let top = geTheSumOftNaBarAndStatusBarHeight()
+        let top = geTheSumOftNavBarAndStatusBarHeight()
 
         viewDetail.anchor(top: view.topAnchor,
                           leading: view.leadingAnchor,
@@ -93,10 +93,10 @@ extension CharacterDetailViewController: CodeView {
 
     }
 
-    private func geTheSumOftNaBarAndStatusBarHeight() -> CGFloat {
+    private func geTheSumOftNavBarAndStatusBarHeight() -> CGFloat {
         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        let navBarHeight = navigationController?.navigationBar.frame.height ?? 0
+        let navBarHeight: CGFloat = 44
         return statusBarHeight + navBarHeight
     }
 }

@@ -13,6 +13,11 @@ internal enum L10n {
   /// tryAgain
   internal static let tryAgain = L10n.tr("Localizable", "tryAgain")
 
+  internal enum CharacterDetail {
+    /// About:
+    internal static let about = L10n.tr("Localizable", "characterDetail.about")
+  }
+
   internal enum CharacterList {
     /// No characters found.
     internal static let noCharactersFound = L10n.tr("Localizable", "characterList.noCharactersFound")
@@ -25,6 +30,15 @@ internal enum L10n {
     internal enum SearchBar {
       /// search for characters
       internal static let placeholder = L10n.tr("Localizable", "characterList.searchBar.placeholder")
+    }
+  }
+
+  internal enum FavoriteCharacters {
+    /// favorites
+    internal static let title = L10n.tr("Localizable", "favoriteCharacters.title")
+    internal enum Message {
+      /// You don't have favorite characters
+      internal static let empty = L10n.tr("Localizable", "favoriteCharacters.message.empty")
     }
   }
 

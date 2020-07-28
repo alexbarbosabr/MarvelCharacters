@@ -27,7 +27,9 @@ final class CharacterDetailView: UIView {
         return stack
     }()
 
-    private let coverView: UIView = {
+    private let coverView = UIView()
+
+    private let lineView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemRed
         return view
@@ -35,7 +37,8 @@ final class CharacterDetailView: UIView {
 
     private let imageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .redraw
+        view.contentMode = .scaleToFill
+        view.backgroundColor = .secondaryBackground
         return view
     }()
 
@@ -50,8 +53,8 @@ final class CharacterDetailView: UIView {
         return button
     }()
 
-    private let dataView = UIView()
-    private let dataStackView: UIStackView = {
+    private let detailView = UIView()
+    private let detailStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 10
@@ -67,7 +70,7 @@ final class CharacterDetailView: UIView {
 
     private let aboutLabel: UILabel = {
         let label = UILabel()
-        label.text = "About:"
+        label.text = L10n.CharacterDetail.about
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -89,7 +92,7 @@ final class CharacterDetailView: UIView {
 
         let placeholder = UIImage(named: "placeholder")
         let url = character.thumbnail.getImageUrl()
-        imageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: nil)
+        imageView.kf.setImage(with: url, placeholder: placeholder)
 
         favoriteButton.isSelected = character.favorite ?? false
         setFavoriteButtonTintColor()
@@ -123,17 +126,18 @@ extension CharacterDetailView: CodeView {
         addSubview(scrollView)
         scrollView.addSubview(stackView)
         coverView.addSubview(imageView)
+        coverView.addSubview(lineView)
         coverView.addSubview(favoriteButton)
         stackView.addArrangedSubview(coverView)
-        dataStackView.addArrangedSubview(titleLabel)
+        detailStackView.addArrangedSubview(titleLabel)
 
         if character.description != String() {
-            dataStackView.addArrangedSubview(aboutLabel)
-            dataStackView.addArrangedSubview(descriptionLabel)
+            detailStackView.addArrangedSubview(aboutLabel)
+            detailStackView.addArrangedSubview(descriptionLabel)
         }
 
-        dataView.addSubview(dataStackView)
-        stackView.addArrangedSubview(dataView)
+        detailView.addSubview(detailStackView)
+        stackView.addArrangedSubview(detailView)
     }
 
     func makeContraints() {
@@ -143,24 +147,28 @@ extension CharacterDetailView: CodeView {
 
         imageView.anchor(top: coverView.topAnchor,
                          leading: coverView.leadingAnchor,
-                         bottom: coverView.bottomAnchor,
-                         trailing: coverView.trailingAnchor,
-                         padding: .init(top: 0, left: 0, bottom: 2, right: 0))
+                         trailing: coverView.trailingAnchor)
+        imageView.anchor(height: UIScreen.main.bounds.width)
+
+        lineView.anchor(top: imageView.bottomAnchor,
+                        leading: imageView.leadingAnchor,
+                        trailing: imageView.trailingAnchor)
+
+        lineView.anchor(height: 1)
 
         let favoriteBottom = favoriteButtonSize / 2
-        favoriteButton.anchor(bottom: coverView.bottomAnchor,
+        favoriteButton.anchor(top: imageView.bottomAnchor,
+                              bottom: coverView.bottomAnchor,
                               trailing: coverView.trailingAnchor,
-                              padding: .init(top: 0, left: 0, bottom: -favoriteBottom, right: 20))
+                              padding: .init(top: -favoriteBottom, left: 0, bottom: 0, right: 20))
 
         favoriteButton.anchor(height: favoriteButtonSize, width: favoriteButtonSize)
 
-        imageView.anchor(height: UIScreen.main.bounds.width)
-
-        dataStackView.anchor(top: dataView.topAnchor,
-                             leading: dataView.leadingAnchor,
-                             bottom: dataView.bottomAnchor,
-                             trailing: dataView.trailingAnchor,
-                             padding: .init(top: 0, left: 16, bottom: 0, right: 16))
+        detailStackView.anchor(top: detailView.topAnchor,
+                               leading: detailView.leadingAnchor,
+                               bottom: detailView.bottomAnchor,
+                               trailing: detailView.trailingAnchor,
+                               padding: .init(top: 0, left: 16, bottom: 0, right: 16))
     }
 
     func makeAddicionalConfiguration() {

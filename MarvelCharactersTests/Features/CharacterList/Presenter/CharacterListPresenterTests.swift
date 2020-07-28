@@ -136,7 +136,7 @@ class CharacterListPresenterTests: XCTestCase {
     }
 
     func testFetchCharactersWithNoInternetError() {
-        stubService.shouldReturnsError = .noInternet
+        stubService.shouldReturnsError = .noInternetConnection
         sut = CharacterListPresenter(service: stubService)
         sut.view = spyView
         sut.fetchCharacters(showScreenLoading: true)

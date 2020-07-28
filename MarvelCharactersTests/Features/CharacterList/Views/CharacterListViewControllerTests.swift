@@ -64,7 +64,7 @@ final class CharacterListViewControllerTests: XCTestCase {
     }
 
     func testCharacterListViewControllerNoConnectionLayout() {
-        setupView(withError: .noInternet)
+        setupView(withError: .noInternetConnection)
         expect(self.navigation).to(haveValidSnapshot())
     }
 

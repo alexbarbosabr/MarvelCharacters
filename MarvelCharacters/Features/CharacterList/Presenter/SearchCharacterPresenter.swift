@@ -59,7 +59,7 @@ final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
         guard code != .cancelRequest else { return }
         self.view?.hideLoading()
 
-        if code == .noInternet {
+        if code == .noInternetConnection {
             self.view?.showError(withIcon: .noInternet, message: L10n.Message.noInternet)
         } else {
             self.view?.showError(withIcon: .generic, message: L10n.Message.generic)

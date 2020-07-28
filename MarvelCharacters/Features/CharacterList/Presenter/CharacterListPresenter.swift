@@ -92,7 +92,7 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
         let error: NSError = error as NSError
         let code = ServiceError(rawValue: error.code)
 
-        if code == .noInternet {
+        if code == .noInternetConnection {
             self.view?.showErrorOnScreen(withIcon: .noInternet, message: L10n.Message.noInternet)
         } else {
             self.view?.showErrorOnScreen(withIcon: .generic, message: L10n.Message.generic)

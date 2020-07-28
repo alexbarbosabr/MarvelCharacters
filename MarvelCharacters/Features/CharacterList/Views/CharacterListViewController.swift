@@ -141,11 +141,6 @@ final class CharacterListViewController: UIViewController {
     private func setupNavigationBar() {
         title = L10n.CharacterList.title
 
-        let font = UIFont.boldSystemFont(ofSize: 20)
-        let attributes: [NSAttributedString.Key: Any] = [.font: font,
-                                                         .foregroundColor: UIColor.systemRed]
-        navigationController?.navigationBar.titleTextAttributes = attributes
-
         badgedButton.tapAction = {
             self.goToFavorites()
         }

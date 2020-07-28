@@ -100,7 +100,7 @@ class SearchCharacterPresenterTests: XCTestCase {
     }
 
     func testFetchCharacterWithNoInternetError() {
-        stubService.shouldReturnsError = .noInternet
+        stubService.shouldReturnsError = .noInternetConnection
         sut = SearchCharacterPresenter(service: stubService)
         sut.view = spyView
         sut.fetchCharacter(name: characterName)

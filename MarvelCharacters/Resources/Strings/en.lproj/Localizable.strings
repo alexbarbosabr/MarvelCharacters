@@ -12,6 +12,13 @@
 "characterList.searchBar.placeholder" = "search for characters";
 "characterList.noCharactersFound" = "No characters found.";
 
+// Character Detail
+"characterDetail.about" = "About:";
+
+// Favorite Characters
+"favoriteCharacters.title" = "favorites";
+"favoriteCharacters.message.empty" = "You don't have favorite characters";
+
 // Messages
 "message.notfound" = "Character not found.";
 "message.generic" = "Oops! Something went wrong.";
