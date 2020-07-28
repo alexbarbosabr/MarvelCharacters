@@ -58,6 +58,8 @@ final class FavoriteCharactersPresenter: FavoriteCharactersPresenterProtocol {
 
         manage.delete(with: character)
 
+        characters.remove(at: indexPath.row)
+
         fetchCharacters()
     }
 }
