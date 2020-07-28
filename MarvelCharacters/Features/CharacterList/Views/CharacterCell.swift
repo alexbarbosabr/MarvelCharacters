@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 protocol CharacterCellDelegate: AnyObject {
-    func setFavorite(index: IndexPath, isFavorite: Bool, imageData: Data?)
+    func tapFavoriteButton(index: IndexPath, isFavorite: Bool, imageData: Data?)
 }
 
 final class CharacterCell: UITableViewCell {
@@ -54,7 +54,7 @@ final class CharacterCell: UITableViewCell {
         let fillImage = UIImage(systemName: "suit.heart.fill")
         button.setImage(fillImage, for: .selected)
         button.setImage(regularImage, for: .normal)
-        button.addTarget(self, action: #selector(setFavorite), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tapFavoriteButton), for: .touchUpInside)
         return button
     }()
 
@@ -92,11 +92,9 @@ final class CharacterCell: UITableViewCell {
     }
 
     @objc
-    private func setFavorite() {
+    private func tapFavoriteButton() {
         if let index = indexPath {
-//            favoriteButton.isSelected.toggle()
-//            setFavoriteButtonTintColor()
-            delegate?.setFavorite(index: index,
+            delegate?.tapFavoriteButton(index: index,
                                   isFavorite: !favoriteButton.isSelected,
                                   imageData: imageView?.image?.pngData())
         }

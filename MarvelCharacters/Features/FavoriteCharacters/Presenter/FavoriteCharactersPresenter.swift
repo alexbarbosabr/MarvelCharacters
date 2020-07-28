@@ -15,15 +15,19 @@ protocol FavoriteCharactersPresenterProtocol {
 
 final class FavoriteCharactersPresenter: FavoriteCharactersPresenterProtocol {
     private let manage = ManageCharacterEmtity()
-    private var characters = [Character]()
+    private var characters: [Character]
     weak var view: FavoriteCharactersViewProtocol?
+
+    init(characters: [Character] = [Character]()) {
+        self.characters = characters
+    }
 
     func fetchCharacters() {
         let characterList = manage.fetchCharacters()
-        self.characters = parseCharacters(characterList)
+        characters = parseCharacters(characterList)
 
-        if self.characters.count > 0 {
-            view?.showCharacters(self.characters)
+        if characters.count > 0 {
+            view?.showCharacters(characters)
         } else {
             view?.showEmptyList()
         }
@@ -40,6 +44,10 @@ final class FavoriteCharactersPresenter: FavoriteCharactersPresenterProtocol {
                                       thumbnail: thumbnail,
                                       favorite: item.favorite)
             list.append(character)
+        }
+
+        if list.count == 0 {
+            list = self.characters
         }
 
         return list

@@ -237,7 +237,7 @@ extension CharacterListViewController: UITableViewDataSourcePrefetching {
 }
 
 extension CharacterListViewController: CharacterCellDelegate {
-    func setFavorite(index: IndexPath, isFavorite: Bool, imageData: Data?) {
+    func tapFavoriteButton(index: IndexPath, isFavorite: Bool, imageData: Data?) {
         presenter.setFavorite(indexPath: index, isFavorite: isFavorite, imageData: imageData)
     }
 }

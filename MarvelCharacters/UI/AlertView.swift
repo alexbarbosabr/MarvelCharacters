@@ -44,6 +44,7 @@ final class AlertView: UIView {
     private var iconImageView: UIImageView = {
         let image = UIImage(systemName: "exclamationmark.triangle")
         let view = UIImageView(image: image)
+        view.contentMode = .scaleAspectFit
         view.tintColor = .secondaryLabel
         return view
     }()

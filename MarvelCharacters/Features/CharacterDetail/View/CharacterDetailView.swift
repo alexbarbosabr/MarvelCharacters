@@ -45,7 +45,7 @@ final class CharacterDetailView: UIView {
         let fillImage = UIImage(systemName: "suit.heart.fill")
         button.setImage(fillImage, for: .selected)
         button.setImage(regularImage, for: .normal)
-        button.addTarget(self, action: #selector(setFavorite), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tapFavoriteButton), for: .touchUpInside)
         button.backgroundColor = .tertiarySystemBackground
         button.layer.cornerRadius = favoriteButtonSize / 2
         button.layer.borderWidth = 0
@@ -106,7 +106,7 @@ final class CharacterDetailView: UIView {
     }
 
     @objc
-    private func setFavorite() {
+    private func tapFavoriteButton() {
         favoriteButton.isSelected.toggle()
         setFavoriteButtonTintColor()
         delegate?.setFavorite(character: character,

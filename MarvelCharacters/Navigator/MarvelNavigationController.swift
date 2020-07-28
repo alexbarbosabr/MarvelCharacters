@@ -14,6 +14,7 @@ final class MarvelNavigationController: UINavigationController {
         navigationBar.tintColor = .systemRed
     }
 
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

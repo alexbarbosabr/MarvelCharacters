@@ -42,6 +42,9 @@
 		EA3D0FFC24CE88E100D97CB7 /* ManageCharacterEmtity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D0FFB24CE88E100D97CB7 /* ManageCharacterEmtity.swift */; };
 		EA3D100224CFA1D400D97CB7 /* CharacterDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D100124CFA1D400D97CB7 /* CharacterDetailViewControllerTests.swift */; };
 		EA3D100624CFA5A000D97CB7 /* CharacterDetailPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3D100524CFA5A000D97CB7 /* CharacterDetailPresenterSpy.swift */; };
+		EA4199DB24CFC4DD001DE392 /* FavoriteCharactersViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4199DA24CFC4DD001DE392 /* FavoriteCharactersViewControllerTests.swift */; };
+		EA4199DD24CFC646001DE392 /* FavoriteCharactersNavigatorListenerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4199DC24CFC646001DE392 /* FavoriteCharactersNavigatorListenerSpy.swift */; };
+		EA4199E224CFD576001DE392 /* FavoriteCharactersPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4199E124CFD576001DE392 /* FavoriteCharactersPresenterMock.swift */; };
 		EAAC33E924C8804F00F4A0A7 /* DictionaryExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAC33E824C8804F00F4A0A7 /* DictionaryExtensionTests.swift */; };
 		EABE0CAE24CB970D00C13A24 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE0CAD24CB970D00C13A24 /* Navigator.swift */; };
 		EABE0CB024CB9C0900C13A24 /* MarvelNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE0CAF24CB9C0900C13A24 /* MarvelNavigationController.swift */; };
@@ -127,6 +130,9 @@
 		EA3D0FFB24CE88E100D97CB7 /* ManageCharacterEmtity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCharacterEmtity.swift; sourceTree = "<group>"; };
 		EA3D100124CFA1D400D97CB7 /* CharacterDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewControllerTests.swift; sourceTree = "<group>"; };
 		EA3D100524CFA5A000D97CB7 /* CharacterDetailPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailPresenterSpy.swift; sourceTree = "<group>"; };
+		EA4199DA24CFC4DD001DE392 /* FavoriteCharactersViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharactersViewControllerTests.swift; sourceTree = "<group>"; };
+		EA4199DC24CFC646001DE392 /* FavoriteCharactersNavigatorListenerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharactersNavigatorListenerSpy.swift; sourceTree = "<group>"; };
+		EA4199E124CFD576001DE392 /* FavoriteCharactersPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharactersPresenterMock.swift; sourceTree = "<group>"; };
 		EAAC33DD24C87D5800F4A0A7 /* MarvelCharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelCharactersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAAC33E124C87D5900F4A0A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAAC33E824C8804F00F4A0A7 /* DictionaryExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensionTests.swift; sourceTree = "<group>"; };
@@ -468,6 +474,32 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		EA4199D824CFC49E001DE392 /* FavoriteCharacters */ = {
+			isa = PBXGroup;
+			children = (
+				EA4199DE24CFCD70001DE392 /* Presenter */,
+				EA4199D924CFC4BC001DE392 /* View */,
+			);
+			path = FavoriteCharacters;
+			sourceTree = "<group>";
+		};
+		EA4199D924CFC4BC001DE392 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EA4199DC24CFC646001DE392 /* FavoriteCharactersNavigatorListenerSpy.swift */,
+				EA4199DA24CFC4DD001DE392 /* FavoriteCharactersViewControllerTests.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EA4199DE24CFCD70001DE392 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				EA4199E124CFD576001DE392 /* FavoriteCharactersPresenterMock.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		EAAC33DE24C87D5900F4A0A7 /* MarvelCharactersTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,6 +611,7 @@
 		EAFABD2124C912230015255F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				EA4199D824CFC49E001DE392 /* FavoriteCharacters */,
 				EA3D100024CFA17100D97CB7 /* CharacterDetail */,
 				EAFABD2224C912320015255F /* CharacterList */,
 			);
@@ -866,6 +899,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAFABD2524C912560015255F /* CharactersEndpointTests.swift in Sources */,
+				EA4199DD24CFC646001DE392 /* FavoriteCharactersNavigatorListenerSpy.swift in Sources */,
 				EABE0CB324CB9D2F00C13A24 /* CharacterListNavigatorListenerSpy.swift in Sources */,
 				EAFA11DE24C9532B0000B075 /* LoadingViewTests.swift in Sources */,
 				EA3D100224CFA1D400D97CB7 /* CharacterDetailViewControllerTests.swift in Sources */,
@@ -874,6 +908,7 @@
 				EAFA11E724CA54040000B075 /* ErrorCellTests.swift in Sources */,
 				EAFA11E524CA48CE0000B075 /* SearchCharacterViewControllerTests.swift in Sources */,
 				EAAC33E924C8804F00F4A0A7 /* DictionaryExtensionTests.swift in Sources */,
+				EA4199E224CFD576001DE392 /* FavoriteCharactersPresenterMock.swift in Sources */,
 				EAFABD1B24C8FBB70015255F /* Character+Extension.swift in Sources */,
 				EA39902E24C91BAA0086AC95 /* CharacterListPresenterTests.swift in Sources */,
 				EAFA11E024C95F240000B075 /* CharacterListViewControllerTests.swift in Sources */,
@@ -881,6 +916,7 @@
 				EA39903024C93BC80086AC95 /* SearchCharacterPresenterTests.swift in Sources */,
 				EAFABD1924C8F2DC0015255F /* CharacterTests.swift in Sources */,
 				EA39903224C93C400086AC95 /* SearchCharacterViewControllerSpy.swift in Sources */,
+				EA4199DB24CFC4DD001DE392 /* FavoriteCharactersViewControllerTests.swift in Sources */,
 				EAFABD2724C916480015255F /* CharacterListServiceStub.swift in Sources */,
 				EA39B9E024C942310066D17D /* ServiceSpy.swift in Sources */,
 				EA39902B24C91AE90086AC95 /* CharacterListViewControllerSpy.swift in Sources */,

@@ -73,7 +73,7 @@ final class FavoriteCharactersViewController: UIViewController {
 extension FavoriteCharactersViewController: FavoriteCharactersViewProtocol {
     func showEmptyList() {
         let empty = AlertView()
-        empty.setIcon(.emptyList)
+        empty.setIcon(.heart)
         empty.message = "You don't have favorite characters"
         view = empty
     }
@@ -97,7 +97,7 @@ extension FavoriteCharactersViewController: UITableViewDelegate {
 }
 
 extension FavoriteCharactersViewController: CharacterCellDelegate {
-    func setFavorite(index: IndexPath, isFavorite: Bool, imageData: Data?) {
+    func tapFavoriteButton(index: IndexPath, isFavorite: Bool, imageData: Data?) {
         presenter.removeFavorite(indexPath: index)
     }
 }
