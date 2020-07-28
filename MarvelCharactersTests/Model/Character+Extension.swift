@@ -22,7 +22,7 @@ extension Character {
         let thumbnail = Character.Thumbnail(path: "https://xxxx", extension: "jpg")
         let mock = Character(id: 1,
                              name: "Spider-man",
-                             description: "",
+                             description: "Bitten by a radioactive spider, high school student Peter Parker...",
                              thumbnail: thumbnail)
         return mock
     }
@@ -32,8 +32,7 @@ extension Character {
         let mock = Character(id: 1,
                              name: "Spider-man",
                              description: "",
-                             thumbnail: thumbnail,
-                             favorite: false)
+                             thumbnail: thumbnail)
         return mock
     }
 }
