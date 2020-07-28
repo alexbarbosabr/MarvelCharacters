@@ -49,8 +49,7 @@ final class FavoriteCharactersViewController: UIViewController {
         super.viewDidLoad()
         title = "favorites"
 
-        let image = UIImage(systemName: Icon.back.rawValue)
-        let backButton = UIBarButtonItem(image: image,
+        let backButton = UIBarButtonItem(image: Icon.back.image,
                                          style: .plain,
                                          target: self,
                                          action: #selector(goBack))

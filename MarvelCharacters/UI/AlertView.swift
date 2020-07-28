@@ -22,6 +22,8 @@ enum Icon: String {
     case back = "chevron.left"
     case heart = "heart"
     case heartFill = "heart.fill"
+    case suitHeart = "suit.heart"
+    case suitHeartFill = "suit.heart.fill"
 
     var image: UIImage {
         UIImage(systemName: rawValue)!
@@ -42,8 +44,7 @@ final class AlertView: UIView {
     }
 
     private var iconImageView: UIImageView = {
-        let image = UIImage(systemName: "exclamationmark.triangle")
-        let view = UIImageView(image: image)
+        let view = UIImageView(image: Icon.generic.image)
         view.contentMode = .scaleAspectFit
         view.tintColor = .secondaryLabel
         return view
@@ -81,7 +82,7 @@ final class AlertView: UIView {
     }
 
     func setIcon(_ icon: Icon) {
-        iconImageView.image = UIImage(systemName: icon.rawValue)
+        iconImageView.image = icon.image
     }
 }
 

@@ -50,10 +50,8 @@ final class CharacterCell: UITableViewCell {
 
     private lazy var favoriteButton: UIButton = {
         let button = UIButton()
-        let regularImage = UIImage(systemName: "suit.heart")
-        let fillImage = UIImage(systemName: "suit.heart.fill")
-        button.setImage(fillImage, for: .selected)
-        button.setImage(regularImage, for: .normal)
+        button.setImage(Icon.suitHeartFill.image, for: .selected)
+        button.setImage(Icon.suitHeart.image, for: .normal)
         button.addTarget(self, action: #selector(tapFavoriteButton), for: .touchUpInside)
         return button
     }()
