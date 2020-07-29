@@ -29,22 +29,31 @@ final class CharacterListDataSource: NSObject, UITableViewDataSource {
         if CharacterListViewController.isLoadingCell(for: indexPath, currentCount: data.characters.count) {
             if showError {
                 let identifier = ErrorCell.identifier
-                // swiftlint:disable:next force_cast
-                let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ErrorCell
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: identifier,
+                    for: indexPath) as? ErrorCell else {
+                        fatalError("Could not use cell with identifier: \(ErrorCell.identifier)")
+                }
                 return cell
             }
 
             let identifier = LoadingCell.identifier
-            // swiftlint:disable:next force_cast
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! LoadingCell
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: identifier,
+                for: indexPath) as? LoadingCell else {
+                    fatalError("Could not use cell with identifier: \(LoadingCell.identifier)")
+            }
             cell.startLoading()
             return cell
         }
 
         let identifier = CharacterCell.identifier
 
-        // swiftlint:disable:next force_cast
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CharacterCell
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: identifier,
+            for: indexPath) as? CharacterCell else {
+                fatalError("Could not use cell with identifier: \(CharacterCell.identifier)")
+        }
         let character = data.characters[indexPath.row]
         cell.setup(character: character, indexPath: indexPath)
         cell.delegate = delegate

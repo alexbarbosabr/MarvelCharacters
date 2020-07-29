@@ -17,6 +17,7 @@
 		EA0FD5B624C2B44E007EAE5D /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD5B524C2B44E007EAE5D /* CharacterListViewController.swift */; };
 		EA0FD5B924C2B879007EAE5D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD5B824C2B879007EAE5D /* Service.swift */; };
 		EA0FD5BB24C2BA06007EAE5D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FD5BA24C2BA06007EAE5D /* HTTPMethod.swift */; };
+		EA13B1FC24D2075600CB1CC8 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA13B1FB24D2075600CB1CC8 /* Icons.swift */; };
 		EA14014424CE1B16009E3765 /* FavoriteCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA14014324CE1B16009E3765 /* FavoriteCharactersViewController.swift */; };
 		EA14E84324D1008100BF6C87 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA14E84224D1008100BF6C87 /* XCTestCase+Extension.swift */; };
 		EA14E84B24D1260100BF6C87 /* CharacterDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA14E84A24D1260100BF6C87 /* CharacterDetailViewControllerTests.swift */; };
@@ -123,6 +124,7 @@
 		EA0FD5B524C2B44E007EAE5D /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		EA0FD5B824C2B879007EAE5D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		EA0FD5BA24C2BA06007EAE5D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		EA13B1FB24D2075600CB1CC8 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		EA14014324CE1B16009E3765 /* FavoriteCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharactersViewController.swift; sourceTree = "<group>"; };
 		EA14E84024D0FFFF00BF6C87 /* MarvelCharactersUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarvelCharactersUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EA14E84224D1008100BF6C87 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
@@ -318,6 +320,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		EA13B1FA24D2073000CB1CC8 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EA0FD5A824C2B230007EAE5D /* Assets.xcassets */,
+				EA13B1FB24D2075600CB1CC8 /* Icons.swift */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		EA14014124CE1463009E3765 /* FavoriteCharacters */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,9 +445,9 @@
 		EA38943924C350A3009EFCA2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EA13B1FA24D2073000CB1CC8 /* Assets */,
 				EA38944024C351A8009EFCA2 /* Generated */,
 				EA38943F24C3514A009EFCA2 /* Strings */,
-				EA0FD5A824C2B230007EAE5D /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1148,6 +1159,7 @@
 				EABE0CB024CB9C0900C13A24 /* MarvelNavigationController.swift in Sources */,
 				EABE0CBB24CDA15500C13A24 /* CharacterEntity.swift in Sources */,
 				EA0FD5B624C2B44E007EAE5D /* CharacterListViewController.swift in Sources */,
+				EA13B1FC24D2075600CB1CC8 /* Icons.swift in Sources */,
 				EA34254624C35F2F009C043E /* CharactersData.swift in Sources */,
 				EABE0CAE24CB970D00C13A24 /* Navigator.swift in Sources */,
 				EADD1ED424C5278400B506E6 /* ErrorCell.swift in Sources */,
@@ -1384,7 +1396,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.abarbosa.MarvelCharacters3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.challenge.MarvelCharacters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1404,7 +1416,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.abarbosa.MarvelCharacters3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.challenge.MarvelCharacters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

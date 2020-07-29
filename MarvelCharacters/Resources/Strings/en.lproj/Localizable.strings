@@ -16,7 +16,7 @@
 "characterDetail.about" = "About:";
 
 // Favorite Characters
-"favoriteCharacters.title" = "favorites";
+"favoriteCharacters.title" = "Favorites";
 "favoriteCharacters.message.empty" = "You don't have favorite characters";
 
 // Messages

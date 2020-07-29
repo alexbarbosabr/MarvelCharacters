@@ -20,8 +20,11 @@ final class SearchCharacterDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = CharacterCell.identifier
 
-        // swiftlint:disable:next force_cast
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CharacterCell
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: identifier,
+            for: indexPath) as? CharacterCell else {
+            fatalError("Could not use cell with identifier: \(CharacterCell.identifier)")
+        }
         let character = data.characters[indexPath.row]
         cell.setup(character: character, indexPath: indexPath)
         cell.delegate = delegate

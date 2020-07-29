@@ -13,23 +13,6 @@ protocol AlertViewDelegate: AnyObject {
     func tryAgain()
 }
 
-enum Icon: String {
-    case generic = "exclamationmark.triangle"
-    case search = "magnifyingglass"
-    case noInternet = "wifi.slash"
-    case refresh = "arrow.clockwise"
-    case emptyList = "rectangle.stack.person.crop"
-    case back = "chevron.left"
-    case heart = "heart"
-    case heartFill = "heart.fill"
-    case suitHeart = "suit.heart"
-    case suitHeartFill = "suit.heart.fill"
-
-    var image: UIImage {
-        UIImage(systemName: rawValue)!
-    }
-}
-
 final class MessageView: UIView {
     weak var delegate: AlertViewDelegate?
 

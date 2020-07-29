@@ -34,7 +34,7 @@ internal enum L10n {
   }
 
   internal enum FavoriteCharacters {
-    /// favorites
+    /// Favorites
     internal static let title = L10n.tr("Localizable", "favoriteCharacters.title")
     internal enum Message {
       /// You don't have favorite characters

@@ -17,9 +17,10 @@ final class FavoriteCharactersDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.identifier,
-                                                       for: indexPath) as? CharacterCell else {
-                                                        fatalError("")
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: CharacterCell.identifier,
+            for: indexPath) as? CharacterCell else {
+                fatalError("Could not use cell with identifier: \(CharacterCell.identifier)")
         }
 
         let character = characters[indexPath.row]
