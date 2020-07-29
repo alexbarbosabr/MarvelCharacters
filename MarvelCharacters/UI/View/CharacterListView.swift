@@ -22,6 +22,7 @@ final class CharacterListView: UIView {
 
     init() {
         super.init(frame: .zero)
+        accessibilityIdentifier = "CharacterListView"
         makeView()
     }
 

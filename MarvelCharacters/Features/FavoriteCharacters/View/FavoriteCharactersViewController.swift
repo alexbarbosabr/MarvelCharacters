@@ -25,6 +25,7 @@ final class FavoriteCharactersViewController: UIViewController {
         let view = CharacterListView()
         view.tableView.delegate = self
         view.tableView.dataSource = dataSource
+        view.tableView.accessibilityIdentifier = "FavoriteCharactersTableView"
         return view
     }()
 
@@ -72,6 +73,7 @@ final class FavoriteCharactersViewController: UIViewController {
 extension FavoriteCharactersViewController: FavoriteCharactersViewProtocol {
     func showEmptyList() {
         let empty = MessageView()
+        empty.accessibilityIdentifier = "FavoriteCharactersEmptyView"
         empty.setIcon(.heart)
         empty.message = L10n.FavoriteCharacters.Message.empty
         view = empty

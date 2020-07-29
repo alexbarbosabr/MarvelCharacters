@@ -13,4 +13,9 @@ target 'MarvelCharacters' do
     pod 'Nimble-Snapshots'
   end
 
+  target 'MarvelCharactersUITests' do
+    pod 'KIF', :configurations => ['Debug']
+    pod 'KIF/IdentifierTests', :configurations => ['Debug']
+  end
+
 end

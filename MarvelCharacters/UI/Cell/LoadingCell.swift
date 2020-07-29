@@ -15,6 +15,7 @@ final class LoadingCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        accessibilityIdentifier = "LoadingCell"
         makeView()
         isUserInteractionEnabled = false
     }

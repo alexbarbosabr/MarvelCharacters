@@ -11,6 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    static var navigator: Navigator?
 
     // swiftlint:disable:next line_length
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,8 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: windowScene)
 
-        let navigator = Navigator(window: window)
-        navigator.startRootController()
+        SceneDelegate.navigator = Navigator(window: window)
+        SceneDelegate.navigator?.startRootController()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

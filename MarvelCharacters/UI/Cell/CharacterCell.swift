@@ -74,6 +74,7 @@ final class CharacterCell: UITableViewCell {
 
     func setup(character: Character, indexPath: IndexPath?, imageData: Data? = nil) {
         self.indexPath = indexPath
+        setupAccessibility(character: character, indexPath: indexPath)
 
         favoriteButton.isSelected = character.favorite ?? false
         setFavoriteButtonTintColor()
@@ -88,6 +89,18 @@ final class CharacterCell: UITableViewCell {
 
         nameLabel.text = character.name
         addDescription(character: character)
+    }
+
+    private func setupAccessibility(character: Character, indexPath: IndexPath?) {
+        let row = indexPath?.row ?? 0
+        let cell = "Cell"
+        let button = "FavoriteButton"
+
+        accessibilityLabel = "\(character.name) \(cell)"
+        accessibilityIdentifier = "\(cell)\(row)"
+
+        favoriteButton.accessibilityLabel = "\(character.name) \(button)"
+        favoriteButton.accessibilityIdentifier = "\(button)\(row)"
     }
 
     @objc

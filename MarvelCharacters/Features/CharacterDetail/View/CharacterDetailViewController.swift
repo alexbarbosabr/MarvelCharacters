@@ -33,6 +33,7 @@ final class CharacterDetailViewController: UIViewController {
         self.presenter = presenter
         self.character = character
         super.init(nibName: nil, bundle: nil)
+        view.accessibilityIdentifier = "CharacterDetailViewController"
     }
 
     @available(*, unavailable)

@@ -33,7 +33,12 @@ final class CharacterListViewController: UIViewController {
     private let presenter: CharacterListPresenterProtocol
     private let searchViewController: SearchCharacterViewController
     private let navigatorListener: CharacterListNavigatorListener
-    private let badgedButton = BadgedButtonItem()
+    private let badgedButton: BadgedButtonItem = {
+        let button = BadgedButtonItem()
+        button.accessibilityIdentifier = "FavoriteBarButton"
+        return button
+    }()
+
     private var updateWhenBackFromOtherContext: Bool = false
 
     private lazy var characterListView: CharacterListView = {
@@ -41,6 +46,7 @@ final class CharacterListViewController: UIViewController {
         view.tableView.dataSource = dataSource
         view.tableView.delegate = self
         view.tableView.prefetchDataSource = self
+        view.tableView.accessibilityIdentifier = "CharacterListTableView"
         return view
     }()
 
@@ -108,6 +114,7 @@ final class CharacterListViewController: UIViewController {
         search.searchBar.tintColor = .systemRed
         search.searchBar.placeholder = L10n.CharacterList.SearchBar.placeholder
         search.obscuresBackgroundDuringPresentation = true
+        search.searchBar.searchTextField.accessibilityIdentifier = "SearchCharacterTextField"
         navigationItem.searchController = search
     }
 
