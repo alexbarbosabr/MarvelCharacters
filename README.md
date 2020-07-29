@@ -93,4 +93,4 @@ O app é adaptável ao tema do sistema operacional.
 - Pesquisa de personagem
 - Lista de favoritos
 
-<img src="Images/screen-character-list.png" width="220"> <img src="Images/screen-detail.png" width="220"> <img src="Images/screen-search-character.png" width="220"> <img src="Images/screen-favorites-empty-state.png" width="220">
+<img src="Images/screen-character-list.png" width="200"> <img src="Images/screen-detail.png" width="200"> <img src="Images/screen-search-character.png" width="200"> <img src="Images/screen-favorites-empty-state.png" width="200">
