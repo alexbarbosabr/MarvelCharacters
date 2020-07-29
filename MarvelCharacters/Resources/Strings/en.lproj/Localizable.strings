@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  MarvelCharacters
+
+  Created by Alex Barbosa on 18/07/20.
+  Copyright © 2020 Alex Barbosa. All rights reserved.
+*/
+
+// Character List
+"characterList.title" = "MARVEL";
+"characterList.error.tryAgain" = "Something went wrong!\nTouch to try again.";
+"characterList.searchBar.placeholder" = "search for characters";
+"characterList.noCharactersFound" = "No characters found.";
+
+// Character Detail
+"characterDetail.about" = "About:";
+
+// Favorite Characters
+"favoriteCharacters.title" = "Favorites";
+"favoriteCharacters.message.empty" = "You don't have favorite characters";
+
+// Messages
+"message.notfound" = "Character not found.";
+"message.generic" = "Oops! Something went wrong.";
+"message.noInternet" = "No internet connection.";
+
+// Generic
+"tryAgain" = "tryAgain";
