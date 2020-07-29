@@ -17,7 +17,7 @@ Este projeto foi desenvolvido em Swift e tem como objetivo apresentar a lista de
     -  [CocoaPods](#cocoapods)
 -  [Clonando o repositório](#clonando-o-repositório)
 -  [Testes](#testes)
--  [Bibliotescas utilizadas](#bibliotescas-utilizadas)
+-  [Bibliotecas utilizadas](#bibliotescas-utilizadas)
 -  [Light e Dark Mode](#light-e-dark-mode)
 -  [Funcionalidades](#funcionalidades)
 
@@ -83,10 +83,9 @@ Instalação via Swift Package Manager:
 - Kingfisher  (Download de imagens)
 
 ## Light e Dark Mode
-O app é adapitável ao tema do sistem operacional.
+O app é adaptável ao tema do sistema operacional.
 
-<img src="Images/light-mode.png" width="250">
-<img src="Images/dark-mode.png" width="250">
+<img src="Images/light-mode.png" width="250"> <img src="Images/dark-mode.png" width="250">
 
 ## Funcionalidades
 - Lista de personagens
@@ -94,7 +93,4 @@ O app é adapitável ao tema do sistem operacional.
 - Pesquisa de personagem
 - Lista de favoritos
 
-<img src="Images/screen-character-list.png" width="220">
-<img src="Images/screen-detail.png" width="220">
-<img src="Images/screen-search-character.png" width="220">
-<img src="Images/screen-favorites-empty-state.png" width="220">
+<img src="Images/screen-character-list.png" width="220"> <img src="Images/screen-detail.png" width="220"> <img src="Images/screen-search-character.png" width="220"> <img src="Images/screen-favorites-empty-state.png" width="220">
