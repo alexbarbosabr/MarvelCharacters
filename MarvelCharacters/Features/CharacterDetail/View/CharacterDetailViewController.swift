@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol CharacterDetailViewProtocol: AnyObject {
+    func showSaveFavoriteError()
+    func showRemoveFavoriteError()
+}
+
 final class CharacterDetailViewController: UIViewController {
     private lazy var viewDetail: CharacterDetailView = {
         let view = CharacterDetailView(character: character)
@@ -75,6 +80,16 @@ final class CharacterDetailViewController: UIViewController {
 extension CharacterDetailViewController: CharacterDetailViewDelegate {
     func setFavorite(character: Character, isFavorite: Bool, imageData: Data?) {
         presenter.setFavorite(character: character, isFavorite: isFavorite, imageData: imageData)
+    }
+}
+
+extension CharacterDetailViewController: CharacterDetailViewProtocol {
+    func showSaveFavoriteError() {
+        showAlert(title: L10n.Message.Title.generic, message: L10n.Message.Error.setAsFavorite)
+    }
+
+    func showRemoveFavoriteError() {
+        showAlert(title: L10n.Message.Title.generic, message: L10n.Message.Error.removeFavorite)
     }
 }
 

@@ -14,6 +14,8 @@ protocol CharacterListViewProtocol: AnyObject {
     func showErrorOnScreen(withIcon icon: Icon, message: String)
     func showLoadingOnScreen()
     func showErrorOnTableView()
+    func showSaveFavoriteError()
+    func showRemoveFavoriteError()
     func updateCell(index: IndexPath)
     func refreshTable(_ data: CharactersDataViewModel)
     func updateBadgeFavoriteButton(amount: Int)
@@ -188,6 +190,14 @@ extension CharacterListViewController: CharacterListViewProtocol {
     func showLoadingOnScreen() {
         let loading = LoadingView()
         view = loading
+    }
+
+    func showSaveFavoriteError() {
+        showAlert(title: L10n.Message.Title.generic, message: L10n.Message.Error.setAsFavorite)
+    }
+
+    func showRemoveFavoriteError() {
+        showAlert(title: L10n.Message.Title.generic, message: L10n.Message.Error.removeFavorite)
     }
 
     func updateCell(index: IndexPath) {

@@ -13,6 +13,8 @@ protocol SearchCharacterViewControllerProtocol: AnyObject {
     func showEmptyCharacters()
     func showError(withIcon icon: Icon, message: String)
     func showLoading()
+    func showSaveFavoriteError()
+    func showRemoveFavoriteError()
     func hideLoading()
     func updateCell(index: IndexPath)
 }
@@ -96,6 +98,14 @@ extension SearchCharacterViewController: SearchCharacterViewControllerProtocol {
         messageView.isHidden = true
         loadingView.isHidden = false
         loadingView.start()
+    }
+
+    func showSaveFavoriteError() {
+        showAlert(title: L10n.Message.Title.generic, message: L10n.Message.Error.setAsFavorite)
+    }
+
+    func showRemoveFavoriteError() {
+        showAlert(title: L10n.Message.Title.generic, message: L10n.Message.Error.removeFavorite)
     }
 
     func hideLoading() {

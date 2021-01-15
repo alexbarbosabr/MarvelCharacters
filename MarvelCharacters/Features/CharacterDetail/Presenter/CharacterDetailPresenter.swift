@@ -13,13 +13,23 @@ protocol CharacterDetailPresenterProtocol {
 }
 
 final class CharacterDetailPresenter: CharacterDetailPresenterProtocol {
+    weak var view: CharacterDetailViewProtocol?
+
     func setFavorite(character: Character, isFavorite: Bool, imageData: Data?) {
         let manage = ManageCharacterEmtity()
 
         if isFavorite {
-            manage.save(with: character, imageData: imageData)
+            do {
+                try manage.save(with: character, imageData: imageData)
+            } catch {
+                view?.showSaveFavoriteError()
+            }
         } else {
-            manage.delete(with: character)
+            do {
+                try manage.delete(with: character)
+            } catch {
+                view?.showRemoveFavoriteError()
+            }
         }
     }
 }

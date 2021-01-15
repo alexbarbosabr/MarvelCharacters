@@ -10,8 +10,8 @@ import CoreData
 
 protocol ManageCharacterEmtityProtocol {
     func fetchCharacters() -> [CharacterEntity]
-    func save(with character: Character, imageData: Data?)
-    func delete(with character: Character)
+    func save(with character: Character, imageData: Data?) throws
+    func delete(with character: Character) throws
 }
 
 class ManageCharacterEmtity: ManageCharacterEmtityProtocol {
@@ -34,11 +34,11 @@ class ManageCharacterEmtity: ManageCharacterEmtityProtocol {
             let result = try context.fetch(reqquest)
             return result
         } catch {
-            fatalError("Error is retriving items")
+            fatalError("Error in retriving items")
         }
     }
 
-    func save(with character: Character, imageData: Data?) {
+    func save(with character: Character, imageData: Data?) throws {
         if isRunningTests { return }
 
         let dataManager = DataManager()
@@ -57,12 +57,13 @@ class ManageCharacterEmtity: ManageCharacterEmtityProtocol {
 
         do {
             try context.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+        } catch {
+            printError(error)
+            throw error
         }
     }
 
-    func delete(with character: Character) {
+    func delete(with character: Character) throws {
         if isRunningTests { return }
 
         let dataManager = DataManager()
@@ -79,8 +80,14 @@ class ManageCharacterEmtity: ManageCharacterEmtityProtocol {
             }
 
             try context.save()
-        } catch let error as NSError {
-            print("Could not delete. \(error), \(error.userInfo)")
+        } catch {
+            printError(error)
+            throw error
         }
+    }
+
+    private func printError(_ error: Error) {
+        let err = error as NSError
+        print("Could not delete. \(err), \(err.userInfo)")
     }
 }

@@ -90,3 +90,14 @@ extension UIView {
         }
     }
 }
+
+extension UIViewController {
+    func showAlert(title: String, message: String, titleButton: String = L10n.close) {
+        let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let closeButton = UIAlertAction(title: titleButton, style: UIAlertAction.Style.cancel) { _ in
+            controller.dismiss(animated: true, completion: nil)
+        }
+        controller.addAction(closeButton)
+        present(controller, animated: true, completion: nil)
+    }
+}

@@ -23,6 +23,10 @@
 "message.notfound" = "Character not found.";
 "message.generic" = "Oops! Something went wrong.";
 "message.noInternet" = "No internet connection.";
+"message.error.removeFavorite" = "Error! The character could not be removed.";
+"message.error.setAsFavorite" = "Error! The character cannot be saved as a favorite";
+"message.title.generic" = "Oops!";
 
 // Generic
 "tryAgain" = "tryAgain";
+"close" = "close";

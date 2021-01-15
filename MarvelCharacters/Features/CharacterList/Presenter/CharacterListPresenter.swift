@@ -78,14 +78,26 @@ final class CharacterListPresenter: CharacterListPresenterProtocol {
         let character = charactersDataView.characters[indexPath.row]
         character.setFavorite(isFavorite)
 
-        if isFavorite {
-            manageData.save(with: character, imageData: imageData)
-        } else {
-            manageData.delete(with: character)
+        func updateViews() {
+            view?.updateCell(index: indexPath)
+            updateBadge()
         }
 
-        view?.updateCell(index: indexPath)
-        updateBadge()
+        if isFavorite {
+            do {
+                try manageData.save(with: character, imageData: imageData)
+                updateViews()
+            } catch {
+                view?.showSaveFavoriteError()
+            }
+        } else {
+            do {
+                try manageData.delete(with: character)
+                updateViews()
+            } catch {
+                view?.showRemoveFavoriteError()
+            }
+        }
     }
 
     private func handleError(_ error: Error) {

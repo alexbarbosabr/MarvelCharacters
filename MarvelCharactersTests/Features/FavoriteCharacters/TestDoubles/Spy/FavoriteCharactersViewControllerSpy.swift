@@ -11,6 +11,7 @@
 final class FavoriteCharactersViewControllerSpy: FavoriteCharactersViewProtocol {
     private (set) var hasCalledShowEmptyList = false
     private (set) var hasCalledShowCharacters = false
+    private (set) var hasCalledShowRemoveFavoriteError = false
 
     func showEmptyList() {
         hasCalledShowEmptyList = true
@@ -18,5 +19,9 @@ final class FavoriteCharactersViewControllerSpy: FavoriteCharactersViewProtocol 
 
     func showCharacters(_ characters: [Character]) {
         hasCalledShowCharacters = true
+    }
+
+    func showRemoveFavoriteError() {
+        hasCalledShowRemoveFavoriteError = true
     }
 }

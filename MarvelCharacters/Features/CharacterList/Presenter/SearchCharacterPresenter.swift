@@ -92,12 +92,22 @@ final class SearchCharacterPresenter: SearchCharacterPresenterProtocol {
         character.setFavorite(isFavorite)
 
         if isFavorite {
-            manage.save(with: character, imageData: imageData)
-        } else {
-            manage.delete(with: character)
-        }
+            do {
+                try manage.save(with: character, imageData: imageData)
 
-        view?.updateCell(index: indexPath)
+                view?.updateCell(index: indexPath)
+            } catch {
+                view?.showSaveFavoriteError()
+            }
+        } else {
+            do {
+                try manage.delete(with: character)
+
+                view?.updateCell(index: indexPath)
+            } catch {
+                view?.showRemoveFavoriteError()
+            }
+        }
     }
 
     func updateCharactersWhenSetFavoriteInOtherContext() {
