@@ -14,7 +14,7 @@ protocol ManageCharacterEmtityProtocol {
     func delete(with character: Character) throws
 }
 
-class ManageCharacterEmtity: ManageCharacterEmtityProtocol {
+final class ManageCharacterEmtity: ManageCharacterEmtityProtocol {
     private let entityName: String = "Character"
     private var isRunningTests: Bool {
         return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil

@@ -6,7 +6,6 @@
 //  Copyright © 2020 Alex Barbosa. All rights reserved.
 //
 
-//import Foundation
 import CoreData
 
 final class DataManager {

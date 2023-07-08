@@ -72,10 +72,6 @@ final class CharacterListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -163,7 +159,12 @@ extension CharacterListViewController: CharacterListViewProtocol {
         dataSource.data = data
         characterListView.tableView.reloadData()
 
-        view = characterListView
+        view.addSubview(characterListView)
+        characterListView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                                 leading: view.leadingAnchor,
+                                 bottom: view.bottomAnchor,
+                                 trailing: view.trailingAnchor,
+                                 padding: .zero)
     }
 
     func showEmptyList(withIcon icon: Icon, message: String) {

@@ -1,20 +1,20 @@
 PODS:
-  - iOSSnapshotTestCase (6.2.0):
-    - iOSSnapshotTestCase/SwiftSupport (= 6.2.0)
-  - iOSSnapshotTestCase/Core (6.2.0)
-  - iOSSnapshotTestCase/SwiftSupport (6.2.0):
+  - iOSSnapshotTestCase (8.0.0):
+    - iOSSnapshotTestCase/SwiftSupport (= 8.0.0)
+  - iOSSnapshotTestCase/Core (8.0.0)
+  - iOSSnapshotTestCase/SwiftSupport (8.0.0):
     - iOSSnapshotTestCase/Core
-  - KIF (3.7.9):
-    - KIF/Core (= 3.7.9)
-  - KIF/Core (3.7.9)
-  - KIF/IdentifierTests (3.7.9):
+  - KIF (3.8.7):
+    - KIF/Core (= 3.8.7)
+  - KIF/Core (3.8.7)
+  - KIF/IdentifierTests (3.8.7):
     - KIF/Core
-  - Nimble (8.1.1)
-  - Nimble-Snapshots (8.2.1):
-    - Nimble-Snapshots/Core (= 8.2.1)
-  - Nimble-Snapshots/Core (8.2.1):
-    - iOSSnapshotTestCase (~> 6.0)
-    - Nimble (~> 8.0)
+  - Nimble (10.0.0)
+  - Nimble-Snapshots (9.4.0):
+    - Nimble-Snapshots/Core (= 9.4.0)
+  - Nimble-Snapshots/Core (9.4.0):
+    - iOSSnapshotTestCase (~> 8.0)
+    - Nimble
 
 DEPENDENCIES:
   - KIF
@@ -29,11 +29,11 @@ SPEC REPOS:
     - Nimble-Snapshots
 
 SPEC CHECKSUMS:
-  iOSSnapshotTestCase: 9ab44cb5aa62b84d31847f40680112e15ec579a6
-  KIF: 350f96fb4205972a10e4c1a45774d48b2d8482d8
-  Nimble: 5f8a2fb6fa343a7242dfdd9d42f7267419d464b2
-  Nimble-Snapshots: 3a4750d83752625c8ebfdc588da105303ee2201e
+  iOSSnapshotTestCase: a670511f9ee3829c2b9c23e6e68f315fd7b6790f
+  KIF: 779cdbca106633b94ecee7b036537490ebdbd9de
+  Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
+  Nimble-Snapshots: ef281b908c604f78c8313587e25ea92c8ab513d7
 
-PODFILE CHECKSUM: 88405c3522eb74468a514e85389eb4a07c051f27
+PODFILE CHECKSUM: 1e70995a243d453c9bca078201e33dbad84e4265
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.3

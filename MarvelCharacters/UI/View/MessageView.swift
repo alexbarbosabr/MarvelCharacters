@@ -17,13 +17,13 @@ final class MessageView: UIView {
     weak var delegate: AlertViewDelegate?
 
     var message: String? {
-        set { messageLabel.text = newValue }
         get { return messageLabel.text }
+        set { messageLabel.text = newValue }
     }
 
     var showTryAgain: Bool {
-        set { tryAgainButton.isHidden = !newValue }
         get { return tryAgainButton.isHidden }
+        set { tryAgainButton.isHidden = !newValue }
     }
 
     private var iconImageView: UIImageView = {
@@ -40,7 +40,7 @@ final class MessageView: UIView {
         return label
     }()
 
-    private let tryAgainButton: UIButton = {
+    private lazy var tryAgainButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
         button.setTitle(L10n.tryAgain, for: .normal)
         button.setTitleColor(.secondaryLabel, for: .normal)

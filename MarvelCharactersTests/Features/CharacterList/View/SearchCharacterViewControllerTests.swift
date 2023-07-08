@@ -16,6 +16,12 @@ class SearchCharacterViewControllerTests: XCTestCase {
     private var presenter: SearchCharacterPresenter!
     private var stubService: CharacterListServiceStub!
     private var window: UIWindow!
+    private var snapshot: Predicate<Snapshotable>!
+
+    override func setUp() {
+        super.setUp()
+        snapshot = haveValidSnapshot()
+    }
 
     private func setup(withError error: ServiceError?) {
         stubService = CharacterListServiceStub()
@@ -49,21 +55,21 @@ class SearchCharacterViewControllerTests: XCTestCase {
 
     func testSearchChracterViewControllerLayout() {
         setup(withError: nil)
-        expect(self.sut).to(haveValidSnapshot())
+        expect(self.sut).to(snapshot)
     }
 
     func testSearchChracterViewControllerNoConnectionLayout() {
         setup(withError: .noInternetConnection)
-        expect(self.sut).to(haveValidSnapshot())
+        expect(self.sut).to(snapshot)
     }
 
     func testSearchChracterViewControllerGenericErrorLayout() {
         setup(withError: .unexpected)
-        expect(self.sut).to(haveValidSnapshot())
+        expect(self.sut).to(snapshot)
     }
 
     func testSearchChracterViewControllerLoadingLayout() {
         setup(withError: .cancelRequest)
-        expect(self.sut).to(haveValidSnapshot())
+        expect(self.sut).to(snapshot)
     }
 }
