@@ -20,6 +20,7 @@ final class CharacterListViewControllerTests: XCTestCase {
     private var window: UIWindow!
     private var navigation: MarvelNavigationController!
     private var navigatorListener: CharacterListNavigatorListenerMock!
+    private var snapshot: Predicate<Snapshotable>!
 
     override func tearDown() {
         super.tearDown()
@@ -47,6 +48,7 @@ final class CharacterListViewControllerTests: XCTestCase {
                                           navigatorListener: navigatorListener)
         presenterCharacterList.view = sut
         navigation = MarvelNavigationController(rootViewController: sut)
+        snapshot = haveValidSnapshot()
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = navigation
@@ -55,21 +57,21 @@ final class CharacterListViewControllerTests: XCTestCase {
 
     func testCharacterListViewControllerLayout() {
         setupView(withError: nil)
-        expect(self.navigation).to(haveValidSnapshot())
+        expect(self.navigation).to(snapshot)
     }
 
     func testCharacterListViewControllerEmptyListLayout() {
         setupView(isEmpytList: true)
-        expect(self.navigation).to(haveValidSnapshot())
+        expect(self.navigation).to(snapshot)
     }
 
     func testCharacterListViewControllerNoConnectionLayout() {
         setupView(withError: .noInternetConnection)
-        expect(self.navigation).to(haveValidSnapshot())
+        expect(self.navigation).to(snapshot)
     }
 
     func testCharacterListViewControllerGenericErrorLayout() {
         setupView(withError: .unexpected)
-        expect(self.navigation).to(haveValidSnapshot())
+        expect(self.navigation).to(snapshot)
     }
 }
