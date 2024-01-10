@@ -40,6 +40,7 @@ extension Navigator: CharacterListNavigatorListener, FavoriteCharactersNavigator
     func goToDetail(character: Character) {
         let presenter = CharacterDetailPresenter()
         let controller = CharacterDetailViewController(presenter: presenter, character: character)
+        presenter.view = controller
         navigationController?.pushViewController(controller, animated: true)
     }
 

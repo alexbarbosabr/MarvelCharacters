@@ -15,6 +15,8 @@ class CharacterListViewControllerSpy: CharacterListViewProtocol {
     private (set) var hasCalledShowErrorOnScreen = false
     private (set) var hasCalledShowLoadingOnScreen = false
     private (set) var hasCalledShowErrorOnTableView = false
+    private (set) var hasCalledShowSaveFavoriteError = false
+    private (set) var hasCalledShowRemoveFavoriteError = false
     private (set) var hasCalledUpdateCell = false
     private (set) var hasCalledRefreshTable = false
     private (set) var hasCalledUpdateBadgeFavoriteButton = false
@@ -37,6 +39,14 @@ class CharacterListViewControllerSpy: CharacterListViewProtocol {
 
     func showErrorOnTableView() {
         hasCalledShowErrorOnTableView = true
+    }
+
+    func showSaveFavoriteError() {
+        hasCalledShowSaveFavoriteError = true
+    }
+
+    func showRemoveFavoriteError() {
+        hasCalledShowRemoveFavoriteError = true
     }
 
     func updateCell(index: IndexPath) {

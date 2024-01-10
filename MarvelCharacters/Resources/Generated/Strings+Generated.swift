@@ -8,8 +8,10 @@ import Foundation
 // MARK: - Strings
 
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
-// swiftlint:disable nesting type_body_length type_name
+// swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// close
+  internal static let close = L10n.tr("Localizable", "close")
   /// tryAgain
   internal static let tryAgain = L10n.tr("Localizable", "tryAgain")
 
@@ -24,7 +26,8 @@ internal enum L10n {
     /// MARVEL
     internal static let title = L10n.tr("Localizable", "characterList.title")
     internal enum Error {
-      /// Something went wrong!\nTouch to try again.
+      /// Something went wrong!
+      /// Touch to try again.
       internal static let tryAgain = L10n.tr("Localizable", "characterList.error.tryAgain")
     }
     internal enum SearchBar {
@@ -49,10 +52,20 @@ internal enum L10n {
     internal static let noInternet = L10n.tr("Localizable", "message.noInternet")
     /// Character not found.
     internal static let notfound = L10n.tr("Localizable", "message.notfound")
+    internal enum Error {
+      /// Error! The character could not be removed.
+      internal static let removeFavorite = L10n.tr("Localizable", "message.error.removeFavorite")
+      /// Error! The character cannot be saved as a favorite
+      internal static let setAsFavorite = L10n.tr("Localizable", "message.error.setAsFavorite")
+    }
+    internal enum Title {
+      /// Oops!
+      internal static let generic = L10n.tr("Localizable", "message.title.generic")
+    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
-// swiftlint:enable nesting type_body_length type_name
+// swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
 
 // MARK: - Implementation Details
 
@@ -66,7 +79,11 @@ extension L10n {
 // swiftlint:disable convenience_type
 private final class BundleToken {
   static let bundle: Bundle = {
-    Bundle(for: BundleToken.self)
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
   }()
 }
 // swiftlint:enable convenience_type

@@ -14,6 +14,8 @@ protocol CharacterListViewProtocol: AnyObject {
     func showErrorOnScreen(withIcon icon: Icon, message: String)
     func showLoadingOnScreen()
     func showErrorOnTableView()
+    func showSaveFavoriteError()
+    func showRemoveFavoriteError()
     func updateCell(index: IndexPath)
     func refreshTable(_ data: CharactersDataViewModel)
     func updateBadgeFavoriteButton(amount: Int)
@@ -68,10 +70,6 @@ final class CharacterListViewController: UIViewController {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
     }
 
     override func viewDidLoad() {
@@ -161,7 +159,12 @@ extension CharacterListViewController: CharacterListViewProtocol {
         dataSource.data = data
         characterListView.tableView.reloadData()
 
-        view = characterListView
+        view.addSubview(characterListView)
+        characterListView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                                 leading: view.leadingAnchor,
+                                 bottom: view.bottomAnchor,
+                                 trailing: view.trailingAnchor,
+                                 padding: .zero)
     }
 
     func showEmptyList(withIcon icon: Icon, message: String) {
@@ -188,6 +191,14 @@ extension CharacterListViewController: CharacterListViewProtocol {
     func showLoadingOnScreen() {
         let loading = LoadingView()
         view = loading
+    }
+
+    func showSaveFavoriteError() {
+        showAlert(title: L10n.Message.Title.generic, message: L10n.Message.Error.setAsFavorite)
+    }
+
+    func showRemoveFavoriteError() {
+        showAlert(title: L10n.Message.Title.generic, message: L10n.Message.Error.removeFavorite)
     }
 
     func updateCell(index: IndexPath) {

@@ -11,6 +11,7 @@ import UIKit
 protocol FavoriteCharactersViewProtocol: AnyObject {
     func showEmptyList()
     func showCharacters(_ characters: [Character])
+    func showRemoveFavoriteError()
 }
 
 protocol FavoriteCharactersNavigatorListener {
@@ -83,6 +84,10 @@ extension FavoriteCharactersViewController: FavoriteCharactersViewProtocol {
         dataSource.characters = characters
         characterListView.tableView.reloadData()
         view = characterListView
+    }
+
+    func showRemoveFavoriteError() {
+        showAlert(title: L10n.Message.Title.generic, message: L10n.Message.Error.removeFavorite)
     }
 }
 

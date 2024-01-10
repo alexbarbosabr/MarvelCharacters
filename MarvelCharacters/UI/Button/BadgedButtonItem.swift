@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BadgedButtonItem: UIBarButtonItem {
+final class BadgedButtonItem: UIBarButtonItem {
     private lazy var badgeButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 40))
         button.adjustsImageWhenHighlighted = false

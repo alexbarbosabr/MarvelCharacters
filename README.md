@@ -1,96 +1,107 @@
 
-<img src="https://img.shields.io/badge/Xcode-11.5-blue.svg?style=flat"> <img src="https://img.shields.io/badge/swift-5-orange.svg?style=flat">
+<img src="https://img.shields.io/badge/Xcode-14.3-blue.svg?style=flat"> <img src="https://img.shields.io/badge/swift-5-orange.svg?style=flat">
 
 <img src="Images/logo.jpg">
 
 # Marvel Characters
 
-Este projeto foi desenvolvido em Swift e tem como objetivo apresentar a lista de personagens da Marvel em um app para iOS.
+This project was developed in Swift with UIKit and aims to present the Marvel characters in an iOS app.
 
--  [Começando](#começando)
-	-  [Pré-requisito](#pré-requisito)
--  [Guia de instalação](#guia-de-instalação)
+## Light e Dark Mode
+The app is adaptable to the theme of the operating system.
+
+<img src="Images/light-mode.png" width="250"> <img src="Images/dark-mode.png" width="250">
+
+## Features
+- Character list
+- Character details
+- Character search
+- Favorite list
+
+<img src="Images/screen-character-list.png" width="200"> <img src="Images/screen-detail.png" width="200"> <img src="Images/screen-search-character.png" width="200"> <img src="Images/screen-favorites-empty-state.png" width="200">
+
+### Menu
+-  [Starting](#starting)
+	-  [Prerequisites](#prerequisites)
+-  [Installation guide](#installation-guide)
 	-  [Xcode](#xcode)
 	-  [Homebrew](#homebrew)
 	    - [SwiftGen](#swiftgen)
 	    - [SwiftLint](#swiftlint)
     -  [CocoaPods](#cocoapods)
--  [Clonando o repositório](#clonando-o-repositório)
--  [Testes](#testes)
--  [Bibliotecas utilizadas](#bibliotescas-utilizadas)
--  [Light e Dark Mode](#light-e-dark-mode)
--  [Funcionalidades](#funcionalidades)
+-  [Cloning the reposito](#cloning-the-reposito)
+-  [Tests](#tests)
+-  [Libraries used](#libraries-used)
 
-## Começando
-As instruções a seguir irão fornecer a você uma cópia do projeto e possibilitar a execução do mesmo em seu computador.
+## Starting
+The following instructions will provide you with a copy of the project and allow you to run it on your computer.
 
-### Pré-requisito
-- Computador com macOS Catalina 10.15.2 ou superior
+### Prerequisites
+- Computer with macOS Ventura 13 or higher
 
-## Guia de instalação
-Instale as ferramentas abaixo para poder executar o app no Xcode.
+## Installation guide
+Install the tools below to be able to run the app in Xcode.
 
 ### Xcode
-Baixe o Xcode na [App Store](https://apps.apple.com/br/app/xcode/id497799835?mt=12).
+Download Xcode from [App Store](https://apps.apple.com/br/app/xcode/id497799835).
 
 ### Homebrew
-Siga as instruções de instalação no site [brew](https://brew.sh/index_pt-br) ou execute o comando abaixo no terminal do Mac:
+Follow the installation instructions on the website [brew](https://brew.sh/index_pt-br) or run the command below in the terminal:
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
+> Note: For Mac with **Apple Silicon** processor, you will need to run the command below in the terminal.
+> 1. echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/<span style="color: red">YOUR USER</span>/.zprofile
+
+
+
 ### SwiftGen
-No **terminal** execute:
+In **terminal** run:
 ```
 brew install swiftgen
 ```
 
 ### SwiftLint
-No **terminal** execute:
+In **terminal** run:
 ```
 brew install swiftlint
 ```
 
 ### CocoaPods
-No **terminal** execute:
+In **terminal** run:
 ```
 sudo gem install cocoapods
 ```
-Ao fim da instalação do comando acima, execute no **terminal**:
+
+> Note: For Mac with **Apple Silicon** processor, you will need to run the commands below.
+> 1. sudo arch -x86_64 gem install ffi
+> 2. arch -x86_64 pod install
+
+## Cloning the repository
+In **terminal**, open the directory of your choice and run the command line below to clone the repository.
+```
+git clone https://github.com/alexbarbosabr/MarvelCharacters.git
+```
+
+At the end of the clone, open the root folder of the project in the terminal and execute the command:
 ```
 pod install
 ```
 
-## Clonando o repositório
-No **terminal**, abra o diretório de sua preferência e execute a linha de comando abaixo para clonar o repositório.
-```
-git clone https://github.com/alexbarbosabr/MarvelCharacters.git
-```
-Após clonar o repositório abra o arquivo **.xcodeproj**.
+After installing the Pods, open the **.xcworkspace** file located in the root folder of the project.
 
-# Informações complementares
+# Additional information
 
-## Testes
-O projeto possui testes automátizados, para os testes de UI e funcional foi utilizado o simulador do **Phone SE (2nd generation)** com **iOS 13.5**. Outros simuladores com a mesma proporção de tela podem funcionar.
+## Tests
+The project has automated tests on MarvelCharactersTests and MarvelCharactersUITests targets.
+For the MarvelCharactersTests snapshot tests, the **iPhone SE (3nd generation)** simulator with **iOS 16.4** was used. Other simulators with the same aspect ratio may work.
 
-## Bibliotescas utilizadas
-Instalação via Pod:
-- Nimble-Snapshots  (Testes de UI)
-- KIF  (Testes instrumentados e funcional	)
-- KIF/IdentifierTests  (Testes instrumentados e funcional)
+## Libraries used
+Installation via CocoaPods:
+- Nimble-Snapshots (UI Tests)
+- KIF (Instrumented and Functional tests)
+- KIF/IdentifierTests (Instrumented and functional tests)
 
-Instalação via Swift Package Manager:
-- Kingfisher  (Download de imagens)
-
-## Light e Dark Mode
-O app é adaptável ao tema do sistema operacional.
-
-<img src="Images/light-mode.png" width="250"> <img src="Images/dark-mode.png" width="250">
-
-## Funcionalidades
-- Lista de personagens
-- Detalhe do personagem
-- Pesquisa de personagem
-- Lista de favoritos
-
-<img src="Images/screen-character-list.png" width="200"> <img src="Images/screen-detail.png" width="200"> <img src="Images/screen-search-character.png" width="200"> <img src="Images/screen-favorites-empty-state.png" width="200">
+Installation via Swift Package Manager:
+- Kingfisher (Download images)

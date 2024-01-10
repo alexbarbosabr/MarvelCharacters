@@ -8,7 +8,7 @@
 
 import CoreData
 
-public class CharacterEntity: NSManagedObject, Identifiable {
+public final class CharacterEntity: NSManagedObject, Identifiable {
     @NSManaged public var id: Int32
     @NSManaged public var name: String
     @NSManaged public var desc: String

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Character: Codable {
+final class Character: Codable {
     let id: Int
     let name: String
     let description: String

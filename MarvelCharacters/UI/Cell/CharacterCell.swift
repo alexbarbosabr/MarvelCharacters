@@ -107,8 +107,8 @@ final class CharacterCell: UITableViewCell {
     private func tapFavoriteButton() {
         if let index = indexPath {
             delegate?.tapFavoriteButton(index: index,
-                                  isFavorite: !favoriteButton.isSelected,
-                                  imageData: imageView?.image?.pngData())
+                                        isFavorite: !favoriteButton.isSelected,
+                                        imageData: imageView?.image?.pngData())
         }
     }
 

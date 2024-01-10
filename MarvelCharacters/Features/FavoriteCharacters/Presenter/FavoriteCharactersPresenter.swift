@@ -56,10 +56,14 @@ final class FavoriteCharactersPresenter: FavoriteCharactersPresenterProtocol {
     func removeFavorite(indexPath: IndexPath) {
         let character = characters[indexPath.row]
 
-        manage.delete(with: character)
+        do {
+            try manage.delete(with: character)
 
-        characters.remove(at: indexPath.row)
+            characters.remove(at: indexPath.row)
 
-        fetchCharacters()
+            fetchCharacters()
+        } catch {
+            view?.showRemoveFavoriteError()
+        }
     }
 }

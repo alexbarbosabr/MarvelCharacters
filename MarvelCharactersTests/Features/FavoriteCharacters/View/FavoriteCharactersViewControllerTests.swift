@@ -17,6 +17,7 @@ final class FavoriteCharactersViewControllerTests: XCTestCase {
     private var navigation: MarvelNavigationController!
     private var navigatorListener: FavoriteCharactersNavigatorListenerSpy!
     private var window: UIWindow!
+    private var snapshot: Predicate<Snapshotable>!
 
     private func setup(withEmptyList isEmpty: Bool? = false) {
         let characterList = isEmpty! ? [Character]() : [.mockWithHttpsUrl()]
@@ -32,6 +33,11 @@ final class FavoriteCharactersViewControllerTests: XCTestCase {
         window.makeKeyAndVisible()
     }
 
+    override func setUp() {
+        super.setUp()
+        snapshot = haveValidSnapshot()
+    }
+
     override func tearDown() {
         super.tearDown()
         sut = nil
@@ -42,12 +48,12 @@ final class FavoriteCharactersViewControllerTests: XCTestCase {
 
     func testFavoriteCharactersLayout() {
         setup()
-        expect(self.navigation).to(haveValidSnapshot())
+        expect(self.navigation).to(snapshot)
     }
 
     func testEmptyFavoriteCharactersLayout() {
         setup(withEmptyList: true)
-        expect(self.navigation).to(haveValidSnapshot())
+        expect(self.navigation).to(snapshot)
     }
 
     func testTapFavorite() {

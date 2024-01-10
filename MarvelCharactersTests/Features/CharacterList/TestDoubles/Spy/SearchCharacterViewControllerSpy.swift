@@ -15,6 +15,8 @@ class SearchCharacterViewControllerSpy: SearchCharacterViewControllerProtocol {
     private (set) var hasCalledShowError = false
     private (set) var hasCalledShowLoading = false
     private (set) var hasCalledShowHideLoading = false
+    private (set) var hasCalledShowSaveFavoriteError = false
+    private (set) var hasCalledShowRemoveFavoriteError = false
     private (set) var hasCalledUpdateCell = false
 
     func showCharacters(_ data: CharactersDataViewModel) {
@@ -35,6 +37,14 @@ class SearchCharacterViewControllerSpy: SearchCharacterViewControllerProtocol {
 
     func hideLoading() {
         hasCalledShowHideLoading = true
+    }
+
+    func showSaveFavoriteError() {
+        hasCalledShowSaveFavoriteError = true
+    }
+
+    func showRemoveFavoriteError() {
+        hasCalledShowRemoveFavoriteError = true
     }
 
     func updateCell(index: IndexPath) {
